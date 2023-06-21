@@ -1,0 +1,3 @@
+.label {
+  @apply text-primary font-mono mt-5;
+}
