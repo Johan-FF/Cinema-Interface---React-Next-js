@@ -14,7 +14,13 @@ module.exports = {
         'secondary-opacity': '#1e3d5e',
         'tertiary-opacity': '#DA5B54',
       },
+      scrollbar: {
+        track: 'secondary',
+        thumb: 'secondary-opacity',
+      }
     },
   },
-  plugins: [],
+  plugins: [
+    require('tailwind-scrollbar'),
+  ],
 }

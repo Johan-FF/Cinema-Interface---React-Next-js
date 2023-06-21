@@ -1,3 +1,7 @@
 .label {
-  @apply text-primary font-mono mt-5;
+  @apply text-primary font-mono mb-3;
+}
+
+.label-error {
+  @apply text-red-300 font-mono mb-3;
 }
