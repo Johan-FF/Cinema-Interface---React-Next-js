@@ -1,4 +1,4 @@
-import React from "react";
+import Image from "next/image";
 
 interface CardProps {
   title: string;
@@ -16,27 +16,21 @@ const CardPeliculas: React.FC<CardProps> = ({
   duracion,
 }) => {
   return (
-    <>
-      <div className="max-w-sm rounded overflow-hidden shadow-lg">
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{title}</div>
-          <div className="flex flex-row">
-            <div className="w-2/5 bg-blue-200 flex items-center justify-center rounded-full">
-              <div className="text-gray-700 text-base">{edad}</div>
-            </div>
-            <div className="w-2/5 bg-yellow-200 flex items-center justify-center rounded-full ml-1 ">
-              <div className="text-gray-700 text-base">{duracion}</div>
-            </div>
-          </div>
+    <article className="w-full flex flex-col justify-center items-center shadow-2xl shadow-black">
+      <section className="w-[50%]">
+        <h2 className="font-bold text-xl mb-2">{title}</h2>
+        <div className="flex flex-row">
+          <p className="w-2/5 bg-yellow-400 flex items-center justify-center rounded-full text-gray-700 text-base">{edad}</p>
+          <p className="w-2/5 bg-blue-200 flex items-center justify-center rounded-full text-gray-700 text-base">{duracion}</p>
         </div>
-        <img className="w-full" src={image} alt={title} />
-        <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">{title}</div>
-          <p className="text-gray-700 text-base">{description}</p>
-        </div>
+      </section>
+      <Image src={image} alt={title} width={300} height={500}/>
+      <div className="w-[50%]">
+        <div className="font-bold text-xl mb-2">{title}</div>
+        <p className="text-gray-700 text-base">{description}</p>
       </div>
-    </>
-  );
-};
+    </article>
+  )
+}
 
-export default CardPeliculas;
+export default CardPeliculas
