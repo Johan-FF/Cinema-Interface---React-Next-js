@@ -1,5 +1,6 @@
-"use client";
-import { useState } from "react";
+"use client"
+import { useState } from "react"
+
 export default function Shopping() {
     const [selecProducId, setProducId] = useState('');
     const [cart, setCart] = useState<{ productId: string; productName: string; productPrice: string; }[]>([]);

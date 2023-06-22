@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-export default function employeeManagement() {
+
+export default function EmployeeManagement() {
     const [searchTerm, setSearchTerm] = useState('');
 
     const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
