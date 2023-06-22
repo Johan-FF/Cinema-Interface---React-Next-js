@@ -1,0 +1,1 @@
+export type valuesLoginInput =  "identification" | "password" | "conPassword" | "name" | "position" | "phoneNumber"
