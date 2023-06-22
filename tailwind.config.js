@@ -17,6 +17,9 @@ module.exports = {
       scrollbar: {
         track: 'secondary',
         thumb: 'secondary-opacity',
+      },
+      translate: {
+        '100': '100%'
       }
     },
   },

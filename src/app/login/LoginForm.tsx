@@ -9,16 +9,18 @@ import { newUserSchema, userSchema } from '@/app/helpers/ValidateInputs'
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 
 export default function LoginForm({ sendMessage, inputs }: props) {
+  const router = useRouter()
   const [invalidPassword, setInvallidPassword] = useState(false)
   const { register, handleSubmit, getValues, formState: {errors, isSubmitting} } = useForm<userData>({
     resolver: zodResolver( sendMessage==='Ingresar' ? userSchema : newUserSchema)
   })
   const onSubmit: SubmitHandler<userData> = (data) => {
     validatePassword()
-    if( ('conPassword' in data && (data.password === data.conPassword)) || !('conPassword' in data) ){
-      console.log(data)
+    if( !invalidPassword || !('conPassword' in data) ){
+      router.push('/shopping')
     }
   } 
   const validatePassword = () => {

@@ -1,14 +1,14 @@
 'use client'
 
 import Image from "next/image"
+import { useState } from "react"
 import BlueButton from "@/app/components/BlueButton"
 import RedButton from "@/app/components/RedButton"
 import { inputs } from "@/app/types/data/InputsForms"
-import { useState } from "react"
 import LoginForm from "./LoginForm"
 
 export default function Login() {
-  const [form, setForm] = useState('login')
+  const [nameForm, setNameForm] = useState('login')
 
   return (
       <main className="bg-primary min-h-[100vh] xl:h-[100vh] md:py-[5%] xl:py-0 w-[100%] flex justify-center items-center">
@@ -28,16 +28,16 @@ export default function Login() {
 
           <div className="bg-secondary py-[5%] xl:py-0 h-[80%] xl:h-[100%] w-[100%] xl:w-[60%] md:rounded-r-md">
             <section className="w-[100%] h-[10%] p-3 flex justify-end items-center">
-              <div onClick={() => {setForm('login')}}>
+              <div onClick={() => {setNameForm('login')}}>
                 <BlueButton content="Ingreso" leftRounded={true} rightRounded={false} />
               </div>
-              <div onClick={() => {setForm('registro')}}>
+              <div onClick={() => {setNameForm('record')}}>
                 <RedButton content="Registro" leftRounded={false} rightRounded={true} />
               </div>
             </section>
             <section className="w-[100%] max-h-[80%] pr-[5%] flex flex-col justify-center items-center">
               {
-                form==='login' ?
+                nameForm==='login' ?
                   <LoginForm inputs={inputs.login} sendMessage={"Ingresar"}/>
                 : 
                   <LoginForm inputs={inputs.record} sendMessage={"Registrarse"}/>
