@@ -34,12 +34,12 @@ export default function Shopping() {
           productType === 'movies' ?
             <section className="z-1 h-[100%] w-[100%] absolute md:left-[20%] md:w-[80%] pb-[5%] bg-primary ">
               <Search title='Películas' searchTerm={searchTerm} handleSearchChange={handleSearchChange}/>
-              <CardList filteredData={moviesData}/>
+              <CardList typeProduct='movie' filteredData={moviesData}/>
             </section>
           :
             <section className="z-1 h-[100%] w-[100%] absolute md:left-[20%] md:w-[80%] pb-[5%] bg-primary ">
               <Search title='Comidas' searchTerm={searchTerm} handleSearchChange={handleSearchChange}/>
-              <CardList filteredData={snacksData}/>
+              <CardList typeProduct='snack' filteredData={snacksData}/>
             </section>
         }
     </main>
