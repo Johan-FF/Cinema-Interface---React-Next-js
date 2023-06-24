@@ -1,9 +1,8 @@
 'use client'
 
 import Image from "next/image"
-import BlueButton from "@/app/components/BlueButton"
-import { inputs } from "@/app/types/data/InputsForms"
 import Form from "@/app/components/Form"
+import { inputs } from "@/app/types/data/InputsData"
 import { userSchema, newUserSchema } from "@/app/helpers/ValidateInputs"
 import { User, NewUser } from "@/app/types/interfaces/User"
 

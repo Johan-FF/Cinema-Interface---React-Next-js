@@ -1,9 +1,9 @@
-import { valuesLoginInput } from "./ValuesInput";
+import { valuesInput } from "./ValuesInput";
 
 export const inputs: 
   {
-    login: {content: string, id: valuesLoginInput, placeHolder: string}[],
-    record: {content: string, id: valuesLoginInput, placeHolder: string}[]
+    login: {content: string, id: valuesInput, placeHolder: string}[],
+    record: {content: string, id: valuesInput, placeHolder: string}[]
   } = {
   login: [
     {
