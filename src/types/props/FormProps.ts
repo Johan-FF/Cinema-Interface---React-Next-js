@@ -1,10 +1,20 @@
-import { valuesLoginInput } from "../data/ValuesInput";
+import { valuesInput } from '../data/ValuesInput'
+import { z } from 'zod'
+import { typeModel } from '../interfaces/Types'
 
 export default interface props {
-  sendMessage: string,
+  model: typeModel,
+  schema: z.ZodObject<z.ZodRawShape>,
   inputs: {
     content: string,
-    id: valuesLoginInput,
+    id: valuesInput,
     placeHolder: string,
-  }[]
+  }[],
+  aditionalCondition: {
+    have: boolean,
+    first: string,
+    second: string,
+    error: string
+  },
+  sendMessage: string,
 }

@@ -1,0 +1,77 @@
+'use client'
+
+import Image from "next/image"
+import BlueButton from "@/app/components/BlueButton"
+import { inputs } from "@/app/types/data/InputsForms"
+import Form from "@/app/components/Form"
+import { userSchema, newUserSchema } from "@/app/helpers/ValidateInputs"
+import { User, NewUser } from "@/app/types/interfaces/User"
+
+export default function Login() {
+  const user: User = {
+    type: 'user',
+    identification: '',
+    password: '',
+  }
+  /* OBJETO PARA EL EJEMPLO DE FORMUALRIO PARA REGISTRO DE USUARIO
+  const newUser: NewUser = {
+    type: 'newUser',
+    name: '',
+    position: '',
+    phoneNumber: '',
+    identification: '',
+    password: '',
+    conPassword: '',
+  }*/
+
+  return (
+    <main className="bg-primary min-h-[100vh] xl:h-[100vh] md:py-[5%] xl:py-0 w-[100%] flex justify-center items-center">
+      <section className="min-h-[80%] xl:h-[80%] w-[100%] md:w-[60%] flex flex-col xl:flex-row rounded-md md:shadow-2xl md:shadow-black">
+
+        <div className="bg-tertiary bg-opacity-75 py-[5%] xl:py-0 h-[80%] xl:h-[100%] w-[100%] xl:w-[40%] md:rounded-l-md">
+          <section className="w-[100%] h-[15%] flex justify-center pt-5">
+            <Image src="/iconoCinema.webp" alt="Icono Cinema" width={100} height={100}/>
+          </section>
+          <section className="w-[100%] h-[30%] flex justify-center items-center">
+            <p className="text-primary text-[20px] w-[80%] text-center">Escapa a un mundo de emociones en la gran pantalla del cine.</p>
+          </section>
+          <section className="w-[100%] h-[50%] flex justify-center items-center">
+            <Image src="/iconoCine.webp" alt="Icono Cine" width={500} height={500}/>
+          </section>
+        </div>
+
+        <div className="bg-secondary py-[5%] xl:py-0 h-[80%] xl:h-[100%] w-[100%] xl:w-[60%] md:rounded-r-md">
+          <section className="w-[100%] h-[20%] p-10 flex justify-start items-center">
+            <h1 className="text-primary text-5xl">Acceso</h1>
+          </section>
+          <section className="w-[100%] max-h-[80%] pr-[5%] flex flex-col justify-center items-center">
+            {/* EJEMPLO DE FORMULARIO PARA REGISTRO DE USUARIO
+            <Form   
+              model={newUser}
+              schema={newUserSchema}
+              inputs={inputs.record}
+              sendMessage={"Registrarse"}
+              aditionalCondition={{
+                have:true,
+                first:"password",
+                second:"conPassword",
+                error: "La contraseña no coincide" 
+              }}/>*/}
+              <Form   
+                model={user}
+                schema={userSchema}
+                inputs={inputs.login}
+                sendMessage={"Ingresar"}
+                aditionalCondition={{
+                  have:false,
+                  first:"",
+                  second:"",
+                  error: "" 
+              }}/>
+          </section>
+        </div>
+
+      </section>
+    </main>
+  )
+}
