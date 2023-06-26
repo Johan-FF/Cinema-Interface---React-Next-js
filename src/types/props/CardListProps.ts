@@ -1,9 +1,10 @@
 
+import movieProps from "./CardMovieProps";
 export default interface props {
   typeProduct: string,
-  filteredData: {  
+  filteredData: Array<{  
     url:string,
     productPrice: string,
     productName: string
-  }[],
+  }|movieProps>;
 }

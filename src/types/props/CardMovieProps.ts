@@ -1,7 +1,8 @@
-export default interface props {
-  title: string
-  image: string
-  description: string
-  age: string
-  duration: string
+export default interface movieProps {
+  movieId: string,
+  movieTitle: string,
+  movieDescription: string,
+  movieAge: string,
+  movieDuration: string,
+  url:string
 }
