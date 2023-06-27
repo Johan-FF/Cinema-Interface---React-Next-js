@@ -5,10 +5,13 @@ import CardList from '@/app/app/shopping/CardList'
 import Search from '../../components/Search'
 import NavBar from '@/app/components/NavBar'
 import Table from '../employee-management/Table'
+import AddEmployer from "../employee-management/addEmployer"
+import EmployeeManagement from "../employee-management/page"
 
 export default function Shopping() {
   const [currentPane, setCurrentPane] = useState('movies')
   const [searchTerm, setSearchTerm] = useState('')
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(event.target.value)
   }
@@ -58,8 +61,29 @@ export default function Shopping() {
           <section className="z-1 h-[100%] w-[100%] absolute md:left-[20%] md:w-[80%] pb-[5%] bg-primary overflow-y-auto ">
             <Search title='Comidas' searchTerm={searchTerm} handleSearchChange={handleSearchChange} />
             <CardList typeProduct='snack' filteredData={snacksData} />
-          </section>
-          : ''
+          </section> : ''
+      }
+      {
+        currentPane === 'employee' ?
+          <section className="z-1 h-[100%] w-[100%] absolute md:left-[20%] md:w-[80%] pb-[5%] bg-primary ">
+            <Search
+              title="Registro empleados"
+              searchTerm={searchTerm}
+              handleSearchChange={handleSearchChange}
+            />
+            <AddEmployer typeProduct="employee" />
+          </section> : ''
+      }
+      {
+        currentPane === 'searchemployee' ?
+          <section className="z-1 h-[100%] w-[100%] absolute md:left-[20%] md:w-[80%] pb-[5%] bg-primary ">
+            <Search
+              title="Busqueda empleados"
+              searchTerm={searchTerm}
+              handleSearchChange={handleSearchChange}
+            />
+            <EmployeeManagement />
+          </section> : ''
       }
     </main>
   )
