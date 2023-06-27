@@ -1,7 +1,7 @@
 import Image from "next/image"
 import props from "@/app/types/props/CardMovieProps"
 
-export default function CardMovie ({title,image,description,age,duration}: props ) {
+export default function CardMovie ({movieTitle,url,movieDescription,movieAge,movieDuration}: props ) {
   return (
     <article className="max-w-[80%] xl:max-w-[80%] md:max-w-[60%] max-h-[90%] bg-secondary text-primary p-[3vh] rounded-lg shadow-2xl shadow-black overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity">
       <section className="w-[100%]">
