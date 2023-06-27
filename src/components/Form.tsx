@@ -6,15 +6,13 @@ import React from 'react'
 import { useForm } from "react-hook-form"
 import { SubmitHandler } from "react-hook-form"
 import { useState } from "react"
-import { useRouter } from "next/navigation"
 import { zodResolver } from '@hookform/resolvers/zod'
 import RedButton from "./RedButton"
 import Dato from "../types/interfaces/Dato"
 import props from '../types/props/FormProps'
 import { typeModel } from "../types/interfaces/Types"
 
-export default function Form({ model, schema, inputs, aditionalCondition, sendMessage }: props ) {
-  const router = useRouter()
+export default function Form({ execute, model, schema, inputs, aditionalCondition, sendMessage }: props ) {
   const [errorMessage, setErrorMessage] = useState(aditionalCondition.error)
   const [viewControlMessage, setViewControlMessage] = useState(false)
   const { 
@@ -28,7 +26,7 @@ export default function Form({ model, schema, inputs, aditionalCondition, sendMe
 
   const onSubmit: SubmitHandler<typeModel> = (data) => {
     if( !validateAditionalCondition() ){
-      router.push('/shopping')
+      execute(data)
     }
   } 
   function validateAditionalCondition(): boolean {

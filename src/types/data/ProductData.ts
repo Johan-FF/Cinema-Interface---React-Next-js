@@ -87,6 +87,7 @@ export const products = {
   ],
   movies: [
     {
+      isInHome: true,
       movieId: '1',
       movieTitle: 'Morbius',
       movieDescription: 'Un vampiro',
@@ -95,6 +96,7 @@ export const products = {
       movieUrl: 'https://es.web.img2.acsta.net/c_310_420/pictures/22/02/10/13/16/1386612.jpg'
     },
     {
+      isInHome: true,
       movieId: '2',
       movieTitle: 'Avatar 2',
       movieDescription: 'Los azules',
@@ -103,13 +105,16 @@ export const products = {
       movieUrl: 'https://es.web.img3.acsta.net/c_310_420/pictures/22/11/02/15/37/0544148.jpg'
     },
     {
+      isInHome: true,
       movieId: '3',
       movieTitle: 'Rapidos y furiosos 10',
       movieDescription: 'La de la familia',
       movieAge: '13',
       movieDuration: '2h 21m',
       movieUrl: 'https://mx.web.img3.acsta.net/c_310_420/pictures/23/04/20/02/29/5514328.jpg'
-    }, {
+    }, 
+    {
+      isInHome: true,
       movieId: '2',
       movieTitle: 'Avatar 2',
       movieDescription: 'Los azules',

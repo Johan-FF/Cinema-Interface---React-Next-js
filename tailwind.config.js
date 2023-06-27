@@ -19,7 +19,10 @@ module.exports = {
         thumb: 'secondary-opacity',
       },
       translate: {
-        '100': '100%'
+        '100': '500%'
+      },
+      transitionDuration: {
+        '4000': '4000ms',
       }
     },
   },

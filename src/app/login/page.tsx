@@ -5,23 +5,25 @@ import Form from "@/app/components/Form"
 import { inputs } from "@/app/types/data/InputsData"
 import { userSchema, newUserSchema } from "@/app/helpers/ValidateInputs"
 import { User, NewUser } from "@/app/types/interfaces/User"
+import { typeUser } from "@/app/types/interfaces/Types"
+import { useRouter } from "next/navigation"
 
 export default function Login() {
+  const router = useRouter()
   const user: User = {
     type: 'user',
     identification: '',
     password: '',
   }
-  /* OBJETO PARA EL EJEMPLO DE FORMUALRIO PARA REGISTRO DE USUARIO
-  const newUser: NewUser = {
-    type: 'newUser',
-    name: '',
-    position: '',
-    phoneNumber: '',
-    identification: '',
-    password: '',
-    conPassword: '',
-  }*/
+
+  const verifyUserType = (data: typeUser) => {
+    if(data.password==="superadmin")
+      router.push("/admin/general/employee")
+    else if(data.password==="admin")
+      router.push("/admin/multiplex")
+    else if(data.password==="empleado")
+      router.push("/admin/shopping")
+  }
 
   return (
     <main className="bg-primary min-h-[100vh] xl:h-[100vh] md:py-[5%] xl:py-0 w-[100%] flex justify-center items-center">
@@ -44,19 +46,8 @@ export default function Login() {
             <h1 className="text-primary text-5xl">Acceso</h1>
           </section>
           <section className="w-[100%] max-h-[80%] pr-[5%] flex flex-col justify-center items-center">
-            {/* EJEMPLO DE FORMULARIO PARA REGISTRO DE USUARIO
-            <Form   
-              model={newUser}
-              schema={newUserSchema}
-              inputs={inputs.record}
-              sendMessage={"Registrarse"}
-              aditionalCondition={{
-                have:true,
-                first:"password",
-                second:"conPassword",
-                error: "La contraseña no coincide" 
-              }}/>*/}
-              <Form   
+              <Form
+                execute={verifyUserType}
                 model={user}
                 schema={userSchema}
                 inputs={inputs.login}

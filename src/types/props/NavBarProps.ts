@@ -1,3 +1,6 @@
-export default interface props {
-  changeCurrentPane: (product: string) => void,
+import { valuesNavBar } from "../data/ValuesInput";
+
+export default interface navBarProps {
+  type: valuesNavBar,
+  changeCurrentPane: (product: valuesNavBar) => void,
 }

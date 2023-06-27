@@ -3,6 +3,7 @@ import { z } from 'zod'
 import { typeModel } from '../interfaces/Types'
 
 export default interface props {
+  execute: Function,
   model: typeModel,
   schema: z.ZodObject<z.ZodRawShape>,
   inputs: {

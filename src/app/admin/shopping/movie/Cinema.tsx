@@ -18,9 +18,9 @@ export default function () {
       <div className="h-[60%] w-[100%] flex">
         <span className="flex flex-col justify-between h-[100%] w-[10%] pt-[8%] pb-[2%]">
           {
-            rowCode.map(value => {
+            rowCode.map((value, index) => {
               return(
-                <span className="w-[100%] h-[9%] flex justify-center items-center font-bold text-primary">{value}</span>
+                <span key={index+value} className="w-[100%] h-[9%] flex justify-center items-center font-bold text-primary">{value}</span>
               )
             })
           }
@@ -28,9 +28,9 @@ export default function () {
         <div className="h-[100%] w-[90%] flex flex-col">
           <span className="flex justify-between w-[100%] h-[10%]">
             {
-              rowLimit.map(value => {
+              rowLimit.map((value, index) => {
                 return (
-                  <span className="w-[10%] flex justify-center text-primary font-bold">{value+1}</span>
+                  <span key={index+value*10} className="w-[10%] flex justify-center text-primary font-bold">{value+1}</span>
                 )
               })
             }
@@ -46,7 +46,7 @@ export default function () {
             {
               general.map(value => {
                 return (
-                  <Silla key={value} />
+                  <Silla key={value*50} />
                 )
               })
             }

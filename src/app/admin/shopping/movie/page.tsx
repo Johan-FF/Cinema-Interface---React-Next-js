@@ -1,5 +1,5 @@
 import ChairDescription from "./ChairDescription"
-import CardPeliculas from "./CardMovie"
+import CardMovie from "./CardMovie"
 import Cinema from "./Cinema"
 import RedButton from "@/app/components/RedButton"
 import BlueButton from "@/app/components/BlueButton"
@@ -10,7 +10,8 @@ export default function Movie() {
     <main className="flex flex-col xl:flex-row w-[100%]  xl:h-[100vh]">
 
       <section className="w-[100%] xl:w-[40%] h-[100vh] xl:h-[100%] bg-tertiary flex justify-center items-center">
-        <CardPeliculas
+        <CardMovie
+          isInHome={false}
           movieId=""
           movieTitle="Paseo"
           movieUrl="https://m.media-amazon.com/images/M/MV5BZTlkMWUyNDQtNjBkMi00ZmM5LTljYTMtOGNlZjliMTUzZTA1XkEyXkFqcGdeQXVyNDUzNzExOTE@._V1_.jpg"
@@ -28,7 +29,7 @@ export default function Movie() {
 
         <section className="h-[20%] w-[100%] flex justify-center items-center">
           <div className="h-[30%] flex">
-            <Link href="/shopping">
+            <Link href="/admin/shopping">
               <BlueButton content="Volver" leftRounded={true} rightRounded={false} />
             </Link>
             <RedButton content="Pagar" leftRounded={false} rightRounded={true} />
