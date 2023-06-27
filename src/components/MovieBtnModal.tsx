@@ -2,7 +2,6 @@
 import { useState } from 'react'
 import { products } from '@/app/types/data/ProductData'
 import { seats } from '../types/data/SeatsData';
-import Card from './Card';
 import CardMovie from '../app/movie/CardMovie';
 
 export default function MovieBtnModal() {
@@ -45,7 +44,7 @@ export default function MovieBtnModal() {
                 <p>Cliente 123123123 </p>
                 <div className=''>
                   <div className="w-[100%] flex justify-center items-center ">
-                    <CardMovie url={movieData.url} movieAge={movieData.movieAge} movieDescription={movieData.movieDescription} movieDuration={movieData.movieDuration}
+                    <CardMovie movieUrl={movieData.movieUrl} movieAge={movieData.movieAge} movieDescription={movieData.movieDescription} movieDuration={movieData.movieDuration}
                     movieTitle={movieData.movieTitle} movieId={movieData.movieId}/>
                   
                   </div>

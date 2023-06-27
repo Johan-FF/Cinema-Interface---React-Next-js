@@ -1,10 +1,11 @@
+import movieProps from "./CardMovieProps"
+import cardProps from "./CardProps";
 
-import movieProps from "./CardMovieProps";
-export default interface props {
+export default interface cardListProps {
   typeProduct: string,
-  filteredData: Array<{  
+  filteredData: {
     url:string,
     productPrice: string,
     productName: string
-  }|movieProps>;
+  }[] | movieProps[] | cardProps[];
 }

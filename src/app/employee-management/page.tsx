@@ -23,8 +23,10 @@ export default function EmployeeManagement() {
   })
   const moviesData = products.movies.filter((item) => {
     return (
-      item.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.productPrice.toLowerCase().includes(searchTerm.toLowerCase())
+      item.movieTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.movieDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.movieDuration.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.movieAge.toLowerCase().includes(searchTerm.toLowerCase())
     )
   })
 

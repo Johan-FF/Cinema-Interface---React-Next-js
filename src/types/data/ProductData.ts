@@ -90,32 +90,32 @@ export const products = {
       movieId: '1',
       movieTitle: 'Morbius',
       movieDescription: 'Un vampiro',
-	    movieAge: '13',
-	    movieDuration: '1h 44m',
-      url: 'https://es.web.img2.acsta.net/c_310_420/pictures/22/02/10/13/16/1386612.jpg'
+      movieAge: '13',
+      movieDuration: '1h 44m',
+      movieUrl: 'https://es.web.img2.acsta.net/c_310_420/pictures/22/02/10/13/16/1386612.jpg'
     },
     {
       movieId: '2',
       movieTitle: 'Avatar 2',
       movieDescription: 'Los azules',
-	 movieAge: '13',
-	 movieDuration: '3h 12m',
-      url: 'https://es.web.img3.acsta.net/c_310_420/pictures/22/11/02/15/37/0544148.jpg'
+      movieAge: '13',
+      movieDuration: '3h 12m',
+      movieUrl: 'https://es.web.img3.acsta.net/c_310_420/pictures/22/11/02/15/37/0544148.jpg'
     },
     {
       movieId: '3',
       movieTitle: 'Rapidos y furiosos 10',
       movieDescription: 'La de la familia',
-	 movieAge: '13',
-	 movieDuration: '2h 21m',
-      url: 'https://mx.web.img3.acsta.net/c_310_420/pictures/23/04/20/02/29/5514328.jpg'
-    },{
+      movieAge: '13',
+      movieDuration: '2h 21m',
+      movieUrl: 'https://mx.web.img3.acsta.net/c_310_420/pictures/23/04/20/02/29/5514328.jpg'
+    }, {
       movieId: '2',
       movieTitle: 'Avatar 2',
       movieDescription: 'Los azules',
-	 movieAge: '13',
-	 movieDuration: '3h 12m',
-      url: 'https://es.web.img3.acsta.net/c_310_420/pictures/22/11/02/15/37/0544148.jpg'
+      movieAge: '13',
+      movieDuration: '3h 12m',
+      movieUrl: 'https://es.web.img3.acsta.net/c_310_420/pictures/22/11/02/15/37/0544148.jpg'
     }
 
   ]

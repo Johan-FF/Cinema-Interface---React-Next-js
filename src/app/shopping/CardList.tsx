@@ -25,7 +25,7 @@ export default function CardList({typeProduct,filteredData}: props) {
 */
   if (typeProduct === 'movie') {
     return(
-      <div className="flex flex-wrap w-[90%] h-[100%] mt-[2%] md:mx-[5%] ml-[5%] md:ml-auto">
+      <div className="flex flex-wrap w-[90%] h-[100%] mt-[2%] md:mx-[5%] ml-[5%] md:ml-auto overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity">
         {filteredData.map((item, idx) => {
           const movieItem = item as movieProps;
           return(
@@ -46,7 +46,7 @@ export default function CardList({typeProduct,filteredData}: props) {
 
   if (typeProduct === 'snack') {
     return(
-      <div className="flex flex-wrap w-[90%] h-[100%] mt-[2%] md:mx-[5%] ml-[5%] md:ml-auto ">
+      <div className="flex flex-wrap w-[90%] h-[100%] mt-[2%] md:mx-[5%] ml-[5%] md:ml-auto overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity">
         {filteredData.map((item, idx) => {
           const productItem = item as cardProps;
           return(

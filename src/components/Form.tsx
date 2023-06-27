@@ -28,7 +28,7 @@ export default function Form({ model, schema, inputs, aditionalCondition, sendMe
 
   const onSubmit: SubmitHandler<typeModel> = (data) => {
     if( !validateAditionalCondition() ){
-      router.push('/employee-management')
+      router.push('/shopping')
     }
   } 
   function validateAditionalCondition(): boolean {

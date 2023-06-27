@@ -11,11 +11,12 @@ export default function Movie() {
 
       <section className="w-[100%] xl:w-[40%] h-[100vh] xl:h-[100%] bg-tertiary flex justify-center items-center">
         <CardPeliculas
-          title="Paseo"
-          image="https://m.media-amazon.com/images/M/MV5BZTlkMWUyNDQtNjBkMi00ZmM5LTljYTMtOGNlZjliMTUzZTA1XkEyXkFqcGdeQXVyNDUzNzExOTE@._V1_.jpg"
-          description="Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala"
-          age="7 anos"
-          duration="69 mins"
+          movieId=""
+          movieTitle="Paseo"
+          movieUrl="https://m.media-amazon.com/images/M/MV5BZTlkMWUyNDQtNjBkMi00ZmM5LTljYTMtOGNlZjliMTUzZTA1XkEyXkFqcGdeQXVyNDUzNzExOTE@._V1_.jpg"
+          movieDescription="Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala Palícula pa mala"
+          movieAge="7 anos"
+          movieDuration="69 mins"
         />
       </section>
 

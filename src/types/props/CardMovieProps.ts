@@ -4,5 +4,5 @@ export default interface movieProps {
   movieDescription: string,
   movieAge: string,
   movieDuration: string,
-  url:string
+  movieUrl:string
 }
