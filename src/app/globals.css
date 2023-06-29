@@ -25,4 +25,15 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+.p-2 {
+  background-color: yellow;
+  color: black;
+}
+
+.p-2.selected {
+  background-color: blue;
+  color: white;
+}
+
 */
