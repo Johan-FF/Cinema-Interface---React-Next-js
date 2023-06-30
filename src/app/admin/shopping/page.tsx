@@ -1,12 +1,13 @@
 'use client'
 import { useState, ChangeEvent } from 'react'
 import { products } from '@/app/types/data/ProductData'
+import { valuesNavBar } from '@/app/types/data/ValuesInput'
+import Qualification from './qualification/page'
 import CardList from './CardList'
 import AdminLayout from '../AdminLayout'
-import { valuesNavBar } from '@/app/types/data/ValuesInput'
 
 export default function Shopping() {
-  const [currentPane, setCurrentPane] = useState<valuesNavBar>("Movies")
+  const [currentPane, setCurrentPane] = useState<valuesNavBar>("ShopSnacks")
   const [searchTerm, setSearchTerm] = useState("")
 
   const handleSearchChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -36,13 +37,18 @@ export default function Shopping() {
       navBar={{type: currentPane, changeCurrentPane: changeTypeProduct}}
     >
       {
-        currentPane === 'Movies' ?
+        currentPane === 'ShopMovies' ?
           <CardList typeProduct='Movies' filteredData={moviesData} />
           : <></>
       }
       {
-        currentPane === 'Snacks' ?
+        currentPane === 'ShopSnacks' ?
           <CardList typeProduct='Snacks' filteredData={snacksData} />
+          : <></>
+      }
+      {
+        currentPane === 'ShopQualification' ?
+          <Qualification/>
           : <></>
       }
     </AdminLayout>

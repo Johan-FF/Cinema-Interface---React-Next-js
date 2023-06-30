@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { seats } from '@/app/types/data/SeatsData'
-import CardMovie from './movie/CardMovie'
+import CardMovie from './shopping/movie/CardMovie'
 import ModalButton from "@/app/components/ModalButton"
 import { products } from '@/app/types/data/ProductData'
 

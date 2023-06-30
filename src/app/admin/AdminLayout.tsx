@@ -1,7 +1,7 @@
 import NavBar from "@/app/components/NavBar"
 import Search from "@/app/components/Search"
 import adminLayoutProps from "@/app/types/props/AdminLayoutProps"
-import BuyButton from "./shopping/BuyButton"
+import BuyButton from "./BuyButton"
 
 export default function AdminLayout({ children, search, navBar}: adminLayoutProps ) {
   return (
@@ -10,7 +10,7 @@ export default function AdminLayout({ children, search, navBar}: adminLayoutProp
       <section className="z-1 h-[100%] w-[100%] md:w-[80%] pb-[5%] bg-primary ">
         <Search title={search.title} searchTerm={search.searchTerm} handleSearchChange={search.handleSearchChange}>
           {
-            search.title === "Movies" || search.title === "Snacks" ?
+            search.title === "ShopMovies" || search.title === "ShopSnacks" ?
             <BuyButton/> : <></>
           }
         </Search>

@@ -29,7 +29,7 @@ export default function NavBar({ type, changeCurrentPane }: props) {
         </section>
         <ul className= "w-[100%] h-[40%] max-h-[40%] flex flex-col justify-center items-center overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity">
           {
-            type === "Movies" || type === "Snacks" ?
+            type === "ShopSnacks" || type === "ShopMovies" || type === "ShopQualification" ?
             pages.employee.map((value, index) => {
               return (
                 <li key={index} onClick={() => { changeCurrentPane(value.tag) }} className="h-[20%] w-[100%] border-y-2 my-1 border-primary hover:bg-tertiary-opacity flex justify-center items-center cursor-pointer shadow-2xl shadow-black">{value.name}</li>
@@ -37,8 +37,16 @@ export default function NavBar({ type, changeCurrentPane }: props) {
             }) : <></>
           }
           {
-            type === "Employee" ?
+            type === "GenEmployee" || type === "GenMovie" ?
             pages.admin.map((value, index) => {
+              return (
+                <li key={index} onClick={() => { changeCurrentPane(value.tag) }} className="h-[20%] w-[100%] border-y-2 my-1 border-primary hover:bg-tertiary-opacity flex justify-center items-center cursor-pointer shadow-2xl shadow-black">{value.name}</li>
+              )
+            }) : <></>
+          }
+          {
+            type === "MulSchedule" || type === "MulEmployee" ?
+            pages.multiplex.map((value, index) => {
               return (
                 <li key={index} onClick={() => { changeCurrentPane(value.tag) }} className="h-[20%] w-[100%] border-y-2 my-1 border-primary hover:bg-tertiary-opacity flex justify-center items-center cursor-pointer shadow-2xl shadow-black">{value.name}</li>
               )

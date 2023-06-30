@@ -7,6 +7,8 @@ import { userSchema, newUserSchema } from "@/app/helpers/ValidateInputs"
 import { User, NewUser } from "@/app/types/interfaces/User"
 import { typeUser } from "@/app/types/interfaces/Types"
 import { useRouter } from "next/navigation"
+import { fetchData } from "@/app/services/data"
+import response from "@/app/services/response"
 
 export default function Login() {
   const router = useRouter()
@@ -17,11 +19,12 @@ export default function Login() {
   }
 
   const verifyUserType = (data: typeUser) => {
-    if(data.password==="superadmin")
-      router.push("/admin/general/employee")
-    else if(data.password==="admin")
+    const response = fetchData(data.identification, data.password)
+    if(response.rol==="superadmin")
+      router.push("/admin/general")
+    else if(response.rol==="admin")
       router.push("/admin/multiplex")
-    else if(data.password==="empleado")
+    else if(response.rol==="empleado")
       router.push("/admin/shopping")
   }
 

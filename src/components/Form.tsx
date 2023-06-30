@@ -9,10 +9,12 @@ import { useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import RedButton from "./RedButton"
 import Dato from "../types/interfaces/Dato"
-import props from '../types/props/FormProps'
+import formProps from '../types/props/FormProps'
 import { typeModel } from "../types/interfaces/Types"
 
-export default function Form({ execute, model, schema, inputs, aditionalCondition, sendMessage }: props ) {
+export default function Form(
+  { execute, model, schema, inputs, aditionalCondition, sendMessage }: formProps 
+) {
   const [errorMessage, setErrorMessage] = useState(aditionalCondition.error)
   const [viewControlMessage, setViewControlMessage] = useState(false)
   const { 

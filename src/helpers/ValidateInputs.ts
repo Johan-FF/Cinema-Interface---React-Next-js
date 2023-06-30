@@ -13,3 +13,31 @@ export const userSchema = z.object({
   identification: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La cédula es requerida'}),
   password: z.string().min(1, {message: 'La contraseña es requerido'}).max(50),
 })
+
+export const scheduleSchema = z.object({
+  movie: z.string().min(1, {message: 'La película es requerida'}).max(50),
+  hour: z.string().refine((number) => {
+    const isNumber: boolean = !isNaN(parseInt(number))
+    if(isNumber){
+      const num: number = parseInt(number)
+      if(0<num || num>24) return true
+    }
+    return false
+  }, {message: 'La hora debe ser un valor numérico entre 0 y 24'}),
+  minute: z.string().refine((number) => {
+    const isNumber: boolean = !isNaN(parseInt(number))
+    if(isNumber){
+      const num: number = parseInt(number)
+      if(0<num || num>60) return true
+    }
+    return false
+  }, {message: 'Los minutos deben ser un valor numérico entre 0 y 60'})
+})
+
+export const movieSchema = z.object({
+  title: z.string().min(1, {message: 'El título es requerido'}).max(50),
+  duration: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La duración es requerida'}),
+  age: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La edad es requerida'}),
+  synopsis: z.string().min(1, {message: 'La sinópsis es requerida'}).max(500),
+  imgUrl: z.string().min(1, {message: 'La url de la imágen es requerida'}).max(50),
+})

@@ -6,12 +6,16 @@ export const pages: {
   employee: {name:string, tag:valuesNavBar}[]
 } = {
   admin: [
-    {name:'Administrador de Empleados',tag:'Employee'},
+    {name:'Administrador de Empleados',tag:'GenEmployee'},
+    {name:'Películas',tag:'GenMovie'},
   ],
   multiplex: [
+    {name:'Administrador de Empleados',tag:'MulEmployee'},
+    {name:'Horarios',tag:'MulSchedule'},
   ],
   employee: [
-    {name:'Comidas',tag:'Snacks'},
-    {name:'Películas',tag:'Movies'},
+    {name:'Comidas',tag:'ShopSnacks'},
+    {name:'Películas',tag:'ShopMovies'},
+    {name:'Calificación',tag:'ShopQualification'},
   ]
 }
