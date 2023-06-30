@@ -10,7 +10,7 @@ export default function AdminLayout({ children, search, navBar}: adminLayoutProp
 
   return (
     <main className="h-[100vh] w-[100%] flex">
-      <NavBar func={() => setShowProducts} type={navBar.type} changeCurrentPane={navBar.changeCurrentPane} />
+      <NavBar func={() => setShowProducts(!showProducts)} type={navBar.type} changeCurrentPane={navBar.changeCurrentPane} />
       <section className="z-1 h-[100%] w-[100%] md:w-[80%] pb-[5%] bg-primary ">
         <Search title={search.title} searchTerm={search.searchTerm} handleSearchChange={search.handleSearchChange}>
           {

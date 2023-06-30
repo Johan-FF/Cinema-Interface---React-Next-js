@@ -21,7 +21,7 @@ export default function BuyButton() {
                 Resumen de compra
               </h3>
               <button className="p-1 ml-auto bg-transparent border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onClick={() => setShowMovieModal(false)}>
-                <span className="bg-transparent text-white opacity-3 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                <span className="bg-transparent bg-white text-white opacity-3 h-6 w-6 text-2xl block outline-none focus:outline-none">
                 </span>
               </button>
             </div>

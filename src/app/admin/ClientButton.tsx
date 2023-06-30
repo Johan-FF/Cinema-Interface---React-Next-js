@@ -40,16 +40,16 @@ export default function ClientButton( {func}: props ) {
             </button>
           </div>
           <Form
-            execute={func}
+            execute={showUser}
             model={newUser}
             schema={newUserSchema}
             inputs={inputs.record}
             sendMessage={"Agregar"}
             aditionalCondition={{
-              have:false,
-              first:"",
-              second:"",
-              error: "" 
+              have:true,
+              first:"password",
+              second:"conPassword",
+              error: "La contraseña no coincide" 
           }}/>
         </article>
       </div>
