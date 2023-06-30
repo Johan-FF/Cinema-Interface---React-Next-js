@@ -1,5 +1,5 @@
 export default interface response {
-    token: string,
+  token: string,
   rol: string,
   name: string
 }

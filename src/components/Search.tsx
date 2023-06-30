@@ -2,7 +2,7 @@ import props from "../types/props/SearchProps"
 
 export default function Search({ children, title, searchTerm, handleSearchChange }: props) {
   return (
-    <div className={`${title==="ShopMovies" || title==="ShopSnacks" ? 'pl-[15%] xl:pl-[5%]': 'pl-[5%]'} flex justify-between items-end bg-secondary pb-2 pt-[4%] px-[5%] md:shadow-xl md:shadow-black`}>
+    <div className={`${title==="ShopMovies" || title==="ShopSnacks" ? 'pl-[15%] xl:pl-[5%]': 'pl-[5%]'} flex justify-between items-end h-[15%] bg-secondary pb-2 pt-[4%] px-[5%] md:shadow-xl md:shadow-black`}>
       <div className="flex items-center">
         {children}
         <h1 className=" text-2xl md:text-5xl md:pl-[15%] xl:pl-0 font-bold">{title}</h1>

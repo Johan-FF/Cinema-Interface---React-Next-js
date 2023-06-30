@@ -1,11 +1,16 @@
 import Image from "next/image"
 import BlueButton from "./BlueButton"
+import RedButton from "./RedButton"
 import props from "../types/props/NavBarProps"
+import "@/app/styles/Input.css"
 import { useState } from "react"
 import { pages } from "../types/data/NavData"
+import Account from "../services/Account"
+import ClientButton from "../app/admin/ClientButton"
 
-export default function NavBar({ type, changeCurrentPane }: props) {
+export default function NavBar({ type, func, changeCurrentPane }: props) {
   const [viewMenu, setViewMenu] = useState(false)
+  const account: Account = Account.getInstance()
 
   return (
     <>
@@ -21,10 +26,10 @@ export default function NavBar({ type, changeCurrentPane }: props) {
         <section className="w-[100%] h-[40%] flex flex-col justify-center items-center">
           <Image className="shadow-2xl shadow-black" src="/iconoPanelControl.webp" alt="Icono Cinema" width={500} height={500} />
           <h2 className="text-[20px] w-full text-center py-0 my-0 border-t-2 border-primary pt-2 rounded-lg">
-            Carmen de los Ríos
+            {account.getName()}
           </h2>
           <h3 className="text-[15px] w-full text-center py-0 my-0 text-opacity-90 border-b-2 border-primary pb-2 rounded-lg shadow-2xl shadow-black">
-            Gerente
+          {account.getRol()}
           </h3>
         </section>
         <ul className= "w-[100%] h-[40%] max-h-[40%] flex flex-col justify-center items-center overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity">
@@ -53,10 +58,25 @@ export default function NavBar({ type, changeCurrentPane }: props) {
             }) : <></>
           }
         </ul>
-        <section className= "w-[100%] h-[20%] flex justify-center items-center">
-          <div className="h-[30%]">
-            <BlueButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
-          </div>
+        <section className= "w-[100%] h-[20%] ">
+          {
+            type === "ShopSnacks" || type === "ShopMovies" || type === "ShopQualification" ?
+            <>
+              <div className="h-[40%] flex justify-center">
+                <input className="text-input" type="number" name="" id="" placeholder="Ingrese cédula" />
+              </div>
+              <div className="h-[30%] flex">
+                <ClientButton func={func} />
+                <RedButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
+              </div>
+            </>
+            :
+            <>
+              <div className="h-[30%] w-[100%] flex justify-center">
+                <BlueButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
+              </div>
+            </>
+          }
         </section>
       </nav>
     </>

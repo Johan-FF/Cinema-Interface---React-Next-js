@@ -1,21 +1,20 @@
 import axios from 'axios'
 import response from './response'
 
-const token = ''
-
-const headers = {
-  Authorization: `Bearer ${token}`,
-}
-
 export async function fetchData(id: string, pass: string): Promise<response> {
+  let responseData !: response
   try {
     const data = {
       numberDocument: id,
       password: pass,
     }
-    const response = await axios.get('TU_URL',{ headers, data })
+    const response = await axios.post('http://localhost:8090/auth/login', data)
     .then(response => {
-      return response.data
+      responseData = {
+        token: response.data.token,
+        rol: response.data.rol,
+        name: response.data.name
+      }
     })
     .catch(error => {
       console.log(error)
@@ -23,5 +22,5 @@ export async function fetchData(id: string, pass: string): Promise<response> {
   } catch (error) {
     console.error(error)
   }
-  return {token: '', rol: '', name: ''}
+  return {token : responseData.token, rol : responseData.rol, name : responseData.name}
 }
