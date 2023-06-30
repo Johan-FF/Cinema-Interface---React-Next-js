@@ -18,13 +18,14 @@ export default function Login() {
     password: '',
   }
 
-  const verifyUserType = (data: typeUser) => {
-    const response = fetchData(data.identification, data.password)
-    if(response.rol==="superadmin")
+  const verifyUserType = async (data: typeUser) => {
+    const response =  await fetchData(data.identification, data.password)
+    console.log(response)
+    if(response.rol==="ROLE_DIRECTOR")
       router.push("/admin/general")
-    else if(response.rol==="admin")
+    else if(response.rol==="ROLE_ADMIN")
       router.push("/admin/multiplex")
-    else if(response.rol==="empleado")
+    else if(response.rol==="ROLE_EMPLOYEE")
       router.push("/admin/shopping")
   }
 
