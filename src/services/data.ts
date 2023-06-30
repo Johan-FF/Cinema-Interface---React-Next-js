@@ -7,7 +7,6 @@ const headers = {
   Authorization: `Bearer ${token}`,
 }
 
-
 export async function fetchData(id: string, pass: string): Promise<response> {
   try {
     const data = {

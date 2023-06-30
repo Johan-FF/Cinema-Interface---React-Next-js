@@ -19,7 +19,7 @@ export default function Login() {
   }
 
   const verifyUserType = (data: typeUser) => {
-    const response = fetchData(data.identification, data.password)
+    const response = await fetchData(data.identification, data.password)
     if(response.rol==="superadmin")
       router.push("/admin/general")
     else if(response.rol==="admin")
