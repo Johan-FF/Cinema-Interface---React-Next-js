@@ -19,9 +19,16 @@ export default function AdminLayout({ children, search, navBar}: adminLayoutProp
           }
         </Search>
         <section className="h-[95%] w-full">
-          <Background viewProducts={showProducts} >
-            {children}
-          </Background>
+          {
+            search.title === "ShopMovies" || search.title === "ShopSnacks" || search.title === "ShopQualification"  ?
+            <Background viewProducts={showProducts} >
+              {children}
+            </Background>
+            :
+            <Background viewProducts={true} >
+              {children}
+            </Background>
+          }
         </section>
       </section>
     </main>

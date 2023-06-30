@@ -3,6 +3,7 @@ import BlueButton from "./BlueButton"
 import RedButton from "./RedButton"
 import props from "../types/props/NavBarProps"
 import "@/app/styles/Input.css"
+import Link from "next/link"
 import { useState } from "react"
 import { pages } from "../types/data/NavData"
 import Account from "../services/Account"
@@ -65,16 +66,18 @@ export default function NavBar({ type, func, changeCurrentPane }: props) {
               <div className="h-[40%] flex justify-center">
                 <input className="text-input" type="number" name="" id="" placeholder="Ingrese cédula" />
               </div>
-              <div className="h-[30%] flex">
+              <div className="h-[30%] flex justify-center">
                 <ClientButton func={func} />
-                <RedButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
+                <Link href={'/'}>
+                  <RedButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
+                </Link>
               </div>
             </>
             :
             <>
-              <div className="h-[30%] w-[100%] flex justify-center">
+              <Link href={'/'} className="h-[30%] w-[100%] flex justify-center">
                 <BlueButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
-              </div>
+              </Link>
             </>
           }
         </section>
