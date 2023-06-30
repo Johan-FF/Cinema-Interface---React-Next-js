@@ -24,4 +24,15 @@ table,button, p, h1, h2, h3, h4, h5, h6, li{
 body {
   background: #fff;
 }
+
+.p-2 {
+  background-color: yellow;
+  color: black;
+}
+
+.p-2.selected {
+  background-color: blue;
+  color: white;
+}
+
 */
