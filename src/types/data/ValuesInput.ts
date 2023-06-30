@@ -1,13 +1,17 @@
 export type valuesLoginInput =  "identification" | "password" | "conPassword" | "name" | "position" | "phoneNumber"
 
-export type valuesInput = valuesLoginInput
+export type valuesScheduleInput = "movie" | "hour" | "minute"
+
+export type valuesMovieInput = "title" | "duration" | "age" | "synopsis" | "imgUrl"
+
+export type valuesInput = valuesLoginInput | valuesScheduleInput | valuesMovieInput
 
 
 
-export type valuesShoppingNavBar = "Snacks" | "Movies" | ""
+export type valuesShoppingNavBar = "ShopSnacks" | "ShopMovies" | "ShopQualification"
 
-export type valuesGeneralNavBar = "Employee" | ""
+export type valuesGeneralNavBar = "GenEmployee" | "GenMovie"
 
-export type valuesMultiplexNavBar = ""
+export type valuesMultiplexNavBar = "MulEmployee" | "MulSchedule"
 
 export type valuesNavBar = valuesGeneralNavBar | valuesMultiplexNavBar | valuesShoppingNavBar

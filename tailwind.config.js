@@ -11,6 +11,7 @@ module.exports = {
         'primary': '#EAEAE1',
         'secondary': '#0F243D',
         'tertiary': '#B31312',
+        'quaternary': '#F2BE22',
         'secondary-opacity': '#1e3d5e',
         'tertiary-opacity': '#DA5B54',
       },

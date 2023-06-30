@@ -4,14 +4,28 @@ import cardProps from "@/app/types/props/CardProps"
 import Card from "./Card"
 import CardMovie from "./movie/CardMovie"
 
-export default function CardList({typeProduct,filteredData}: props) {
+export default function CardList({ typeProduct, filteredData }: props) {
 
-  if (typeProduct === 'Movies') {
-    return(
-      <div className="flex flex-wrap w-[90%] h-[90%] mt-[2%] md:mx-[5%] ml-[5%] md:ml-auto overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity gap-1">
-        {filteredData.map((item, idx) => {
+  return (
+    <div className={`flex flex-wrap w-[90%] h-[90%] mt-[2%] md:mx-[5%] ml-[5%] md:ml-auto overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity ${typeProduct === 'Movies' ? 'gap-1': ''}`}>
+      {typeProduct === 'Snacks' ?
+        filteredData.map((item, idx) => {
+          const productItem = item as cardProps
+          return (
+            <Card
+              url={""}
+              key={idx}
+              imgUrl={productItem.url}
+              productName={productItem.productName}
+              productPrice={productItem.productPrice}
+            />
+          )
+        }) : <></>
+      }
+      {typeProduct === 'Movies' ?
+        filteredData.map((item, idx) => {
           const movieItem = item as movieProps
-          return(
+          return (
             <CardMovie
               isInHome={true}
               key={idx}
@@ -22,31 +36,8 @@ export default function CardList({typeProduct,filteredData}: props) {
               movieDescription={movieItem.movieDescription}
               movieId={movieItem.movieId}
             />)
-        })}
-      </div>
-
-    )
-  }
-
-  if (typeProduct === 'Snacks') {
-    return(
-      <div className="flex flex-wrap w-[90%] h-[90%] mt-[2%] md:mx-[5%] ml-[5%] md:ml-auto overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity ">
-        {filteredData.map((item, idx) => {
-          const productItem = item as cardProps
-          return(
-            <Card
-            url={""}
-            key={idx}
-            imgUrl={productItem.url}
-            productName={productItem.productName}
-            productPrice={productItem.productPrice}
-          />
-          )
-        })}
-      </div>
-
-    )
-  }
-
-  
+        }) : <></>
+      }
+    </div>
+  )
 }

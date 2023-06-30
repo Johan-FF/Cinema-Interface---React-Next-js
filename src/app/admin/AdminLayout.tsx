@@ -1,20 +1,35 @@
 import NavBar from "@/app/components/NavBar"
 import Search from "@/app/components/Search"
 import adminLayoutProps from "@/app/types/props/AdminLayoutProps"
-import BuyButton from "./shopping/BuyButton"
+import BuyButton from "./BuyButton"
+import Background from "@/app/components/Background"
+import { useState } from "react"
 
 export default function AdminLayout({ children, search, navBar}: adminLayoutProps ) {
+  const [showProducts, setShowProducts] = useState(false)
+
   return (
     <main className="h-[100vh] w-[100%] flex">
-      <NavBar type={navBar.type} changeCurrentPane={navBar.changeCurrentPane} />
+      <NavBar func={() => setShowProducts(!showProducts)} type={navBar.type} changeCurrentPane={navBar.changeCurrentPane} />
       <section className="z-1 h-[100%] w-[100%] md:w-[80%] pb-[5%] bg-primary ">
         <Search title={search.title} searchTerm={search.searchTerm} handleSearchChange={search.handleSearchChange}>
           {
-            search.title === "Movies" || search.title === "Snacks" ?
+            search.title === "ShopMovies" || search.title === "ShopSnacks" ?
             <BuyButton/> : <></>
           }
         </Search>
-        {children}
+        <section className="h-[95%] w-full">
+          {
+            search.title === "ShopMovies" || search.title === "ShopSnacks" || search.title === "ShopQualification"  ?
+            <Background viewProducts={showProducts} >
+              {children}
+            </Background>
+            :
+            <Background viewProducts={true} >
+              {children}
+            </Background>
+          }
+        </section>
       </section>
     </main>
   )

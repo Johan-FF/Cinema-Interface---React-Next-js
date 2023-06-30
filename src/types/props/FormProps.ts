@@ -2,7 +2,7 @@ import { valuesInput } from '../data/ValuesInput'
 import { z } from 'zod'
 import { typeModel } from '../interfaces/Types'
 
-export default interface props {
+export default interface formProps {
   execute: Function,
   model: typeModel,
   schema: z.ZodObject<z.ZodRawShape>,

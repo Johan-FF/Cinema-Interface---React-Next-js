@@ -5,41 +5,37 @@ import Table from "../../Table"
 import FormAddElement from "../../FormAddElement"
 import BlueButton from "@/app/components/BlueButton"
 import RedButton from "@/app/components/RedButton"
-import { NewUser } from "@/app/types/interfaces/User"
-import { typeUser } from "@/app/types/interfaces/Types"
-import { newUserSchema } from "@/app/helpers/ValidateInputs"
+import { Movie } from "@/app/types/interfaces/Movie"
+import { typeMovie } from "@/app/types/interfaces/Types"
+import { movieSchema } from "@/app/helpers/ValidateInputs"
 import { inputs } from "@/app/types/data/InputsData"
 import { tables } from "@/app/types/data/TableData"
 import employeeProps from "@/app/types/props/EmployeeProps"
 
-export default function Employee({ searchTerm }: employeeProps ) {
+export default function Movie({ searchTerm }: employeeProps ) {
   const [action, setAction] = useState("Add") // Add | View
 
-  const headers: string[] = ['Rol', 'Código', 'Cédula', 'Cargo', 'Nombre', 'Número de telefono', 'Fecha inicio de contrato', 'Salario', 'Múltiple']
-  const filteredData = tables.users.filter((item) => {
+  const headers: string[] = ['Rol','Título', 'Duración', 'Edad', 'Sinópsis', 'Url Imágen']
+  const filteredData = tables.movies.filter((item) => {
     return (
       item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.startDate.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.salary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.multiple.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.phoneNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.identification.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.duration.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.age.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.synopsis.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.imgUrl.toLowerCase().includes(searchTerm.toLowerCase()) 
+      )
   })
 
-  const newUser: NewUser = {
-    type: 'newUser',
-    name: '',
-    position: '',
-    phoneNumber: '',
-    identification: '',
-    password: '',
-    conPassword: '',
+  const movie: Movie = {
+    type: 'movie',
+    title: '',
+    duration: '',
+    age: '',
+    synopsis: '',
+    imgUrl: '',
   }
-  const showUser = (user: typeUser) => {
+  const showUser = (user: typeMovie) => {
     console.log(user)
   }
 
@@ -51,14 +47,14 @@ export default function Employee({ searchTerm }: employeeProps ) {
         <FormAddElement
           typeElement="Empleado"
           execute={showUser}
-          model={newUser}
-          schema={newUserSchema}
-          inputs={inputs.record}
+          model={movie}
+          schema={movieSchema}
+          inputs={inputs.movie}
           aditionalCondition={{
-            have:true,
-            first:"password",
-            second:"conPassword",
-            error: "La contraseña no coincide"
+            have:false,
+            first:"",
+            second:"",
+            error: ""
           }}
           sendMessage="Agregar"
         /> :
