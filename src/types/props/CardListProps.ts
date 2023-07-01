@@ -6,6 +6,7 @@ export default interface cardListProps {
   filteredData: {
     url:string,
     productPrice: string,
-    productName: string
+    productName: string,
+    productId: string
   }[] | movieProps[] | cardProps[];
 }

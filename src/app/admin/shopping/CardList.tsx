@@ -35,6 +35,7 @@ export default function CardList({typeProduct,filteredData}: props) {
           const productItem = item as cardProps
           return(
             <Card
+            productId={productItem.productId}
             url={""}
             key={idx}
             imgUrl={productItem.url}
