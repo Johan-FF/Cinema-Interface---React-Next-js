@@ -1,4 +1,4 @@
-import { valuesNavBar } from "./ValuesInput"
+import { valuesNavBar } from "../Types"
 
 export const pages: {
   admin: {name:string, tag:valuesNavBar}[],

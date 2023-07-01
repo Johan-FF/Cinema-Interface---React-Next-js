@@ -1,10 +1,11 @@
 'use client'
+
 import { useState, ChangeEvent } from 'react'
 import { products } from '@/app/types/data/ProductData'
-import { valuesNavBar } from '@/app/types/data/ValuesInput'
-import Qualification from './qualification/page'
-import CardList from './CardList'
-import AdminLayout from '../AdminLayout'
+import { valuesNavBar } from '@/app/types/Types'
+import Qualification from '../../../modules/shop/qualification/QualificationSection'
+import CardList from '../../../modules/shop/snacks/CardList'
+import AdminLayout from '../../../modules/AdminLayout'
 
 export default function Shopping() {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>("ShopSnacks")
@@ -18,23 +19,23 @@ export default function Shopping() {
   }
   const snacksData = products.snacks.filter((item) => {
     return (
-      item.productName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.productPrice.toLowerCase().includes(searchTerm.toLowerCase())
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.price.toLowerCase().includes(searchTerm.toLowerCase())
     )
   })
   const moviesData = products.movies.filter((item) => {
     return (
-      item.movieTitle.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.movieDescription.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.movieDuration.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.movieAge.toLowerCase().includes(searchTerm.toLowerCase())
+      item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.duration.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.age.toLowerCase().includes(searchTerm.toLowerCase())
     )
   })
 
   return (
     <AdminLayout 
       search={{children:<></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange}}
-      navBar={{type: currentPane, changeCurrentPane: changeTypeProduct}}
+      navBar={{ func:()=>{}, type: currentPane, changeCurrentPane: changeTypeProduct}}
     >
       {
         currentPane === 'ShopMovies' ?

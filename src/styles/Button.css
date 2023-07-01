@@ -1,7 +1,0 @@
-.button-blue {
-  @apply h-[90%] flex justify-center items-center text-primary p-2 hover:bg-opacity-50 transition-all duration-500 shadow-xl shadow-black font-bold bg-secondary-opacity hover:bg-tertiary-opacity;
-}
-
-.button-red {
-  @apply h-[90%] flex justify-center items-center text-primary p-2 hover:bg-opacity-50 transition-all duration-500 shadow-xl shadow-black font-bold bg-tertiary-opacity hover:bg-secondary-opacity;
-}

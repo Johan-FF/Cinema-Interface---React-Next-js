@@ -1,8 +1,12 @@
-import props from "../types/props/SearchProps"
+'use client'
 
-export default function Search({ children, title, searchTerm, handleSearchChange }: props) {
+import { searchProps } from "../types/Props"
+
+export default function Search(
+  { children, title, searchTerm, handleSearchChange }: searchProps
+) {
   return (
-    <div className={`${title==="ShopMovies" || title==="ShopSnacks" ? 'pl-[15%] xl:pl-[5%]': 'pl-[5%]'} flex justify-between items-end h-[15%] bg-secondary pb-2 pt-[4%] px-[5%] md:shadow-xl md:shadow-black`}>
+    <div className={`${title==="ShopMovies" || title==="ShopSnacks" ? 'pl-[15%] xl:pl-[5%]': 'pl-[5%]'} flex justify-between items-end h-[8%] xl:h-[15%] bg-secondary pb-2 pt-[4%] px-[5%] `}>
       <div className="flex items-center">
         {children}
         <h1 className=" text-2xl md:text-5xl md:pl-[15%] xl:pl-0 font-bold">{title}</h1>
@@ -13,11 +17,10 @@ export default function Search({ children, title, searchTerm, handleSearchChange
         </svg>
         <input
           placeholder="Buscar"
-          className="bg-primary rounded-lg pl-[20%] md:pl-[10%] w-[100%]"
+          className="bg-primary text-secondary font-bold rounded-lg pl-[20%] md:pl-[10%] w-[100%]"
           value={searchTerm}
           onChange={handleSearchChange} />
       </search>
     </div>
-
   )
 }

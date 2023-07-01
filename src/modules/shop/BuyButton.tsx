@@ -1,0 +1,63 @@
+'use client'
+
+import { useState } from 'react'
+import { seats } from '@/app/types/data/SeatsData'
+import CardMovie from './movie/CardMovie'
+import ModalButton from "@/app/components/ModalButton"
+import { products } from '@/app/types/data/ProductData'
+
+export default function BuyButton() {
+  const [showMovieModal, setShowMovieModal] = useState(false)
+  const movieData = products.movies[0]
+
+  return (
+    <ModalButton message='' showModal={showMovieModal} setShowModal={setShowMovieModal} >
+      <div className="justify-center items-center overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none">
+        <div className="relative w-auto my-6 mx-auto max-w-3xl">
+          {/*content*/}
+          <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-secondary outline-none focus:outline-none">
+            {/*header*/}
+            <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
+              <h3 className="text-3xl font-semibold">
+                Resumen de compra
+              </h3>
+              <button className="p-1 ml-auto bg-transparent border-0 text-white float-right text-3xl leading-none font-semibold outline-none focus:outline-none" onClick={() => setShowMovieModal(false)}>
+                <span className="bg-transparent bg-white text-white opacity-3 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                </span>
+              </button>
+            </div>
+            {/*body*/}
+            <div className="relative p-6 flex-auto">
+              <p>Cliente 123123123 </p>
+              <div className=''>
+                <div className="w-[100%] flex justify-center items-center ">
+                  <CardMovie isInHome={false} url={movieData.url} age={movieData.age} description={movieData.description} duration={movieData.duration}
+                    title={movieData.title} id={movieData.id} />
+                </div>
+              </div>
+            </div>
+            <div className=" items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+              <p>Asientos</p>
+              {
+                seats.map((item, idx) => (
+                  <div className=" justify-end p-6 border-t border-solid border-bg-cyan-200 rounded-b">
+                    <p>Codigo asiento: {item.seatCode}</p>
+                    <p>Tipo asiento: {item.seatType}</p>
+                    <p>Puntos a añadir: {item.points}</p>
+                  </div>
+                ))
+              }
+            </div>
+            {/*footer*/}
+            <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+              <button className="bg-quaternary text-primary active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150" type="button" onClick={() => setShowMovieModal(false)}>
+                Confirmar compra
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+    </ModalButton>
+  )
+}

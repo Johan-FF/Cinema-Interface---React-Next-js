@@ -1,10 +1,10 @@
 "use client"
 
 import { useState } from "react"
-import AdminLayout from "../AdminLayout"
-import { valuesNavBar } from "@/app/types/data/ValuesInput"
-import Employee from "./employee/page"
-import Movie from "./movie/page"
+import AdminLayout from "../../../modules/AdminLayout"
+import { valuesNavBar } from "@/app/types/Types"
+import Employee from "@/app/modules/admin/employee/EmployeeAdmin"
+import Movie from "../../../modules/admin/movie/MovieAdmin"
 
 export default function Multiplex() {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>('GenEmployee')
@@ -20,7 +20,7 @@ export default function Multiplex() {
   return (
     <AdminLayout
       search={{ children:<></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange }}
-      navBar={{ type: currentPane, changeCurrentPane: changeCurrentPane }}
+      navBar={{ func:()=>{}, type: currentPane, changeCurrentPane: changeCurrentPane }}
     >
       {
         'GenEmployee' === currentPane ?

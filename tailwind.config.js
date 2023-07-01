@@ -23,7 +23,7 @@ module.exports = {
         '100': '500%'
       },
       transitionDuration: {
-        '4000': '4000ms',
+        '2000': '2000ms',
       }
     },
   },

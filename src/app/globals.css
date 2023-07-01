@@ -2,37 +2,46 @@
 @tailwind components;
 @tailwind utilities;
 
-table,button, p, h1, h2, h3, h4, h5, h6, li{
+table,button,input,label, p, h1, h2, h3, h4, h5, h6, li{
   @apply font-mono text-primary;
 }
 
-/*
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+.button-blue {
+  @apply h-[90%] flex justify-center items-center p-2 hover:bg-opacity-50 transition-all duration-500 shadow-xl shadow-black font-bold bg-secondary-opacity hover:bg-tertiary-opacity;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.button-red {
+  @apply h-[90%] flex justify-center items-center p-2 hover:bg-opacity-50 transition-all duration-500 shadow-xl shadow-black font-bold bg-tertiary-opacity hover:bg-secondary-opacity;
 }
 
-body {
-  background: #fff;
+.text-input {
+  @apply rounded-md p-1 mb-5 bg-secondary border-b-2 border-b-secondary-opacity text-opacity-70 focus:text-opacity-100 focus:outline-none focus:border-b-primary;
 }
 
-.p-2 {
-  background-color: yellow;
-  color: black;
+.label-input {
+  @apply mb-3 text-[20px];
 }
 
-.p-2.selected {
-  background-color: blue;
-  color: white;
+.label-error {
+  @apply text-red-300 mb-3;
 }
 
-*/
+.flex-center {
+  @apply flex justify-center items-center;
+}
+
+.flex-col-center {
+  @apply flex flex-col justify-center items-center;
+}
+
+.size-all {
+  @apply w-[100%] h-[100%];
+}
+
+.shadow-big {
+  @apply shadow-2xl shadow-black rounded-lg;
+}
+
+.scrollbar-small {
+  @apply scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity;
+}

@@ -1,6 +1,4 @@
-import { Employee } from "../interfaces/User"
-import { Schedule } from "../interfaces/Schedule"
-import { Movie } from "../interfaces/Movie"
+import { Employee, Schedule, Movie } from "../Interfaces"
 
 export const tables: 
   {

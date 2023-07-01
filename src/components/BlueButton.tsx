@@ -1,7 +1,10 @@
-import props from '../types/props/ButtonProps'
-import '../styles/Button.css'
+'use client'
 
-export default function BlueButton({ content,leftRounded,rightRounded }: props) {
+import { buttonProps } from '../types/Props'
+
+export default function BlueButton(
+  { content,leftRounded,rightRounded }: buttonProps
+) {
   let borderRadius: string = ''
   if(leftRounded && rightRounded) borderRadius = 'rounded-2xl'
   else if(leftRounded) borderRadius = 'rounded-l-2xl'

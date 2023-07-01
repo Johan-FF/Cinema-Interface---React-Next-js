@@ -1,16 +1,14 @@
 'use client'
 
-import '@/app/styles/Label.css'
-import '@/app/styles/Input.css'
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { SubmitHandler } from "react-hook-form"
 import { useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import RedButton from "./RedButton"
-import Dato from "../types/interfaces/Dato"
-import formProps from '../types/props/FormProps'
-import { typeModel } from "../types/interfaces/Types"
+import { Dato } from '../types/Interfaces'
+import { formProps } from '../types/Props'
+import { typeModel } from "../types/Types"
 
 export default function Form(
   { execute, model, schema, inputs, aditionalCondition, sendMessage }: formProps 
@@ -44,13 +42,13 @@ export default function Form(
 
   return (
     <form 
-      className="w-[100%] h-[100%] p-10 flex flex-col my-[5%] overflow-y-auto scrollbar-thin scrollbar-thumb-tertiary-opacity scrollbar-track-secondary-opacity"
+      className="size-all p-10 flex flex-col my-[5%] overflow-y-auto scrollbar-small"
       onSubmit={handleSubmit(onSubmit)}>
       {
         inputs.map((value, index) => {
           return (
             <React.Fragment key={index}>
-              <label htmlFor={value.id} className="label">{value.content}:</label>
+              <label htmlFor={value.id} className="label-input">{value.content}:</label>
               <input type="text" id={value.id} placeholder={value.placeHolder} className="text-input" {...register(value.id)} />
               {
                 errors[value.id as keyof Dato]?.message &&
