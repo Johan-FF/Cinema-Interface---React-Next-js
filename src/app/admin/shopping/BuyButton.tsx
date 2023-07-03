@@ -33,7 +33,7 @@ export default function BuyButton() {
 
   function calculateTotal(): number {
     var total = 0;
-    for (var prod of Cart.getInstance().findUniqueProducts(Cart.getInstance().getCartProducts())) {
+    for (var prod of Cart.getInstance().bringProducts(Cart.getInstance().getCartProducts())) {
       total = total + parseInt(prod.productPrice);
     }
     return total;
@@ -41,7 +41,7 @@ export default function BuyButton() {
 
   function calculateTotalPoints(): number {
     var total = 0;
-    for (var prod of Cart.getInstance().findUniqueProducts(Cart.getInstance().getCartProducts())) {
+    for (var prod of Cart.getInstance().bringProducts(Cart.getInstance().getCartProducts())) {
       total = total + prod.productPoints;
     }
     return total;
