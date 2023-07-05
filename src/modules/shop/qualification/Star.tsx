@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from "react"
-import { starProps } from "@/app/types/Props"
+import { starProps } from "../types/Props"
 
 export default function Star({ func }: starProps ) {
   const [isMouseOver, setIsMouseOver] = useState(false)

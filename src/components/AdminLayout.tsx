@@ -3,7 +3,7 @@
 import NavBar from "@/app/components/NavBar"
 import Search from "@/app/components/Search"
 import { adminLayoutProps } from "@/app/types/Props"
-import BuyButton from "./shop/BuyButton"
+import Cart from "../modules/shop/cart/Cart"
 import Background from "@/app/components/Background"
 import { useState } from "react"
 
@@ -13,11 +13,12 @@ export default function AdminLayout({ children, search, navBar}: adminLayoutProp
   return (
     <main className="h-[100vh] w-[100%] flex">
       <NavBar func={() => setShowProducts(!showProducts)} type={navBar.type} changeCurrentPane={navBar.changeCurrentPane} />
-      <section className="z-1 size-all md:w-[80%] pb-[5%] bg-primary ">
+      <section className="z-1 size-all md:w-[80%] pb-[5%] ">
         <Search title={search.title} searchTerm={search.searchTerm} handleSearchChange={search.handleSearchChange}>
           {
             search.title === "ShopMovies" || search.title === "ShopSnacks" ?
-            <BuyButton/> : <></>
+            <Cart/>
+            : <></>
           }
         </Search>
         <section className="h-[95%] w-full">

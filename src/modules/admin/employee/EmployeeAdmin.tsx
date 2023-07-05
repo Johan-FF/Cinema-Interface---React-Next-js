@@ -1,15 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import Table from "../Table"
-import FormAddElement from "../FormAddElement"
+import Table from "../components/Table"
+import FormAddElement from "../components/FormAddElement"
 import { NewUser } from "@/app/types/Interfaces"
 import { typeUser } from "@/app/types/Types"
 import { newUserSchema } from "@/app/helpers/ValidateInputs"
 import { inputs } from "@/app/types/data/InputsData"
 import { tables } from "@/app/types/data/TableData"
-import { employeeProps } from "@/app/types/Props"
-import TableLayout from "../TableLayout"
+import { employeeProps } from "../types/Props"
+import TableLayout from "../components/TableLayout"
 
 export default function EmployeeAdmin({ searchTerm }: employeeProps) {
   const [action, setAction] = useState("Add") // Add | View

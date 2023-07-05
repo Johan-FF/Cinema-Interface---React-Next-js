@@ -1,20 +1,23 @@
-'use client'
+import { cardProps } from "../types/Props"
+import { useCart } from "../hooks/useCart"
 
-import { cardProps } from "@/app/types/Props"
-import Link from "next/link"
+export default function Card({url,snack}: cardProps) {
+  const { addProduct } = useCart()
 
-export default function Card({url,imgUrl,price,name}: cardProps) {
   return (
-    <Link href={url} className="flex w-[100%] md:w-[50%] h-[20vh] bg-secondary-opacity border border-secondary rounded-lg hover:bg-secondary hover:border-secondary-opacity cursor-pointer">
-      <img className="w-[50%] rounded-lg" src={imgUrl} alt={name}/>
+    <article
+      className="flex w-[100%] md:w-[50%] h-[20vh] bg-secondary-opacity border border-secondary rounded-lg hover:bg-secondary hover:border-secondary-opacity cursor-pointer" 
+      onClick={() => addProduct(snack)}
+    >
+      <img className="w-[50%] rounded-lg" src={snack.url} alt={snack.name}/>
       <div className="flex flex-col justify-around p-4">
           <h5 className="mb-2 text-2xl font-bold">
-            {name}
+            {snack.name}
           </h5>
           <p className="mb-3 font-normal text-tertiary-opacity">
-            ${price}
+            ${snack.price}
           </p>
       </div>
-    </Link>
+    </article>
   )
 }

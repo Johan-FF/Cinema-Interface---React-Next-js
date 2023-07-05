@@ -1,6 +1,6 @@
 'use client'
 
-import { multiplexListProps } from "@/app/types/Props"
+import { multiplexListProps } from "../types/Props"
 
 export default function MultiplexList(
   {selectedMultiplex,multiplexes, setSelectedMultiplex}: multiplexListProps

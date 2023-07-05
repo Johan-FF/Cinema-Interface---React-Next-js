@@ -8,7 +8,7 @@ import Link from "next/link"
 import { useState } from "react"
 import { pages } from "../types/data/NavData"
 import Account from "../services/Account"
-import ClientButton from "../modules/shop/ClientButton"
+import ClientButton from "../modules/shop/components/ClientButton"
 
 export default function NavBar(
   { type, func, changeCurrentPane }: navBarProps

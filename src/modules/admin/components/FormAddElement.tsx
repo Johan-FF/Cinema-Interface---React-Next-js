@@ -1,7 +1,7 @@
 'use client'
 
 import Form from "@/app/components/Form"
-import { formAddElementProps } from "@/app/types/Props"
+import { formAddElementProps } from "../types/Props"
 
 export default function FormAddElement({ 
   typeElement,execute,model,schema,inputs,aditionalCondition,sendMessage

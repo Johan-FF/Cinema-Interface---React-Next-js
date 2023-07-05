@@ -1,6 +1,6 @@
 'use client'
 
-import { tableProps } from "@/app/types/Props"
+import { tableProps } from "../types/Props"
 
 export default function Table({ filteredData, headers }: tableProps ) {
 

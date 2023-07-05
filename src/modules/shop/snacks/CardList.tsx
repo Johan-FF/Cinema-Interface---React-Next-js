@@ -1,6 +1,6 @@
 'use client'
 
-import { cardProps, movieProps, cardListProps } from "@/app/types/Props"
+import { cardListProps, cardProps, movieProps } from "../types/Props"
 import Card from "./Card"
 import CardMovie from "../movie/CardMovie"
 
@@ -13,11 +13,9 @@ export default function CardList({ typeProduct, filteredData }: cardListProps) {
           const productItem = item as cardProps
           return (
             <Card
-              url={""}
               key={idx}
-              imgUrl={productItem.url}
-              name={productItem.name}
-              price={productItem.price}
+              url={productItem.url}
+              snack={productItem.snack}
             />
           )
         }) : <></>

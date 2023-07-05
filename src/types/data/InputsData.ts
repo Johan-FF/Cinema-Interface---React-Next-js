@@ -1,4 +1,4 @@
-import { valuesInput } from "./ValuesInput"
+import { valuesInput } from "../Types"
 
 export const inputs: 
   {

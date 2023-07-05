@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-table,button,input,label, p, h1, h2, h3, h4, h5, h6, li{
+table,button,input,label, p, h1, h2, h3, h4, h5, h6, li, strong{
   @apply font-mono text-primary;
 }
 

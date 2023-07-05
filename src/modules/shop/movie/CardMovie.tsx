@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import Image from "next/image"
-import { movieProps } from "@/app/types/Props"
+import { movieProps } from "../types/Props"
 
 export default function CardMovie (
   {isInHome,title,url,description,age,duration}: movieProps 

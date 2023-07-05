@@ -1,15 +1,15 @@
 "use client"
 
 import { useState } from "react"
-import Table from "../Table"
-import FormAddElement from "../FormAddElement"
+import Table from "../components/Table"
+import FormAddElement from "../components/FormAddElement"
 import { Schedule } from "@/app/types/Interfaces"
 import { typeSchedule } from "@/app/types/Types"
 import { scheduleSchema } from "@/app/helpers/ValidateInputs"
 import { inputs } from "@/app/types/data/InputsData"
-import { employeeProps } from "@/app/types/Props"
+import { employeeProps } from "../types/Props"
 import { tables } from "@/app/types/data/TableData"
-import TableLayout from "../TableLayout"
+import TableLayout from "../components/TableLayout"
 
 export default function ScheduleAdmin({ searchTerm }: employeeProps ) {
   const [action, setAction] = useState("Add") // Add | View

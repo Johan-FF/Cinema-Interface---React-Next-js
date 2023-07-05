@@ -1,6 +1,6 @@
 'use client'
 
-import { schedulesListProps } from "@/app/types/Props"
+import { schedulesListProps } from "../types/Props"
 
 export default function SchedulesList({selectedMultiplex, multiplexes}: schedulesListProps ) {
   return (

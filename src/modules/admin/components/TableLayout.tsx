@@ -2,7 +2,7 @@
 
 import BlueButton from "@/app/components/BlueButton"
 import RedButton from "@/app/components/RedButton"
-import { tableLayoutProps } from "@/app/types/Props"
+import { tableLayoutProps } from "../types/Props"
 
 export default function TableLayout({type,children,setAction} : tableLayoutProps) {
   return (

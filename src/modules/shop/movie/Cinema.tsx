@@ -13,7 +13,7 @@ const preferencial: number[] = getList(20)
 const general: number[] = getList(40)
 const rowCode: string[] = ['F','E','D','C','B','A']
 
-export default function () {
+export default function Cinema() {
   return (
     <div className="size-all md:w-[70%] pr-3 flex flex-col justify-evenly items-center shadow-big bg-secondary-opacity">
       <h3 className="font-bold text-5xl w-[100%] text-center border-b-2 text-primary mb-10 shadow-big py-2 ml-3">Sala 2</h3>

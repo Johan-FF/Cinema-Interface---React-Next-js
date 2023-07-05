@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import AdminLayout from "../../../modules/AdminLayout"
+import AdminLayout from "../../../components/AdminLayout"
 import { valuesNavBar } from "@/app/types/Types"
 import Employee from "@/app/modules/admin/employee/EmployeeAdmin"
 import Movie from "../../../modules/admin/movie/MovieAdmin"

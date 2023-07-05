@@ -1,88 +1,144 @@
 export const products = {
   snacks: [
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '1',
       name: 'Hot dog',
       price: '5000',
+      points: 4,
       url: 'https://www.wikihow.com/images/0/09/Boil-a-Hot-Dog-Step-13-Version-3.jpg'
-    },
+    },},
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '2',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 2,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '3',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 1,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '4',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 4,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '5',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 4,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '6',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 2,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '7',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 4,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '8',
       name: 'Hot dog',
       price: '5000',
+      points: 4,
       url: 'https://www.wikihow.com/images/0/09/Boil-a-Hot-Dog-Step-13-Version-3.jpg'
-    },
+    }},
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '9',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 4,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '10',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 4,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '11',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 4,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '12',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 2,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '13',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 2,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     },
     {
+      url: '',
+      snack: {type:'snack',
+      count: 0,
       id: '14',
       name: 'Pop corn dulce',
       price: '8000',
-      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'
+      points: 3,
+      url: 'https://elcomercio.pe/resizer/fn6WLFZcDuL7QUy_AXwkwPbBLkk=/580x330/smart/filters:format(jpeg):quality(75)/cloudfront-us-east-1.images.arcpublishing.com/elcomercio/MXUE22HMSJGJJOM7Y7A6UGETN4.jpg'}
     }
   ],
   movies: [

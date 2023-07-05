@@ -1,7 +1,7 @@
 
 import React from "react"
 import CardMovie from "./CardMovie"
-import { movieLayoutProps } from "@/app/types/Props"
+import { movieLayoutProps } from "../types/Props"
 
 export default function MovieLayout({children}: movieLayoutProps ) {
   return (
