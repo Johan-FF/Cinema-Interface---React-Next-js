@@ -24,4 +24,6 @@ export interface Schedule extends Dato {
   movie: string,
   hour: string,
   minute: string,
+  day:string,
+  idTheater:string
 }

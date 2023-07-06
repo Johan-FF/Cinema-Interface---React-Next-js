@@ -1,20 +1,24 @@
 import {Snack} from "../types/Interfaces"
 
-export const multiplexAdapter = (response: any): Snack => {return {
+export const snackAdapter = (response: any): Snack => {return {
     type: 'snack',
     id:response.data.id,
     name: response.data.name,
     price: response.data.price,
-    url: response.data.url
+    url: response.data.url,
+    count:0
   }
 }
 
-export const manyMultiplexAdapter = (response: any[]): Multiplex[] => {
+export const manyMultiplexAdapter = (response: any[]): Snack[] => {
     return response.map((item) => {
       return {
-        type: 'movie',
+        type: 'snack',
         id:item.data.id,
-        name: item.data.name
+        name: item.data.name,
+        price: item.data.price,
+        url: item.data.url,
+        count:0
       };
     });
   };
