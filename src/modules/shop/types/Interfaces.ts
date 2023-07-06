@@ -9,7 +9,7 @@ export interface Multiplex extends Dato {
 export interface Snack extends Dato {
   id: string,
   name: string,
-  price: string,
+  price: string,  
   points: number,
   count: number,
   url: string,
