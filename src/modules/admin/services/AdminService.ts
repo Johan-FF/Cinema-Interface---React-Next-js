@@ -1,4 +1,4 @@
-import { get, put, del, post } from "@/app/services/HttpService"
+import { get, put, del, post } from '../../../services/HttpService'
 
 const apiUrl = ''
 
