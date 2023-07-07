@@ -1,16 +1,13 @@
-import { get, put, del, post } from "@/app/services/HttpService"
-
-const apiUrl = ''
+import { get, post } from "@/app/services/HttpService"
 
 // Operación GET para obtener todos los horarios
-async function getAllSchedules(): Promise<any[]> {
-    const url = `${apiUrl}/schedules/all`
+export async function getAllSchedules(): Promise<any[]> {
+  const url = `${process.env.API_URL}/schedules/all`
   return get(url)
 }
 
-
 // Operación POST para crear un nuevo horario
-async function createSchedule(scheduleData: any): Promise<any> {
-  const url = `${apiUrl}/schedule/new`
+export async function createSchedule(scheduleData: any): Promise<any> {
+  const url = `${process.env.API_URL}/schedules/new`
   return post(url, scheduleData)
 }

@@ -1,4 +1,5 @@
-import { Movie, Schedule, User, NewUser, Employee } from "./Interfaces"
+import { User, NewUser } from "./Interfaces"
+import { Movie, Schedule, Employee } from "../modules/admin/types/Interfaces"
 
 /**
  *  Valid data types to store the data of each form (all are interfaces)

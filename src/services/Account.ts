@@ -1,7 +1,10 @@
 export default class Account {
   private static instance: Account
+  private id: string = ''
   private name: string = ''
   private rol: string = ''
+  private idMultiplex: string = ''
+  private token: string = ''
 
   private constructor() {}
 
@@ -26,5 +29,29 @@ export default class Account {
 
   public setRol(newRol: string): void {
     this.rol = newRol
+  }
+
+  public getID(): string {
+    return this.id
+  }
+
+  public setID(newID: string): void {
+    this.id = newID
+  }
+
+  public getIDMultiplex(): string {
+    return this.idMultiplex
+  }
+
+  public setIDMultiplex(newID: string): void {
+    this.idMultiplex = newID
+  }
+
+  public getToken(): string {
+    return this.token
+  }
+
+  public setToken(newToken: string): void {
+    this.token = newToken
   }
 }

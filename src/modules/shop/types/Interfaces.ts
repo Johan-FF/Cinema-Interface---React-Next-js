@@ -23,3 +23,13 @@ export interface Invoice extends Dato{
   idClient: string,
   snacks:string[]
 }
+
+export interface Client extends Dato {
+  identification: string,
+  name: string,
+  dateBirth: string,
+  phoneNumber: string,
+  email: string,
+  ratingCinema: string,
+  salaryPoints: string
+}

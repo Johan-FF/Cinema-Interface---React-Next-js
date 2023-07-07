@@ -20,3 +20,12 @@ export interface User extends Dato {
   identification: string,
   password: string,
 }
+
+export interface Movie extends Dato {
+  id:string,
+  title: string,
+  duration: string,
+  age: string,
+  synopsis: string,
+  imgUrl: string,
+}

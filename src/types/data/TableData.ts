@@ -1,4 +1,4 @@
-import { Employee, Schedule, Movie } from "../Interfaces"
+import { Employee, Schedule, Movie } from "@/app/modules/admin/types/Interfaces"
 
 export const tables: 
   {

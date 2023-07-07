@@ -1,27 +1,15 @@
-import { get, put, del, post } from '../../../services/HttpService'
+import { get, post } from "@/app/services/HttpService"
+import { createAdminAdapter } from "../adapters/AdminAdapter"
+import { Employee } from "../types/Interfaces"
 
-const apiUrl = ''
-
-// Operación GET para obtener todos los administradores de usuarios
-async function getAllAdmins(): Promise<any[]> {
-  const url = `${apiUrl}/users/all/admins`
+// Operación GET para obtener todos los administradores
+export async function getAllAdmins(): Promise<any[]> {
+  const url = `${process.env.API_URL}/users/all/admins`
   return get(url)
 }
 
-// Operación PUT para actualizar un administrador de usuarios por su ID
-async function updateAdmin(id: number, adminData: any): Promise<any> {
-  const url = `${apiUrl}/users/admins/${id}`
-  return put(url, adminData)
-}
-
-// Operación DELETE para eliminar un administrador de usuarios por su ID
-async function deleteAdmin(id: number): Promise<any> {
-  const url = `${apiUrl}/users/admins/${id}`
-  return del(url)
-}
-
-// Operación POST para crear un nuevo administrador de usuarios
-async function createAdmin(adminData: any): Promise<any> {
-  const url = `${apiUrl}/users/admin/new`
-  return post(url, adminData)
+// Operación POST para crear un nuevo administrador
+export async function createAdmin(adminData: Employee): Promise<any> {
+  const url = `${process.env.API_URL}/users/admins/new`
+  return post(url, createAdminAdapter(adminData))
 }

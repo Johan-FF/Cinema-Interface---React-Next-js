@@ -5,15 +5,12 @@ import Form from "@/app/components/Form"
 import { inputs } from "@/app/types/data/InputsData"
 import { userSchema } from "@/app/helpers/ValidateInputs"
 import { User } from "@/app/types/Interfaces"
-import { typeUser } from "@/app/types/Types"
-import { useRouter } from "next/navigation"
-import { fetchData } from "@/app/services/data"
-import Account from "@/app/services/Account"
 import Background from "@/app/components/Background"
 import { login } from "@/app/services/Auth"
+import { useRouter } from "next/navigation"
+import Account from "@/app/services/Account"
 
 export default function Login() {
-  const account: Account = Account.getInstance()
   const router = useRouter()
   const user: User = {
     type: 'user',
@@ -21,11 +18,22 @@ export default function Login() {
     password: '',
   }
 
-  const fetchLogin = (data: typeUser) => {
+  const fetchLogin = (data: User) => {
     login({
       numberDocument: data.identification,
       password: data.password
     })
+    redirectAndSaveData()
+  }
+
+  const redirectAndSaveData = () => {
+    const account = Account.getInstance()
+    if (account.getRol() === "ROLE_DIRECTOR")
+      router.push("/admin/general")
+    else if (account.getRol() === "ROLE_ADMIN")
+      router.push("/admin/multiplex")
+    else if (account.getRol() === "ROLE_EMPLOYEE")
+      router.push("/admin/shopping")
   }
 
   return (

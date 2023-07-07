@@ -2,25 +2,20 @@ import { Dato } from "@/app/types/Interfaces"
 
 export interface Employee extends Dato {
   id: string,
-  name: string,
-  position: string,
-  phoneNumber: string,
   identification: string,
-  startDate: string,
+  name: string,
+  dateBirth: string,
+  phoneNumber: string,
+  email: string,
+  codeEmployee: string,
   salary: string,
-  multiple: string
-}
-
-export interface Movie extends Dato {
-  id:string,
-  title: string,
-  duration: string,
-  age: string,
-  synopsis: string,
-  imgUrl: string,
+  startDate: string,
+  multiplex: string,
+  password: string
 }
 
 export interface Schedule extends Dato {
+  id: string,
   movie: string,
   hour: string,
   minute: string,

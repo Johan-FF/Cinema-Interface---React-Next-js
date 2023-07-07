@@ -1,31 +1,33 @@
 import { Employee } from "../types/Interfaces"
 
-export const adminAdapter = (response: any): Employee => {return {
-    type: 'employee',
-    id: response.data.id,
-    name: response.data.name,
-    position: response.data.position,
-    phoneNumber: response.data.phoneNumber,
-    identification: response.data.identification,
-    startDate: response.data.startDate,
-    salary: response.data.salary,
-    multiple: response.data.multiple
+export const createAdminAdapter = (admin: Employee): any => {return {
+    number_document: admin.identification,
+    name: admin.name,
+    date_birth: admin.dateBirth,
+    phone: admin.phoneNumber,
+    email: admin.email,
+    salary: admin.salary,
+    date_contract: admin.startDate,
+    multiplex: admin.multiplex,
+    password: admin.password,
   }
 }
 
-export const adminsAdapter = (response: any[]): Employee[] => {
+export const getAdminsAdapter = (response: any[]): Employee[] => {
   return response.map((item) => {
     return {
-      type: 'employee',
-      id: item.data.id,
-      name: item.data.name,
-      position: item.data.position,
-      phoneNumber: item.data.phoneNumber,
-      identification: item.data.identification,
-      startDate: item.data.startDate,
-      salary: item.data.salary,
-      multiple: item.data.multiple,
-    };
-  });
-};
-
+      type: 'Administrador',
+      id: item.id,
+      identification: item.number_document,
+      name: item.name,
+      dateBirth: item.date_birth,
+      phoneNumber: item.phone,
+      email: item.email,
+      codeEmployee: item.code_employee,
+      salary: item.salary,
+      startDate: item.date_contract,
+      multiplex: item.multiplex,
+      password: ''
+    }
+  })
+}

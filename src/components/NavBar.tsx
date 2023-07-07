@@ -9,12 +9,19 @@ import { useState } from "react"
 import { pages } from "../types/data/NavData"
 import Account from "../services/Account"
 import ClientButton from "../modules/shop/components/ClientButton"
+import { set } from "zod"
 
 export default function NavBar(
   { type, func, changeCurrentPane }: navBarProps
 ) {
   const [viewMenu, setViewMenu] = useState(false)
+  const [typeMenu, setTypeMenu] = useState<'mul'|'gen'|'shop'>()
   const account: Account = Account.getInstance()
+
+  const getType = () => {
+    type === "ShopSnacks" || type === "ShopMovies" || type === "ShopQualification" ?
+      setTypeMenu('shop') : ''
+  }
 
   return (
     <>
