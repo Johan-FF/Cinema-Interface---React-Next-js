@@ -1,4 +1,4 @@
-import { Snack } from '../types/Interfaces'
+import { Snack } from "../modules/shop/types/Interfaces"
 
 export default class BuyFood {
   private static instance: BuyFood

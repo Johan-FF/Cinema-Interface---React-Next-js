@@ -10,8 +10,10 @@ import { useRouter } from "next/navigation"
 import { fetchData } from "@/app/services/data"
 import Account from "@/app/services/Account"
 import Background from "@/app/components/Background"
+import { login } from "@/app/services/Auth"
 
 export default function Login() {
+  const account: Account = Account.getInstance()
   const router = useRouter()
   const user: User = {
     type: 'user',
@@ -19,17 +21,11 @@ export default function Login() {
     password: '',
   }
 
-  const verifyUserType = async (data: typeUser) => {
-    const response = await fetchData(data.identification, data.password)
-    const account: Account = Account.getInstance()
-    account.setName(response.name)
-    account.setRol(response.rol)
-    if (response.rol === "ROLE_DIRECTOR")
-      router.push("/admin/general")
-    else if (response.rol === "ROLE_ADMIN")
-      router.push("/admin/multiplex")
-    else if (response.rol === "ROLE_EMPLOYEE")
-      router.push("/admin/shopping")
+  const fetchLogin = (data: typeUser) => {
+    login({
+      numberDocument: data.identification,
+      password: data.password
+    })
   }
 
   return (
@@ -55,7 +51,7 @@ export default function Login() {
             </section>
             <section className="w-[100%] max-h-[80%] pr-[5%] flex-col-center">
               <Form
-                execute={verifyUserType}
+                execute={fetchLogin}
                 model={user}
                 schema={userSchema}
                 inputs={inputs.login}
