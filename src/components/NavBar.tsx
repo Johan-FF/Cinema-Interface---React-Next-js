@@ -40,6 +40,7 @@ export default function NavBar(
       ShopQualification: "shop",
       GenEmployee: "gen",
       GenMovie: "gen",
+      Dashboard: "gen",
       GenMultiplex: "gen",
       MulSchedule: "mul",
       MulPoints: "mul"

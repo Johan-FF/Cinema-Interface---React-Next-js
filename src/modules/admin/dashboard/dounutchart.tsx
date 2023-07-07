@@ -1,10 +1,11 @@
+"use client"
 import React from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export function Doughnutchart(props) {
+export function Doughnutchart(props:any) {
   const options = {
     animation: true,
     responsive: true,
@@ -13,8 +14,9 @@ export function Doughnutchart(props) {
       legend: {
         position: "left" as const,
         value: true,
-        labels: {
-          generateLabels: function (chart) {
+        labels:
+         {
+          generateLabels: function (chart:any) {
             const data = chart.data.datasets[0].data;
             const labels = chart.data.labels;
             const legendItems = [];
@@ -46,7 +48,7 @@ export function Doughnutchart(props) {
       },
       title: {
         display: true,
-        text: "Doughnut Bar Chart",
+        text: "Doughnut Bar Chart"
       },
     },
   };

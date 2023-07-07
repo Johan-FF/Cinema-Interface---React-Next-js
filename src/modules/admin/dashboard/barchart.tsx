@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import {
   Chart as ChartJS,
@@ -9,7 +10,7 @@ import {
   Legend,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
-import * as faker from "@faker-js/faker";
+//import * as faker from "@faker-js/faker";
 
 ChartJS.register(
   CategoryScale,
@@ -20,7 +21,7 @@ ChartJS.register(
   Legend
 );
 
-export function Barchart(props) {
+export function Barchart(props:any) {
   const info = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   const infinvertida = [100, 90, 20, 50, 23, 13, 45, 78, 81, 32, 37];
   const labels = [

@@ -43,7 +43,7 @@ export type valuesInput = valuesLoginInput | valuesScheduleInput | valuesMovieIn
  */
 export type valuesShoppingNavBar = "ShopSnacks" | "ShopMovies" | "ShopQualification"
 
-export type valuesGeneralNavBar = "GenEmployee" | "GenMovie" | "GenMultiplex"
+export type valuesGeneralNavBar = "GenEmployee" | "GenMovie" | "GenMultiplex" | "Dashboard"
 
 export type valuesMultiplexNavBar = "MulSchedule" | "MulPoints"
 

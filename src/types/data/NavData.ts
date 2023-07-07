@@ -8,7 +8,8 @@ export const pages: {
   admin: [
     {name:'Administrador de Empleados',tag:'GenEmployee'},
     {name:'Películas',tag:'GenMovie'},
-    {name: 'Administrar multiplex', tag:'GenMultiplex'}
+    {name: 'Administrar multiplex', tag:'GenMultiplex'},
+    {name: 'Ver graficas', tag:'Dashboard'}
   ],
   multiplex: [
     {name:'Horarios',tag:'MulSchedule'},
