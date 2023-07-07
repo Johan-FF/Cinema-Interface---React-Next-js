@@ -9,10 +9,10 @@ export function middleware(request: NextRequest) {
 }
 export const config = {
   matcher: [
-    '/admin/shopping/movie',
+   /* '/admin/shopping/movie',
     '/admin/shopping/rooms',
     '/admin/shopping',
     '/admin/general',
-    '/admin/multiplex',
+    '/admin/multiplex',*/
   ],
 }
