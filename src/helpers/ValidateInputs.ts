@@ -41,3 +41,16 @@ export const movieSchema = z.object({
   synopsis: z.string().min(1, {message: 'La sinópsis es requerida'}).max(500),
   imgUrl: z.string().min(1, {message: 'La url de la imágen es requerida'}).max(50),
 })
+
+export const multiplexSchema = z.object({
+  name: z.string().min(1, {message: 'El nombre es requerido'}).max(50),
+  numSala: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'El número de salas es requerido'}),
+  pointTicket: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'Los puntos por ticket un campo requerido'}),
+  pointSnack: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'Los puntos por snack es un campo requerido'}),
+})
+
+export const multiplexPointsSchema = z.object({
+  pointsTicket: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'Los puntos por ticket un campo requerido'}),
+  pointsSnack: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'Los puntos por snack es un campo requerido'}),
+})
+

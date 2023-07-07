@@ -8,10 +8,11 @@ export const pages: {
   admin: [
     {name:'Administrador de Empleados',tag:'GenEmployee'},
     {name:'Películas',tag:'GenMovie'},
+    {name: 'Administrar multiplex', tag:'GenMultiplex'}
   ],
   multiplex: [
-    {name:'Administrador de Empleados',tag:'MulEmployee'},
     {name:'Horarios',tag:'MulSchedule'},
+    {name:'Puntos del multiplex', tag: 'MulPoints'}
   ],
   employee: [
     {name:'Comidas',tag:'ShopSnacks'},

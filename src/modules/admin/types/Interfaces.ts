@@ -27,3 +27,8 @@ export interface Schedule extends Dato {
   day:string,
   idTheater:string
 }
+
+export interface MultiplexPoints extends Dato{
+  pointsTicket: string,
+  pointsSnack: string
+}

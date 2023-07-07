@@ -5,6 +5,7 @@ import AdminLayout from "../../../components/AdminLayout"
 import { valuesNavBar } from "@/app/types/Types"
 import Employee from "@/app/modules/admin/employee/EmployeeAdmin"
 import Movie from "../../../modules/admin/movie/MovieAdmin"
+import MultiplexAdmin from "@/app/modules/admin/multiplex/MultiplexAdmin"
 
 export default function Multiplex() {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>('GenEmployee')
@@ -30,6 +31,12 @@ export default function Multiplex() {
       {
         'GenMovie' === currentPane ?
           <Movie searchTerm={searchTerm}/>
+          : <></>
+      }
+      {
+        'GenMultiplex' === currentPane ?
+         
+          <MultiplexAdmin searchTerm={searchTerm}/>
           : <></>
       }
     </AdminLayout>

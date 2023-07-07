@@ -5,6 +5,7 @@ import AdminLayout from "../../../components/AdminLayout"
 import { valuesNavBar } from "@/app/types/Types"
 import Employee from "../../../modules/admin/employee/EmployeeAdmin"
 import Schedule from "../../../modules/admin/schedule/ScheduleAdmin"
+import MultiplexPointsAdmin from "../../../modules/admin/points/PointsAdmin"
 
 export default function Multiplex() {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>('MulSchedule')
@@ -23,13 +24,14 @@ export default function Multiplex() {
       navBar={{ func:()=>{}, type: currentPane, changeCurrentPane: changeCurrentPane }}
     >
       {
-        'MulEmployee' === currentPane ?
-          <Employee searchTerm={searchTerm}/>
-          : <></>
-      }
-      {
         'MulSchedule' === currentPane ?
           <Schedule searchTerm={searchTerm}/>
+          : <></>
+      }
+
+      {
+        'MulPoints' === currentPane ?
+          <MultiplexPointsAdmin searchTerm={searchTerm}/>
           : <></>
       }
     </AdminLayout>

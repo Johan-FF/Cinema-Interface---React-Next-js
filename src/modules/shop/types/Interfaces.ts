@@ -1,11 +1,11 @@
 import { Dato } from "@/app/types/Interfaces"
 
 export interface Multiplex extends Dato {
-  id: number,
+  id: string,
   name: string,
-  numSala: number,
-  pointTicket: number,
-  pointSnack: number
+  numSala: string,
+  pointTicket: string,
+  pointSnack: string
 }
 
 export interface Snack extends Dato {
