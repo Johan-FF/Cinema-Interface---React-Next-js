@@ -12,3 +12,20 @@ export const adminAdapter = (response: any): Employee => {return {
     multiple: response.data.multiple
   }
 }
+
+export const adminsAdapter = (response: any[]): Employee[] => {
+  return response.map((item) => {
+    return {
+      type: 'employee',
+      id: item.data.id,
+      name: item.data.name,
+      position: item.data.position,
+      phoneNumber: item.data.phoneNumber,
+      identification: item.data.identification,
+      startDate: item.data.startDate,
+      salary: item.data.salary,
+      multiple: item.data.multiple,
+    };
+  });
+};
+
