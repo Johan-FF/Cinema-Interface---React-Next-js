@@ -3,7 +3,7 @@
 import { useState } from "react"
 import Table from "../components/Table"
 import FormAddElement from "../components/FormAddElement"
-import { Schedule } from "@/app/types/Interfaces"
+import { Schedule } from "@/app/modules/admin/types/Interfaces"
 import { typeSchedule } from "@/app/types/Types"
 import { scheduleSchema } from "@/app/helpers/ValidateInputs"
 import { inputs } from "@/app/types/data/InputsData"
@@ -29,6 +29,8 @@ export default function ScheduleAdmin({ searchTerm }: employeeProps ) {
     movie: '',
     hour: '',
     minute: '',
+    day:'',
+    idTheater:''
   }
   const showSchedule = (schedule: typeSchedule) => {
     console.log(schedule)

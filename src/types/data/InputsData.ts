@@ -6,6 +6,8 @@ export const inputs:
     record: {content: string, id: valuesInput, placeHolder: string}[],
     schedule: {content: string, id: valuesInput, placeHolder: string}[],
     movie: {content: string, id: valuesInput, placeHolder: string}[],
+    multiplex: {content: string, id: valuesInput, placeHolder: string}[]
+    multiplexPoints: {content: string, id: valuesInput, placeHolder: string}[]
   } = {
   login: [
     {
@@ -94,5 +96,41 @@ export const inputs:
       id: "imgUrl",
       placeHolder: "Ingrese la url de la imágen"
     },
+  ],
+  multiplex: [
+    {
+      content: "Nombre",
+      id: "name",
+      placeHolder: "Ingrese el nombre del multiplex"
+    },
+    {
+      content: "Número de salas",
+      id: "numSala",
+      placeHolder: "Ingrese el número de salas"
+    },
+    {
+      content: "Número de puntos por snack",
+      id: "pointSnack",
+      placeHolder: "Ingrese el número de puntos"
+    },
+    {
+      content: "Número de puntos por ticket",
+      id: "pointTicket",
+      placeHolder: "Ingrese el número de puntos"
+    },
+
+  ],
+  multiplexPoints: [
+    {
+      content: "Número de puntos por snack",
+      id: "pointsSnack",
+      placeHolder: "Ingrese el número de puntos"
+    },
+    {
+      content: "Número de puntos por ticket",
+      id: "pointsTicket",
+      placeHolder: "Ingrese el número de puntos"
+    },
+
   ]
 }

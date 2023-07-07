@@ -1,10 +1,14 @@
-import { Employee, Schedule, Movie } from "@/app/modules/admin/types/Interfaces"
+import { Employee, Schedule, MultiplexPoints } from "@/app/modules/admin/types/Interfaces"
+import {Multiplex} from  "@/app/modules/shop/types/Interfaces"
+import { Movie } from "../Interfaces"
 
 export const tables: 
   {
     users: Employee[],
     schedules: Schedule[],
-    movies: Movie[]
+    movies: Movie[],
+    multiplex: Multiplex[],
+    multiplexPoints: MultiplexPoints[]
   } = {
   users: [
     {
@@ -257,5 +261,61 @@ export const tables:
       synopsis: "Personas en familia",
       imgUrl: "https://mx.web.img3.acsta.net/c_310_420/pictures/23/04/20/02/29/5514328.jpg",
     },
+  ],
+  schedules: [
+    {
+      type: "Horario",
+      movie: "Avatar",
+      hour: "12",
+      minute: "56"
+    },
+    {
+      type: "Horario",
+      movie: "El paseo",
+      hour: "3",
+      minute: "56"
+    },
+    {
+      type: "Horario",
+      movie: "Titanic",
+      hour: "8",
+      minute: "45"
+    },
+    {
+      type: "Horario",
+      movie: "Rápidos y Furiosos",
+      hour: "1",
+      minute: "33"
+    },
+    {
+      type: "Horario",
+      movie: "Toy Story",
+      hour: "18",
+      minute: "06"
+    },
+  ],
+  multiplex: [
+    {
+      type: "Multiplex",
+      id: '1',
+      name:'Titan',
+      numSala:'3',
+      pointSnack:'2',
+      pointTicket:'4'
+    },
+    {
+      type: "Multiplex",
+      id: '2',
+      name:'Unicentro',
+      numSala:'5',
+      pointSnack:'3',
+      pointTicket:'5'
+    },
+  ],
+  multiplexPoints:[{
+    type: "multiplexPoints",
+    pointsSnack:'2',
+    pointsTicket:'5'
+  }
   ]
 }
