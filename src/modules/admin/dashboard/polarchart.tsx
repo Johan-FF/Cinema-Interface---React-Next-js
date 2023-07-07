@@ -15,7 +15,7 @@ export function Polarchart(props) {
   const options = {
     animation: true,
     responsive: true,
-    aspectRatio: 2,
+    aspectRatio: 1,
     plugins: {
       legend: {
         position: "left" as const,

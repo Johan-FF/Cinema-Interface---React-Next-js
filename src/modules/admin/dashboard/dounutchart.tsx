@@ -9,7 +9,7 @@ export function Doughnutchart(props:any) {
   const options = {
     animation: true,
     responsive: true,
-    aspectRatio: 2,
+    aspectRatio: 1,
     plugins: {
       legend: {
         position: "left" as const,
@@ -48,32 +48,28 @@ export function Doughnutchart(props:any) {
       },
       title: {
         display: true,
-        text: "Doughnut Bar Chart"
+        text: "Ventas realizadas por multiplex",
       },
     },
   };
 
   const data = {
-    labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+    labels: ["Titan", "Unicentro", "Plaza central", "Gran estación"],
     datasets: [
       {
         label: "# of Votes",
-        data: [12, 19, 3, 5, 2, 3],
+        data: [55, 33, 44,20],
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
           "rgba(255, 206, 86, 0.2)",
-          "rgba(75, 192, 192, 0.2)",
-          "rgba(153, 102, 255, 0.2)",
-          "rgba(255, 159, 64, 0.2)",
+          "rgba(55, 200, 86, 0.2)"
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
           "rgba(255, 206, 86, 1)",
-          "rgba(75, 192, 192, 1)",
-          "rgba(153, 102, 255, 1)",
-          "rgba(255, 159, 64, 1)",
+          "rgba(55, 200, 86, 0.2)"
         ],
         borderWidth: 3,
       },

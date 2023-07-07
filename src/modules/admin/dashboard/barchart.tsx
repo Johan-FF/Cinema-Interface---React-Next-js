@@ -22,27 +22,29 @@ ChartJS.register(
 );
 
 export function Barchart(props:any) {
-  const info = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
-  const infinvertida = [100, 90, 20, 50, 23, 13, 45, 78, 81, 32, 37];
+  const infoMovie1 = [0, 40, 39, 38, 40, 50, 60, 60, 65, 63, 58];
+  const infoMovie2 = [50, 50, 30, 20, 40, 50, 50, 50, 60, 68, 72];
+  const infoMovie3 = [0, 95, 90, 90, 80, 70, 78, 79, 86, 88, 85];
   const labels = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
+    "Enero",
+    "Febrero",
+    "Marzo",
+    "Abril",
+    "Mayo",
+    "Junio",
+    "Julio",
   ];
   const options = {
     animation: true,
     responsive: true,
+    aspectRatio: 1,
     plugins: {
       legend: {
         position: "top" as const,
       },
       title: {
         display: true,
-        text: "Chart.js Bar Chart",
+        text: "Calificación promedio de peliculas",
       },
     },
   };
@@ -50,14 +52,19 @@ export function Barchart(props:any) {
     labels,
     datasets: [
       {
-        label: "Pelicula 1",
-        data: info,
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        label: "Morbius",
+        data: infoMovie1,
+        backgroundColor: "red",
       },
       {
-        label: "Pelicula 2",
-        data: infinvertida,
-        backgroundColor: "rgba(53, 162, 235, 0.5)",
+        label: "Fast and furious X",
+        data: infoMovie2,
+        backgroundColor: "blue",
+      },
+      {
+        label: "Guardians of the galaxy VOL 3",
+        data: infoMovie3,
+        backgroundColor: "green",
       },
     ],
   };
