@@ -1,11 +1,13 @@
 import { get, put, post } from "@/app/services/HttpService"
+import { createClientAdapter } from "../adapters/ClientAdapter"
+import { Client } from "../types/Interfaces"
 
 const apiUrl = ''
 
 // Operación POST para crear un nuevo cliente
-export async function createClient(clientData: any): Promise<any> {
+export async function createClient(clientData: Client): Promise<any> {
   const url = `${apiUrl}/users/client/new`
-  return post(url, clientData)
+  return post(url, createClientAdapter(clientData))
 }
 
 // Operación POST para verificar existencia de cliente
