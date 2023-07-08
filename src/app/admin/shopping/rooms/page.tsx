@@ -8,7 +8,9 @@ import RedButton from "@/app/components/RedButton"
 import BlueButton from "@/app/components/BlueButton"
 import MultiplexList from "../../../../modules/shop/rooms/MultiplexList"
 import SchedulesList from "../../../../modules/shop/rooms/SchedulesList"
-import { Multiplex } from "@/app/types/Interfaces"
+import { Multiplex } from "@/app/modules/director/types/Interfaces"
+import { withAuth } from "@/app/middlewares/withAuth"
+import { NextPage } from "next"
 
 const multiplexes: Multiplex[] = [
   { type: 'multiplex', id: 1, name: "Titán", showtimes: ["10:00 AM", "1:00 PM", "4:00 PM"] },
@@ -20,7 +22,7 @@ const multiplexes: Multiplex[] = [
   { type: 'multiplex', id: 7, name: "Por si acaso", showtimes: ["11:00 AM", "2:00 PM", "5:00 PM"], },
 ]
 
-export default function Rooms() {
+const Rooms: NextPage = () => {
   const [selectedMultiplex, setSelectedMultiplex] = useState(-1)
 
   return (
@@ -47,3 +49,5 @@ export default function Rooms() {
     </MovieLayout>
   )
 }
+
+export default withAuth(Rooms)

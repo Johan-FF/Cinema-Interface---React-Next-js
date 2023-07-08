@@ -7,15 +7,6 @@ export interface Dato {
   type: string,
 }
 
-export interface NewUser extends Dato {
-  name: string,
-  position: string,
-  phoneNumber: string,
-  identification: string,
-  password: string,
-  conPassword: string,
-}
-
 export interface User extends Dato {
   identification: string,
   password: string,
@@ -28,4 +19,18 @@ export interface Movie extends Dato {
   age: string,
   synopsis: string,
   imgUrl: string,
+}
+
+export interface Employee extends Dato {
+  id: string,
+  identification: string,
+  name: string,
+  dateBirth: string,
+  phoneNumber: string,
+  email: string,
+  codeEmployee: string,
+  salary: string,
+  startDate: string,
+  multiplex: string,
+  password: string
 }

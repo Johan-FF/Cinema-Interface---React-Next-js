@@ -1,6 +1,8 @@
-import { User, NewUser } from "./Interfaces"
-import { Schedule, Employee, MultiplexPoints } from "@/app/modules/admin/types/Interfaces"
-import { Multiplex } from "../modules/shop/types/Interfaces"
+import { User } from "./Interfaces"
+import { NewUser } from "../modules/director/types/Interfaces"
+import { Schedule, MultiplexPoints } from "../modules/multiplex/types/Interfaces"
+import { Employee } from "./Interfaces"
+import { Multiplex } from "../modules/director/types/Interfaces"
 import { Movie } from "./Interfaces"
 
 /**

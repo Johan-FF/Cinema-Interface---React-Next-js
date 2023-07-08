@@ -18,21 +18,21 @@ export default function Login() {
     password: '',
   }
 
-  const fetchLogin = (data: User) => {
-    login({
+  const fetchLogin = async (data: User) => {
+    await login({
       numberDocument: data.identification,
       password: data.password
     })
-    redirectAndSaveData()
+    redirect()
   }
 
-  const redirectAndSaveData = () => {
+  const redirect = () => {
     const account = Account.getInstance()
-    if (account.getRol() === "ROLE_DIRECTOR")
+    if (account.getRol() === "DIRECTOR")
       router.push("/admin/general")
-    else if (account.getRol() === "ROLE_ADMIN")
+    else if (account.getRol() === "ADMINISTRADOR")
       router.push("/admin/multiplex")
-    else if (account.getRol() === "ROLE_EMPLOYEE")
+    else if (account.getRol() === "EMPLEADO")
       router.push("/admin/shopping")
   }
 

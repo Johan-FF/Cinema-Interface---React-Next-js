@@ -26,6 +26,10 @@ table,button,input,label, p, h1, h2, h3, h4, h5, h6, li, strong{
   @apply text-red-300 mb-3;
 }
 
+.label-correct {
+  @apply text-green-300 mb-3;
+}
+
 .flex-center {
   @apply flex justify-center items-center;
 }

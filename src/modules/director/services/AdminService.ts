@@ -1,0 +1,23 @@
+import { get, post } from "@/app/services/HttpService"
+import { createAdminAdapter, getAdminsAdapter } from "../adapters/AdminAdapter"
+import { Employee } from "@/app/types/Interfaces"
+import { API_URL } from "@/app/environment"
+
+// Operación GET para obtener todos los administradores
+export async function getAllAdmins(): Promise<any[]> {
+  const url = `${API_URL}/multiplex/all`
+  try{
+    const response= await get(url);
+    const list = getAdminsAdapter(response);
+    return list;
+  }catch(error){
+    console.log(error)
+    return []
+  }
+}
+
+// Operación POST para crear un nuevo administrador
+export async function createAdmin(adminData: Employee): Promise<any> {
+  const url = `${API_URL}/users/admins/new`
+  return post(url, createAdminAdapter(adminData))
+}

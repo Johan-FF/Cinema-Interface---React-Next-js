@@ -3,11 +3,12 @@
 import { useState } from "react"
 import AdminLayout from "../../../components/AdminLayout"
 import { valuesNavBar } from "@/app/types/Types"
-import Employee from "../../../modules/admin/employee/EmployeeAdmin"
-import Schedule from "../../../modules/admin/schedule/ScheduleAdmin"
-import MultiplexPointsAdmin from "../../../modules/admin/points/PointsAdmin"
+import Schedule from "../../../modules/multiplex/schedule/ScheduleAdmin"
+import MultiplexPointsAdmin from "../../../modules/multiplex/points/PointsAdmin"
+import { NextPage } from "next"
+import { withAuth } from "@/app/middlewares/withAuth"
 
-export default function Multiplex() {
+const Multiplex: NextPage = () => {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>('MulSchedule')
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -37,3 +38,5 @@ export default function Multiplex() {
     </AdminLayout>
   )
 }
+
+export default withAuth(Multiplex)

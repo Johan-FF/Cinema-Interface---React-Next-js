@@ -1,4 +1,6 @@
 import axios, { AxiosResponse } from 'axios'
+import Cookies from 'js-cookie'
+import { KEY_USER_TOKEN } from '../environment'
 
 // Función genérica para realizar una petición HTTP
 async function makeHttpRequest<T>(
@@ -19,6 +21,14 @@ async function makeHttpRequest<T>(
     return response.data
   } catch (error) {
     throw new Error(`Error making ${method} request to ${url}: ${error}`)
+  }
+}
+
+// HEADER
+export function generateAuthHeader() {
+  const token = Cookies.get(KEY_USER_TOKEN)
+  return {
+    Authorization: `Bearer ${token}`,
   }
 }
 

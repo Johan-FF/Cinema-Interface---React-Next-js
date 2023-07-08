@@ -7,8 +7,10 @@ import Qualification from '../../../modules/shop/qualification/QualificationSect
 import CardList from '../../../modules/shop/snacks/CardList'
 import AdminLayout from '../../../components/AdminLayout'
 import CartProvider from '@/app/modules/shop/hooks/useCart'
+import { NextPage } from 'next'
+import { withAuth } from '@/app/middlewares/withAuth'
 
-export default function Shopping() {
+const Shopping: NextPage = () => {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>("ShopSnacks")
   const [searchTerm, setSearchTerm] = useState("")
 
@@ -58,3 +60,5 @@ export default function Shopping() {
     </CartProvider>
   )
 }
+
+export default withAuth(Shopping)

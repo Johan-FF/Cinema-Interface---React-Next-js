@@ -4,7 +4,6 @@ export default class Account {
   private name: string = ''
   private rol: string = ''
   private idMultiplex: string = ''
-  private token: string = ''
 
   private constructor() {}
 
@@ -45,13 +44,5 @@ export default class Account {
 
   public setIDMultiplex(newID: string): void {
     this.idMultiplex = newID
-  }
-
-  public getToken(): string {
-    return this.token
-  }
-
-  public setToken(newToken: string): void {
-    this.token = newToken
   }
 }

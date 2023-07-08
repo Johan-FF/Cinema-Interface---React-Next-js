@@ -3,12 +3,14 @@
 import { useState } from "react"
 import AdminLayout from "../../../components/AdminLayout"
 import { valuesNavBar } from "@/app/types/Types"
-import Employee from "@/app/modules/admin/employee/EmployeeAdmin"
-import Movie from "../../../modules/admin/movie/MovieAdmin"
-import MultiplexAdmin from "@/app/modules/admin/multiplex/MultiplexAdmin"
-import Dashboard from "@/app/modules/admin/dashboard/page"
+import EmployeeAdmin from "@/app/modules/director/employee/EmployeeAdmin"
+import Movie from "../../../modules/director/movie/MovieAdmin"
+import MultiplexAdmin from "@/app/modules/director/multiplex/MultiplexAdmin"
+import Dashboard from "@/app/modules/director/dashboard/page"
+import { withAuth } from "@/app/middlewares/withAuth"
+import { NextPage } from "next"
 
-export default function Multiplex() {
+const AdminGeneral: NextPage = () => {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>('GenEmployee')
   const [searchTerm, setSearchTerm] = useState('')
 
@@ -21,32 +23,31 @@ export default function Multiplex() {
 
   return (
     <AdminLayout
-      search={{ children:<></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange }}
-      navBar={{ func:()=>{}, type: currentPane, changeCurrentPane: changeCurrentPane }}
+      search={{ children: <></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange }}
+      navBar={{ func: () => { }, type: currentPane, changeCurrentPane: changeCurrentPane }}
     >
       {
         'GenEmployee' === currentPane ?
-          <Employee searchTerm={searchTerm}/>
+          <EmployeeAdmin searchTerm={searchTerm} />
           : <></>
       }
       {
         'GenMovie' === currentPane ?
-          <Movie searchTerm={searchTerm}/>
+          <Movie searchTerm={searchTerm} />
           : <></>
       }
       {
         'GenMultiplex' === currentPane ?
-         
-          <MultiplexAdmin searchTerm={searchTerm}/>
+          <MultiplexAdmin searchTerm={searchTerm} />
           : <></>
       }
       {
         'Dashboard' === currentPane ?
-         
-          <Dashboard/>
+          <Dashboard />
           : <></>
       }
-
     </AdminLayout>
   )
 }
+
+export default withAuth(AdminGeneral)

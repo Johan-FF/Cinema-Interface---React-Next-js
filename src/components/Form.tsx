@@ -3,7 +3,6 @@
 import React from 'react'
 import { useForm } from "react-hook-form"
 import { SubmitHandler } from "react-hook-form"
-import { useState } from "react"
 import { zodResolver } from '@hookform/resolvers/zod'
 import RedButton from "./RedButton"
 import { Dato } from '../types/Interfaces'
@@ -11,22 +10,20 @@ import { formProps } from '../types/Props'
 import { typeModel } from "../types/Types"
 
 export default function Form(
-  { execute, model, schema, inputs, aditionalCondition, sendMessage }: formProps 
+  { required, inputs, aditionalCondition, messages }: formProps 
 ) {
-  const [errorMessage, setErrorMessage] = useState(aditionalCondition.error)
-  const [viewControlMessage, setViewControlMessage] = useState(false)
   const { 
     register,
     handleSubmit,
     getValues,
     formState: {errors, isSubmitting}
-  } = useForm<typeof model>({
-    resolver: zodResolver(schema)
+  } = useForm<typeof required.model>({
+    resolver: zodResolver(required.schema)
   })
 
   const onSubmit: SubmitHandler<typeModel> = (data) => {
     if( !validateAditionalCondition() ){
-      execute(data)
+      required.execute(data)
     }
   } 
   function validateAditionalCondition(): boolean {
@@ -34,9 +31,10 @@ export default function Form(
       return false
     const values = getValues()
     const haveError: boolean = 
-      values[aditionalCondition.first as keyof (typeof model)] != 
-      values[aditionalCondition.second as keyof (typeof model)] 
-    setViewControlMessage(haveError)
+      values[aditionalCondition.first as keyof (typeof required.model)] != 
+      values[aditionalCondition.second as keyof (typeof required.model)] 
+    messages.changeError(haveError)
+    messages.changeMessage(aditionalCondition.error)
     return haveError
   }
 
@@ -60,10 +58,10 @@ export default function Form(
           )
         })
       }
-      {
-        viewControlMessage ? <label className='label-error'>{errorMessage}</label> : ''
-      }
-      <RedButton content={`${sendMessage}`} leftRounded={true} rightRounded={true} />
+      <label className={`${messages.error ? 'label-error':'label-correct'}`}>
+        {messages.error ? messages.error : ''}
+      </label>
+      <RedButton content={messages.send} leftRounded={true} rightRounded={true} />
     </form>
   )
 }

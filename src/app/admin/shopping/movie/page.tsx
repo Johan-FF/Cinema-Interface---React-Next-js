@@ -7,8 +7,10 @@ import RedButton from "@/app/components/RedButton"
 import BlueButton from "@/app/components/BlueButton"
 import Link from "next/link"
 import Background from "@/app/components/Background"
+import { NextPage } from "next"
+import { withAuth } from "@/app/middlewares/withAuth"
 
-export default function Movie() {
+const Movie: NextPage = () => {
   return (
     <MovieLayout>
       <Background viewProducts={true}>
@@ -32,3 +34,5 @@ export default function Movie() {
     </MovieLayout>
   )
 }
+
+export default withAuth(Movie)

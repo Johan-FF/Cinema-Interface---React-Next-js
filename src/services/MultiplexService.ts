@@ -1,9 +1,9 @@
 import { get, put, post } from "@/app/services/HttpService"
 import { Multiplex } from "../modules/shop/types/Interfaces"
-import { createMultiplexAdapter } from "../modules/admin/adapters/MultiplexAdapter"
+import { createMultiplexAdapter } from "../modules/director/adapters/MultiplexAdapter"
 import { MultiplexPoints } from "../modules/admin/types/Interfaces"
 import {createMultiplexPointsAdapter} from "../modules/admin/adapters/MultiPointsAdapter"
-import { getMultiplexAdapter } from "../modules/admin/adapters/MultiplexAdapter"
+import { getMultiplexAdapter } from "../modules/director/adapters/MultiplexAdapter"
 
 const apiUrl = ''
 
