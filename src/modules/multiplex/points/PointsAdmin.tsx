@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Table from "@/app/components/Table"
 import FormAddElement from "@/app/components/FormAddElement"
 import { MultiplexPoints } from "../types/Interfaces"
@@ -10,12 +10,20 @@ import { inputs } from "@/app/types/data/InputsData"
 import { tables } from "@/app/types/data/TableData"
 import { employeeProps } from "@/app/types/Props"
 import TableLayout from "../../../components/TableLayout"
+import { getMultiplexPointsProxy, updateMultiplexPointsProxy } from "@/app/services/MultiplexService"
+import { createMultiplexPointsAdapter } from "../adapters/MultiPointsAdapter"
+import { multiPointsHeader } from "../types/TableHeaders"
+import Account from "@/app/services/Account"
 
 export default function MultiplexPointsAdmin({ searchTerm }: employeeProps ) {
   const [action, setAction] = useState("Add") // Add | View
+  const [controlMessage, setControlMessage] = useState('')
+  const [hasError, setHasError] = useState(false)
+  const [multiPoints, setMultiPoints] = useState<MultiplexPoints[]>([])
 
-  const headers: string[] = ['Rol','Puntos por snack', 'Puntos por ticket']
-  const filteredData = tables.multiplexPoints.filter((item) => {
+  const account: Account = Account.getInstance()
+  
+  const filteredData = multiPoints.filter((item) => {
     return (
       item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.pointsSnack.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -23,13 +31,31 @@ export default function MultiplexPointsAdmin({ searchTerm }: employeeProps ) {
       )
   })
 
+  useEffect(() => {
+    async function fetchData() {
+   
+      getMultiplexPointsProxy(account.getIDMultiplex())
+        .then(response => {
+          setMultiPoints(response)
+      })
+    }
+    fetchData()
+  },[action])
+
   const points: MultiplexPoints = {
-    type: 'movie',
+    type: 'multiplexPoints',
     pointsSnack:'',
     pointsTicket: ''
   }
-  const showPoints = (points: typeMultiplex) => {
-    console.log(points)
+  const sendPoints = (points: MultiplexPoints) => {
+    updateMultiplexPointsProxy(account.getIDMultiplex(),points)
+    .then(response => {
+      setHasError(
+        response.toLowerCase().includes('inválido') ||
+        response.toLowerCase().includes('inválida')
+      )
+      setControlMessage(response)
+    })
   }
 
   return (
@@ -38,9 +64,12 @@ export default function MultiplexPointsAdmin({ searchTerm }: employeeProps ) {
         action=== "Add" ? 
         <FormAddElement
           typeElement="Puntos del multiplex"
-          execute={showPoints}
-          model={points}
-          schema={multiplexPointsSchema}
+          required={{
+            execute: sendPoints,
+            model: points,
+            schema: multiplexPointsSchema,
+          }}
+         
           inputs={inputs.multiplexPoints}
           aditionalCondition={{
             have:false,
@@ -48,10 +77,16 @@ export default function MultiplexPointsAdmin({ searchTerm }: employeeProps ) {
             second:"",
             error: ""
           }}
-          sendMessage="Agregar"
+          messages={{
+            send:"Enviar",
+            control: controlMessage,
+            error: hasError,
+            changeError: setHasError,
+            changeMessage: setControlMessage
+          }}
         /> :
         <Table 
-          headers={headers}
+          headers={multiPointsHeader}
           filteredData={filteredData}
         />
       }

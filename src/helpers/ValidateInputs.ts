@@ -1,10 +1,24 @@
 import { z } from 'zod'
 
-export const newUserSchema = z.object({
+export const newClientSchema = z.object({
   name: z.string().min(1, {message: 'El nombre es requerido'}).max(50),
-  position: z.string().min(1, {message: 'El cargo es requerido'}).max(50),
-  phoneNumber: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'El número de celular es requerido'}),
   identification: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La cédula es requerida'}),
+  dateBirth: z.string().refine((date)=> new Date(date).toString()!=='Fecha invalida',{message:'La fecha de nacimiento es requerida'}), 
+  phoneNumber: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'El número de celular es requerido'}),
+  email: z.string().email({message:'El correo electronico es requerido'}),
+  
+})
+
+
+export const newEmployeeSchema = z.object({
+  name: z.string().min(1, {message: 'El nombre es requerido'}).max(50),
+  identification: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La cédula es requerida'}),
+  dateBirth: z.string().refine((date)=> new Date(date).toString()!=='Fecha invalida',{message:'La fecha de nacimiento es requerida'}), 
+  email: z.string().email({message:'El correo electronico es requerido'}),
+  salary: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'El salario es requerido'}),
+  startDate: z.string().refine((date)=> new Date(date).toString()!=='Fecha invalida',{message:'La fecha de nacimiento es requerida'}), 
+  multiplex: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'El multiplex es requerido'}),
+  phoneNumber: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'El número de celular es requerido'}),
   password: z.string().min(1, {message: 'La contraseña es requerido'}).max(50),
   conPassword: z.string().min(1, {message: 'La contraseña es requerido'}).max(50),
 })
