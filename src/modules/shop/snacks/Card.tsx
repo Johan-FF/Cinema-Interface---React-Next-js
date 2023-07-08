@@ -1,7 +1,9 @@
+'use client'
+
 import { cardProps } from "../types/Props"
 import { useCart } from "../hooks/useCart"
 
-export default function Card({url,snack}: cardProps) {
+export default function Card({snack}: cardProps) {
   const { addProduct } = useCart()
 
   return (

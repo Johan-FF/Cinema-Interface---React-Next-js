@@ -9,30 +9,30 @@ import { ChangeEvent, useState } from "react"
 import { pages } from "../types/data/NavData"
 import Account from "../services/Account"
 import ClientButton from "../modules/shop/components/ClientButton"
+import Cookies from 'js-cookie'
 import { set } from "zod"
+import { KEY_USER_TOKEN } from "../environment"
+import { useRouter } from "next/navigation"
 
 export default function NavBar(
   { type, func, changeCurrentPane }: navBarProps
 ) {
-  const [viewMenu, setViewMenu] = useState(false)
-
-  const [clientValue, setClientValue] = useState('');
-
-  const handleClientChange = (event:ChangeEvent<HTMLInputElement>) => {
-    setClientValue(event.target.value);
-  }
-
-  const resetClient = ()=>{
-    if(clientValue.length>=8){
-      setClientValue("");
-      func();
-    }else{
-      setClientValue("");
-    }
-    
-  }
-
+  const router = useRouter()
   const account: Account = Account.getInstance()
+  const [viewMenu, setViewMenu] = useState(false)
+  const [clientValue, setClientValue] = useState('')
+  const handleClientChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setClientValue(event.target.value)
+  }
+
+  const resetClient = () => {
+    if (clientValue.length >= 8) {
+      setClientValue("")
+      func()
+    } else {
+      setClientValue("")
+    }
+  }
 
   const getType = () => {
     const typeMap = {
@@ -45,12 +45,17 @@ export default function NavBar(
       GenMultiplex: "gen",
       MulSchedule: "mul",
       MulPoints: "mul"
-    };
+    }
 
-    return typeMap[type] || null;
-  };
+    return typeMap[type] || null
+  }
 
-  const menuType = getType();
+  const menuType = getType()
+
+  const logOut = () => {
+    Cookies.remove(KEY_USER_TOKEN)
+    router.push('/')
+  }
 
   return (
     <>
@@ -101,31 +106,29 @@ export default function NavBar(
         <section className={`w-[100%] ${menuType === 'shop' ? "h-[30%]" : "h-[20%]"} `}>
           {
             menuType === "shop" ?
-           
               <>
                 <div className="h-[40%] flex-center">
-                  <input className="text-input" type="number" value={clientValue} onChange={handleClientChange} name="" id="" placeholder="Ingrese cédula" />
+                  <input className="text-input max-w-[90%]" type="number" value={clientValue} placeholder="Cédula de cliente" />
                 </div>
-
                 <div className="h-[40%] flex-center flex flex-col">
                   <div className="flex justify-center" >
-                    <ClientButton func={func} client={clientValue} />
-                    <div onClick={resetClient}>
-                      <BlueButton content="terminar operación" leftRounded={true} rightRounded={true} />  
-                    </div>    
+                    <ClientButton/>
+                    <span onClick={resetClient}>
+                      <BlueButton content="terminar operación" leftRounded={true} rightRounded={true} />
+                    </span>
                   </div>
                   <div className="flex justify-center mt-4">
-                    <Link href={'/'} className="h-[100%]">
+                    <span onClick={() => logOut} className="h-[100%]">
                       <RedButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
-                    </Link>
+                    </span>
                   </div>
                 </div>
               </>
               :
               <>
-                <Link href={'/'} className="h-[30%] w-[100%] flex-center">
+                <span onClick={() => logOut} className="h-[30%] w-[100%] flex-center">
                   <BlueButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
-                </Link>
+                </span>
               </>
           }
         </section>

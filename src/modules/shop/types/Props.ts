@@ -1,9 +1,7 @@
 import { Dispatch, SetStateAction } from "react"
-import { Multiplex, Snack } from "./Interfaces"
-
-export interface clientButtonProps {
-  func: () => void
-}
+import { Snack } from "./Interfaces"
+import { Multiplex } from "../../director/types/Interfaces"
+import { Movie } from "@/app/types/Interfaces"
 
 export interface cartHeaderProps {
   showCartModal: Dispatch<SetStateAction<boolean>>,
@@ -49,11 +47,10 @@ export interface schedulesListProps {
 
 
 export interface cardProps {
-  url: string,
   snack: Snack
 }
 
 export interface cardListProps {
   typeProduct: string,
-  filteredData: Snack[] | movieProps[] | cardProps[]
+  filteredData: Snack[] | Movie[]
 }

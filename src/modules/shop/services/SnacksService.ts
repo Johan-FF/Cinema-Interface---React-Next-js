@@ -1,9 +1,21 @@
-import { get } from "@/app/services/HttpService"
-
-const apiUrl = ''
+import { API_URL } from "@/app/environment"
+import { get, generateAuthHeader } from "@/app/services/HttpService"
+import { Snack } from "../types/Interfaces"
+import { getSnacksAdapter } from "../adapters/SnacksAdapter"
 
 // Operación GET para obtener todos los snacks
-export async function getAllSnacks(id:number): Promise<any[]> {
-  const url = `${apiUrl}/snacks/all/${id}`
-  return get(url)
+async function getAllSnacks(): Promise<any[]> {
+  const url = `${API_URL}/snacks/all`
+  return get(url, generateAuthHeader())
+}
+export async function getAllSnacksProxy(): Promise<Snack[]> {
+  let list: Snack[] = []
+  await getAllSnacks()
+    .then(response => {
+      list = getSnacksAdapter(response)
+    })
+    .catch(error => {
+      throw new Error(`Error request (allSnacks): ${error}`)
+    })
+  return list
 }
