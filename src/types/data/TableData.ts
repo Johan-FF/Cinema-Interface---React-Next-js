@@ -1,5 +1,6 @@
-import { Employee, Schedule, MultiplexPoints } from "@/app/modules/admin/types/Interfaces"
-import {Multiplex} from  "@/app/modules/shop/types/Interfaces"
+import { Schedule, MultiplexPoints } from "@/app/modules/multiplex/types/Interfaces"
+import { Employee } from "../Interfaces"
+import {Multiplex} from  "@/app/modules/director/types/Interfaces"
 import { Movie } from "../Interfaces"
 
 export const tables: 
@@ -16,11 +17,15 @@ export const tables:
       id: '1',
       startDate: '10/12/2022',
       salary: '1300333',
-      multiple: 'Titán',
+      multiplex: 'Titán',
       name: 'juan',
       position: 'cajero',
       phoneNumber: '333993991',
       identification: '123444',
+      dateBirth: '10/12/1990',
+      codeEmployee: '123333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -32,7 +37,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '1233313',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -44,7 +53,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '41233',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -56,7 +69,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '67133',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -68,7 +85,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '600333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -80,7 +101,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '9901333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -92,7 +117,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '2333333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -104,7 +133,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '823833',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -112,11 +145,15 @@ export const tables:
       id: '1',
       startDate: '10/12/2022',
       salary: '1300333',
-      multiple: 'Titán',
+      multiplex: 'Titán',
       name: 'juan',
       position: 'cajero',
       phoneNumber: '333993991',
       identification: '123444',
+      dateBirth: '10/12/1990',
+      codeEmployee: '123333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -128,7 +165,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '413333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -140,7 +181,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '999333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -152,7 +197,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '1223333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -164,7 +213,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '603333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -176,7 +229,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '88333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -188,7 +245,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '9923333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
     {
@@ -200,7 +261,11 @@ export const tables:
       phoneNumber: '32123993991',
       startDate: '4/11/2022',
       salary: '1300333',
-      multiple: 'Unicentro',
+      multiplex: 'Unicentro',
+      dateBirth: '10/12/1990',
+      codeEmployee: '923333',
+      email:'test@gmail.com',
+      password:'12345'
     
     },
   ],

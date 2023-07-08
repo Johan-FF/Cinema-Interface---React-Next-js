@@ -1,21 +1,24 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Table from "@/app/components/Table"
 import FormAddElement from "@/app/components/FormAddElement"
 import { Movie } from "@/app/types/Interfaces"
 import { typeMovie } from "@/app/types/Types"
 import { movieSchema } from "@/app/helpers/ValidateInputs"
 import { inputs } from "@/app/types/data/InputsData"
-import { tables } from "@/app/types/data/TableData"
 import { employeeProps } from "@/app/types/Props"
 import TableLayout from "../../../components/TableLayout"
+import { getAllMoviesProxy, createMovieProxy } from "@/app/services/MoviesService"
+import { movieHeaders } from "../../multiplex/types/TableHeaders"
 
 export default function MovieAdmin({ searchTerm }: employeeProps ) {
   const [action, setAction] = useState("Add") // Add | View
 
-  const headers: string[] = ['Rol','Título', 'Duración', 'Edad', 'Sinópsis', 'Url Imágen']
-  const filteredData = tables.movies.filter((item) => {
+  const [controlMessage, setControlMessage] = useState('')
+  const [hasError, setHasError] = useState(false)
+  const [movies, setMovies] = useState<Movie[]>([])
+  const filteredData = movies.filter((item) => {
     return (
       item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -26,7 +29,18 @@ export default function MovieAdmin({ searchTerm }: employeeProps ) {
       )
   })
 
+  useEffect(() => {
+    async function fetchData() {
+      getAllMoviesProxy()
+        .then(response => {
+          setMovies(response)
+      })
+    }
+    fetchData()
+  },[action])
+
   const movie: Movie = {
+    id:'',
     type: 'movie',
     title: '',
     duration: '',
@@ -34,8 +48,15 @@ export default function MovieAdmin({ searchTerm }: employeeProps ) {
     synopsis: '',
     imgUrl: '',
   }
-  const showMovie = (movie: typeMovie) => {
-    console.log(movie)
+  const sendMovie = (movie: typeMovie) => {
+    createMovieProxy(movie)
+      .then(response => {
+        setHasError(
+          response.toLowerCase().includes('inválido') ||
+          response.toLowerCase().includes('inválida')
+        )
+        setControlMessage(response)
+      })
   }
 
   return (
@@ -44,9 +65,11 @@ export default function MovieAdmin({ searchTerm }: employeeProps ) {
         action=== "Add" ? 
         <FormAddElement
           typeElement="Película"
-          execute={showMovie}
-          model={movie}
-          schema={movieSchema}
+          required={{
+            execute: sendMovie,
+            model: movie,
+            schema: movieSchema,
+          }}
           inputs={inputs.movie}
           aditionalCondition={{
             have:false,
@@ -54,10 +77,17 @@ export default function MovieAdmin({ searchTerm }: employeeProps ) {
             second:"",
             error: ""
           }}
-          sendMessage="Agregar"
+          messages={{
+            send:"Agregar",
+            control: controlMessage,
+            error: hasError,
+            changeError: setHasError,
+            changeMessage: setControlMessage
+          }}
+       
         /> :
         <Table 
-          headers={headers}
+          headers={movieHeaders}
           filteredData={filteredData}
         />
       }

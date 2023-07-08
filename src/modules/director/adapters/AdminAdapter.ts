@@ -27,7 +27,8 @@ export const getAdminsAdapter = (response: any[]): Employee[] => {
       salary: item.salary,
       startDate: item.date_contract,
       multiplex: item.multiplex,
-      password: ''
+      password: item.password,
+      conPassword:''
     }
   })
 }

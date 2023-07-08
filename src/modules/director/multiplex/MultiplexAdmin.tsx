@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Table from "@/app/components/Table"
 import FormAddElement from "@/app/components/FormAddElement"
 import { Multiplex } from "../types/Interfaces"
@@ -10,12 +10,15 @@ import { inputs } from "@/app/types/data/InputsData"
 import { tables } from "@/app/types/data/TableData"
 import { employeeProps } from "@/app/types/Props"
 import TableLayout from "../../../components/TableLayout"
+import { createMultiplexProxy, getAllMultiplexProxy } from "@/app/services/MultiplexService"
+import { multiplexHeaders } from "../../multiplex/types/TableHeaders"
 
 export default function MultiplexAdmin({ searchTerm }: employeeProps ) {
   const [action, setAction] = useState("Add") // Add | View
-
-  const headers: string[] = ['Rol','id','Nombre', 'Número de salas', 'Puntos por ticket', 'Puntos por snack']
-  const filteredData = tables.multiplex.filter((item) => {
+  const [controlMessage, setControlMessage] = useState('')
+  const [hasError, setHasError] = useState(false)
+  const [multiplexRes, setMultiplexRes] = useState<Multiplex[]>([])
+  const filteredData = multiplexRes.filter((item) => {
     return (
       item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -23,16 +26,35 @@ export default function MultiplexAdmin({ searchTerm }: employeeProps ) {
       )
   })
 
+  useEffect(() => {
+    async function fetchData() {
+      getAllMultiplexProxy()
+        .then(response => {
+          setMultiplexRes(response)
+      })
+    }
+    fetchData()
+  },[action])
+
+
   const multiplex: Multiplex = {
-    type: 'movie',
+    type: 'multiplex',
     id:'',
     name:'',
     numSala:'',
     pointSnack:'',
     pointTicket: ''
   }
-  const showMultiplex = (multiplex: typeMultiplex) => {
-    console.log(multiplex)
+
+  const sendMultiplex = (multiplex: Multiplex) => {
+    createMultiplexProxy(multiplex)
+      .then(response => {
+        setHasError(
+          response.toLowerCase().includes('inválido') ||
+          response.toLowerCase().includes('inválida')
+        )
+        setControlMessage(response)
+      })
   }
 
   return (
@@ -40,10 +62,12 @@ export default function MultiplexAdmin({ searchTerm }: employeeProps ) {
       {
         action=== "Add" ? 
         <FormAddElement
-          typeElement="Puntos multiplex"
-          execute={showMultiplex}
-          model={multiplex}
-          schema={multiplexSchema}
+          typeElement="Multiplex"
+          required={{
+            execute: sendMultiplex,
+            model: multiplex,
+            schema: multiplexSchema,
+          }}
           inputs={inputs.multiplex}
           aditionalCondition={{
             have:false,
@@ -51,10 +75,16 @@ export default function MultiplexAdmin({ searchTerm }: employeeProps ) {
             second:"",
             error: ""
           }}
-          sendMessage="Agregar"
+          messages={{
+            send:"Agregar",
+            control: controlMessage,
+            error: hasError,
+            changeError: setHasError,
+            changeMessage: setControlMessage
+          }}
         /> :
         <Table 
-          headers={headers}
+          headers={multiplexHeaders}
           filteredData={filteredData}
         />
       }

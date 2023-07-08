@@ -1,46 +1,78 @@
 "use client"
 
-import { useState } from "react"
+import {useEffect, useState } from "react"
 import Table from "@/app/components/Table"
 import FormAddElement from "@/app/components/FormAddElement"
 import { NewUser } from "../types/Interfaces"
 import { typeUser } from "@/app/types/Types"
-import { newUserSchema } from "@/app/helpers/ValidateInputs"
+import { newEmployeeSchema } from "@/app/helpers/ValidateInputs"
 import { inputs } from "@/app/types/data/InputsData"
 import { tables } from "@/app/types/data/TableData"
 import { employeeProps } from "@/app/types/Props"
+import { getAllAdminsProxy, createAdminProxy } from "../services/AdminService"
 import TableLayout from "../../../components/TableLayout"
+import { Employee } from "@/app/types/Interfaces"
+import { adminsHeaders } from "../../multiplex/types/TableHeaders"
 
 export default function EmployeeAdmin({ searchTerm }: employeeProps) {
   const [action, setAction] = useState("Add") // Add | View
 
-  const headers: string[] = ['Rol', 'Código', 'Cédula', 'Cargo', 'Nombre', 'Número de telefono', 'Fecha inicio de contrato', 'Salario', 'Múltiple']
-  const filteredData = tables.users.filter((item) => {
+  const [hasError, setHasError] = useState(false)
+
+  const [controlMessage, setControlMessage] = useState('')
+
+  const [employees, setEmployees] = useState<Employee[]>([])
+  
+  const filteredData = employees.filter((item) => {
     return (
       item.type.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.id.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.startDate.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.salary.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.multiple.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.multiplex.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-      item.position.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.phoneNumber.toLowerCase().includes(searchTerm.toLowerCase()) ||
       item.identification.toLowerCase().includes(searchTerm.toLowerCase())
     )
   })
 
-  const newUser: NewUser = {
-    type: 'newUser',
+  useEffect(() => {
+    async function fetchData() {
+      getAllAdminsProxy()
+        .then(response => {
+          setEmployees(response)
+      })
+    }
+    fetchData()
+  },[action])
+  
+  const newEmployee: Employee = {
+    type: 'employee',
     name: '',
-    position: '',
     phoneNumber: '',
     identification: '',
     password: '',
-    conPassword: '',
+    conPassword:'',
+    codeEmployee:'',
+    dateBirth:'',
+    email:'',
+    id:'',
+    multiplex:'',
+    salary:'',
+    startDate:''
   }
-  const showUser = (user: typeUser) => {
-    console.log(user)
+
+  const showUser = (user: Employee) => {
+    createAdminProxy(user)
+    .then(response => {
+      setHasError(
+        response.toLowerCase().includes('inválido') ||
+        response.toLowerCase().includes('inválida')
+      )
+      setControlMessage(response)
+    })
   }
+
 
   return (
     <TableLayout type="Employee" setAction={setAction}>
@@ -48,9 +80,11 @@ export default function EmployeeAdmin({ searchTerm }: employeeProps) {
         action === "Add" ?
           <FormAddElement
             typeElement="Empleado"
-            execute={showUser}
-            model={newUser}
-            schema={newUserSchema}
+            required={{
+              execute: showUser,
+              model: newEmployee,
+              schema: newEmployeeSchema,
+            }}
             inputs={inputs.record}
             aditionalCondition={{
               have: true,
@@ -58,10 +92,16 @@ export default function EmployeeAdmin({ searchTerm }: employeeProps) {
               second: "conPassword",
               error: "La contraseña no coincide"
             }}
-            sendMessage="Agregar"
+            messages={{
+              send:"Agregar",
+              control: controlMessage,
+              error: hasError,
+              changeError: setHasError,
+              changeMessage: setControlMessage
+            }}
           /> :
           <Table
-            headers={headers}
+            headers={adminsHeaders}
             filteredData={filteredData}
           />
       }

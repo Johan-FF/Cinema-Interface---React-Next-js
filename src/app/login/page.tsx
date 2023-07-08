@@ -9,6 +9,7 @@ import Background from "@/app/components/Background"
 import { login } from "@/app/services/Auth"
 import { useRouter } from "next/navigation"
 import Account from "@/app/services/Account"
+import { useState } from "react"
 
 export default function Login() {
   const router = useRouter()
@@ -17,6 +18,9 @@ export default function Login() {
     identification: '',
     password: '',
   }
+
+  const [controlMessage, setControlMessage] = useState('')
+  const [hasError, setHasError] = useState(false)
 
   const fetchLogin = async (data: User) => {
     await login({
@@ -59,11 +63,21 @@ export default function Login() {
             </section>
             <section className="w-[100%] max-h-[80%] pr-[5%] flex-col-center">
               <Form
-                execute={fetchLogin}
-                model={user}
-                schema={userSchema}
+                required={
+                  {
+                    execute: fetchLogin,
+                    model: user,
+                    schema: userSchema
+                  }
+                }
                 inputs={inputs.login}
-                sendMessage={"Ingresar"}
+                messages={{
+                  send:"ingresar",
+                  control: controlMessage,
+                  error: hasError,
+                  changeError: setHasError,
+                  changeMessage: setControlMessage
+                }}
                 aditionalCondition={{
                   have: false,
                   first: "",

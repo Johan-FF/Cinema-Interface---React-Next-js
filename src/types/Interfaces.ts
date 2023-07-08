@@ -32,5 +32,6 @@ export interface Employee extends Dato {
   salary: string,
   startDate: string,
   multiplex: string,
-  password: string
+  password: string,
+  conPassword: string
 }
