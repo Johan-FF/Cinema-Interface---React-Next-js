@@ -5,7 +5,7 @@ import ModalButton from "@/app/components/ModalButton"
 import Form from '@/app/components/Form'
 import { NewUser } from '../../director/types/Interfaces'
 import { typeUser } from "@/app/types/Types"
-import { newUserSchema } from "@/app/helpers/ValidateInputs"
+import { newEmployeeSchema } from '@/app/helpers/ValidateInputs'
 import { inputs } from "@/app/types/data/InputsData"
 import { createClientProxy } from '../services/ClientService'
 import { Client } from '../types/Interfaces'
@@ -50,7 +50,7 @@ export default function ClientButton() {
           required={{
             execute: sendClient,
             model: newUser,
-            schema: newUserSchema,
+            schema: newEmployeeSchema,
           }}
           inputs={inputs.record}
           aditionalCondition={{
