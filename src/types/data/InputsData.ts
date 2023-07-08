@@ -23,25 +23,46 @@ export const inputs:
   ],
   record: [
     {
-      content: "Nombre",
-      id: "name",
-      placeHolder: "Ingrese su nombre",
+      content: "Cédula",
+      id: "identification",
+      placeHolder: "Ingrese la cédula",
     },
     {
-      content: "Cargo",
-      id: "position",
-      placeHolder: "Ingrese su cargo",
+      content: "Nombre",
+      id: "name",
+      placeHolder: "Ingrese el nombre",
+    },
+    {
+      content: "Fecha de nacimiento",
+      id: "dateBirth",
+      placeHolder: "Ingrese la fecha",
+    },
+    {
+      content: "Correo electrónico",
+      id: "email",
+      placeHolder: "Ingrese la fecha",
+    },
+    {
+      content: "Salario",
+      id: "salary",
+      placeHolder: "Ingrese el salario",
+    },
+    {
+      content: "Fecha de inicio",
+      id: "startDate",
+      placeHolder: "Ingrese la fecha de inicio",
+    },
+    {
+      content: "Multiplex",
+      id: "multiplex",
+      placeHolder: "Ingrese el multiplex",
     },
     {
       content: "Número de Celular",
       id: "phoneNumber",
       placeHolder: "Ingrese su número de celular",
     },
-    {
-      content: "Cédula",
-      id: "identification",
-      placeHolder: "Ingrese su cédula",
-    },
+    
     {
       content: "Contraseña",
       id: "password",

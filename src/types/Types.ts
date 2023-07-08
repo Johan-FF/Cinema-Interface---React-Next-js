@@ -33,7 +33,11 @@ export type valuesMultiplexInput= "name" | "numSala" | "pointSnack" | "pointTick
 
 export type valuesMultiplexPointsInput = "pointsSnack" | "pointsTicket"
 
-export type valuesInput = valuesLoginInput | valuesScheduleInput | valuesMovieInput | valuesMultiplexInput | valuesMultiplexPointsInput
+export type valuesEmployeeInput = "name"| "identification" | "dateBirth" | "email" | "salary" | "startDate" | "multiplex" | "phoneNumber" | "password" | "conPassword"
+
+export type valuesClientInput = "name" | "identification" | "dateBirth" | "phoneNumber" | "email"
+
+export type valuesInput = valuesLoginInput |valuesEmployeeInput | valuesClientInput| valuesScheduleInput | valuesMovieInput | valuesMultiplexInput | valuesMultiplexPointsInput
 
 /**
  *  String data types that describe the valid web pages for each type of user:
