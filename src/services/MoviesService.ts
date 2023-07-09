@@ -8,7 +8,6 @@ async function getAllMovies(): Promise<any[]> {
   const url = `${API_URL}/movies/all`
   return get(url,generateAuthHeader())
 }
-
 export async function getAllMoviesProxy():Promise<Movie[]>{
   let list: Movie[] = []
   await getAllMovies()
@@ -22,7 +21,7 @@ export async function getAllMoviesProxy():Promise<Movie[]>{
 }
 
 // Operación POST para crear una nueva pelicula
- async function createMovie(movieData: Movie): Promise<any> {
+async function createMovie(movieData: Movie): Promise<any> {
   const url = `${API_URL}/movies/new`
   return post(
     url, 
@@ -30,7 +29,6 @@ export async function getAllMoviesProxy():Promise<Movie[]>{
     generateAuthHeader()
   )
 }
-
 export async function createMovieProxy(movieData: Movie):Promise<string>{
   let message: string = ''
   await createMovie(movieData)

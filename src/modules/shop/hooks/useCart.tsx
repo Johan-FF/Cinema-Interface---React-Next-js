@@ -1,7 +1,14 @@
 import React, { createContext, useContext, useState } from 'react'
 import { Snack } from '../types/Interfaces'
+import { Movie } from '@/app/types/Interfaces'
 
 interface CartContextType {
+  movie: Movie,
+  setMovie: (movie: Movie) => void,
+  chairGeneral: string,
+  setChairGeneral: (chair: string) => void,
+  chairPreferential: string,
+  setChairPreferential: (chair: string) => void,
   productList: Snack[],
   addProduct: (snack: Snack) => void,
   decreaseProduct: (id: string) => void,
@@ -10,16 +17,7 @@ interface CartContextType {
   getTotalPoints: () => number,
 }
 
-const initialCartState = {
-  productList: [],
-  addProduct: (snack: Snack) => { },
-  decreaseProduct: (id: string) => { },
-  removeProduct: (id: string) => { },
-  getTotalPrice: () => 0,
-  getTotalPoints: () => 0,
-}
-
-export const CartContext = createContext<CartContextType>(initialCartState)
+export const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export const useCart = (): CartContextType => {
   const context = useContext(CartContext)
@@ -35,6 +33,17 @@ interface CartProviderProps {
 
 export default function CartProvider({ children }: CartProviderProps) {
   const [productList, setProductList] = useState<Snack[]>([])
+  const [movie, setMovie] = useState<Movie>({
+    type: '',
+    id: '',
+    title: '',
+    synopsis: '',
+    age: '',
+    duration: '',
+    imgUrl: ''
+  })
+  const [chairGeneral, setChairGeneral] = useState('')
+  const [chairPreferential, setChairPreferential] = useState('')
 
   const addProduct = (snack: Snack) => {
     setProductList((prevProductList) => {
@@ -77,6 +86,12 @@ export default function CartProvider({ children }: CartProviderProps) {
   }
 
   const cartContextValue: CartContextType = {
+    movie,
+    setMovie,
+    chairGeneral,
+    setChairGeneral,
+    chairPreferential,
+    setChairPreferential,
     productList,
     addProduct,
     decreaseProduct,

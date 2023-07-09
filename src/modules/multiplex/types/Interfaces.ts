@@ -13,3 +13,9 @@ export interface Schedule extends Dato {
   day:string,
   idTheater:string
 }
+
+export interface Theater extends Dato {
+  id: string,
+  idTheater: string,
+  hours: string[]
+}

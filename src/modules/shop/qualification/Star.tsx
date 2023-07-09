@@ -2,8 +2,10 @@
 
 import { useState } from "react"
 import { starProps } from "../types/Props"
+import { useQualification } from "../hooks/useQualification"
 
-export default function Star({ func }: starProps ) {
+export default function Star({ qualification, type }: starProps ) {
+  const { setMovieQualification, setServiceQualification } = useQualification()
   const [isMouseOver, setIsMouseOver] = useState(false)
 
   const handleMouseEnter = () => {
@@ -14,13 +16,20 @@ export default function Star({ func }: starProps ) {
     setIsMouseOver(false)
   }
 
+  const setQualification = () => {
+    if(type==='movie')
+      setMovieQualification(qualification.toString())
+    else if(type==='service')
+      setServiceQualification(qualification.toString())
+  }
+
   return (
     <svg
       className="cursor-pointer"
       width="80"
       height="80"
       viewBox="0 0 100 100"
-      onClick={func}
+      onClick={() => setQualification}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

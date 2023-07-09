@@ -1,9 +1,9 @@
 import { User } from "./Interfaces"
-import { NewUser } from "../modules/director/types/Interfaces"
 import { Schedule, MultiplexPoints } from "../modules/multiplex/types/Interfaces"
 import { Employee } from "./Interfaces"
 import { Multiplex } from "../modules/director/types/Interfaces"
 import { Movie } from "./Interfaces"
+import { Client } from "../modules/shop/types/Interfaces"
 
 /**
  *  Valid data types to store the data of each form (all are interfaces)
@@ -12,18 +12,16 @@ export type typeSchedule = Schedule
 
 export type typeMovie = Movie
 
-export type typeUser = NewUser | User | Employee
+export type typeUser = Client | User | Employee
 
 export type typeMultiplex = Multiplex | MultiplexPoints
 
 export type typeModel = typeUser | typeSchedule | typeMovie | typeMultiplex
 
-
-
 /**
  *  String data types that describe the attributes of each form
  */
-export type valuesLoginInput =  "identification" | "password" | "conPassword" | "name" | "position" | "phoneNumber"
+export type valuesLoginInput =  "identification" | "password"
 
 export type valuesScheduleInput = "movie" | "hour" | "minute"
 

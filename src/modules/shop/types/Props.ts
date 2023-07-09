@@ -2,6 +2,7 @@ import { Dispatch, SetStateAction } from "react"
 import { Snack } from "./Interfaces"
 import { Multiplex } from "../../director/types/Interfaces"
 import { Movie } from "@/app/types/Interfaces"
+import { Theater } from "../../multiplex/types/Interfaces"
 
 export interface cartHeaderProps {
   showCartModal: Dispatch<SetStateAction<boolean>>,
@@ -31,20 +32,24 @@ export interface movieLayoutProps {
 }
 
 export interface starProps {
-  func: () => void
+  qualification: number,
+  type: string
 }
 
-export interface multiplexListProps {
-  selectedMultiplex: number,
-  multiplexes: Multiplex[],
-  setSelectedMultiplex: (id: number) => void
+export interface starMeterProps {
+  type: string
+}
+
+export interface theaterListProps {
+  selectedTheater: string,
+  theaters: Theater[],
+  setSelectedTheater: (id: string) => void
 }
 
 export interface schedulesListProps {
-  selectedMultiplex: number,
-  multiplexes: Multiplex[]
+  selectedTheater: string,
+  theaters: Theater[]
 }
-
 
 export interface cardProps {
   snack: Snack

@@ -1,5 +1,5 @@
-import { Schedule } from "../types/Interfaces"
-import { divideHourFormater, completeHourFormater } from "@/app/helpers/DateFormater"
+import { Schedule, Theater } from "../types/Interfaces"
+import { divideHourFormater, completeHourFormater, splitByComma } from "@/app/helpers/DateFormater"
 
 export const createScheduleAdapter = (schedule: Schedule): any => {return {
     movie_name: schedule.movie,
@@ -21,6 +21,20 @@ export const getSchedulesAdapter = (response: any[]): Schedule[] => {
       minute: scheduleFormated[1],
       day: item.day,
       idTheater: item.id_theater,
+    }
+  })
+}
+
+export const getSchedulesByMultiplexAdapter = (response: any[]): Theater[] => {
+  let id: number = 0
+  let scheduleFormated: string[] = []
+  return response.map((item) => {
+    scheduleFormated = splitByComma(item.hours)
+    return {
+      type: 'Sala',
+      id: (id++).toString(),
+      idTheater: item.id_theater,
+      hours: scheduleFormated,
     }
   })
 }

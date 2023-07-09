@@ -6,14 +6,11 @@ import { createMultiplexPointsAdapter, getMultiplexPointsAdapter } from "../modu
 import { getMultiplexAdapter } from "../modules/director/adapters/MultiplexAdapter"
 import { API_URL } from "../environment"
 
-const apiUrl = ''
-
 // Operación GET para obtener todos los multiplex
 async function getAllMultiplex(): Promise<any[]> {
   const url = `${API_URL}/multiplex/all`
   return get(url,generateAuthHeader())
 }
-
 export async function getAllMultiplexProxy(): Promise<Multiplex[]>{
   let list: Multiplex[] = []
   await getAllMultiplex()
@@ -35,7 +32,6 @@ async function createMultiplex(multiplexData: Multiplex): Promise<any> {
     generateAuthHeader()
   )
 }
-
 export async function createMultiplexProxy(multiplexData: Multiplex): Promise<string>{
   let message: string = ''
   await createMultiplex(multiplexData)
@@ -48,9 +44,6 @@ export async function createMultiplexProxy(multiplexData: Multiplex): Promise<st
   return message
 }
 
-
-
-
 //Operación PUT para modificar los puntos de los multiplex
 async function updateMultiplexPoints(id:string, pointsData: MultiplexPoints): Promise<any> {
   const url = `${API_URL}/multiplex/points/${id}`
@@ -60,7 +53,6 @@ async function updateMultiplexPoints(id:string, pointsData: MultiplexPoints): Pr
     generateAuthHeader()
   )
 }
-
 export async function updateMultiplexPointsProxy(id:string, pointsData: MultiplexPoints):Promise<string>{
   let message: string = ''
   await updateMultiplexPoints(id,pointsData)
@@ -79,7 +71,6 @@ async function getMultiplexPoints(id:string): Promise<any> {
   const url = `${API_URL}/multiplex/points/${id}`
   return get(url,generateAuthHeader())
 }
-
 export async function getMultiplexPointsProxy(id:string): Promise<MultiplexPoints[]> {
   let list: MultiplexPoints[] = []
   await getMultiplexPoints(id)

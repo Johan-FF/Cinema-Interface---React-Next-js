@@ -26,13 +26,43 @@ export async function createClientProxy(clientData: Client): Promise<string> {
 
 
 // Operación POST para verificar existencia de cliente
-export async function verifyClient(id: number): Promise<any> {
-  const url = `${API_URL}/users/client/${id}`
-  return get(url)
+async function verifyClient(identification: string): Promise<any> {
+  const url = `${API_URL}/users/client/${identification}`
+  return get(url, generateAuthHeader())
+}
+export async function verifyClientProxy(id: string): Promise<string> {
+  let message: string = ''
+  await verifyClient(id)
+    .then(response => {
+      message = response.message
+    })
+    .catch(error => {
+      throw new Error(`Error request (verifyClient): ${error}`)
+    })
+  return message
 }
 
 // Operación PUT para los puntos de los clientes
-export async function modifyUserPoints(id: number, pointsData:any): Promise<any> {
+async function modifyUserPoints(id: string, pointsData:any): Promise<any> {
   const url = `${API_URL}/users/points/${id}`
   return put(url,pointsData)
+}
+
+// Operación PUT para la calificacion de los clientes
+async function modifyUserQualification(
+  identification: string, qualificationData: any
+): Promise<any> {
+  const url = `${API_URL}/users/qualification/${identification}`
+  return put(url,qualificationData, generateAuthHeader())
+}
+export async function modifyUserQualificationProxy(id: string, qualification: any): Promise<string> {
+  let message: string = ''
+  await modifyUserQualification(id, qualification)
+    .then(response => {
+      message = response.message
+    })
+    .catch(error => {
+      throw new Error(`Error request (qualificationClient): ${error}`)
+    })
+  return message
 }

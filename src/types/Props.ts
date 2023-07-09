@@ -21,7 +21,6 @@ export interface searchProps {
 
 export interface navBarProps {
   type: valuesNavBar,
-  func: () => void,
   changeCurrentPane: (product: valuesNavBar) => void,
 }
 
@@ -33,7 +32,6 @@ export interface adminLayoutProps {
 
 export interface backgroundProps {
   children: ReactNode,
-  viewProducts: boolean
 }
 
 export interface buttonProps {
@@ -42,6 +40,9 @@ export interface buttonProps {
   rightRounded: boolean,
 }
 
+export interface clientButtonProps {
+  identification: string
+}
 
 export interface formProps {
   required: {

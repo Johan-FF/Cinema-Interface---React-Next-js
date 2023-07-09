@@ -4,53 +4,36 @@ import Image from "next/image"
 import BlueButton from "./BlueButton"
 import RedButton from "./RedButton"
 import { navBarProps } from "../types/Props"
-import Link from "next/link"
-import { ChangeEvent, useState } from "react"
+import { useEffect, useState, ChangeEvent } from "react"
 import { pages } from "../types/data/NavData"
 import Account from "../services/Account"
 import ClientButton from "../modules/shop/components/ClientButton"
 import Cookies from 'js-cookie'
-import { set } from "zod"
 import { KEY_USER_TOKEN } from "../environment"
 import { useRouter } from "next/navigation"
+import { useClient } from "../modules/shop/hooks/useClient"
 
 export default function NavBar(
-  { type, func, changeCurrentPane }: navBarProps
+  { type, changeCurrentPane }: navBarProps
 ) {
+  const { setIdentification } = useClient()
+  const [viewMenu, setViewMenu] = useState(false)
+  const [menuType, setMenuType] = useState<'gen' | 'mul' | 'shop' | ''>('')
   const router = useRouter()
   const account: Account = Account.getInstance()
-  const [viewMenu, setViewMenu] = useState(false)
-  const [clientValue, setClientValue] = useState('')
-  const handleClientChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setClientValue(event.target.value)
+
+  useEffect(() => {
+    if(type==='Dashboard' || type==='GenEmployee' || type==='GenMultiplex' || type==='GenMovie')
+      setMenuType('gen')
+    else if (type==='MulPoints' || type==='MulSchedule')
+      setMenuType('mul')
+    else if (type==='ShopMovies' || type==='ShopQualification' || type==='ShopSnacks')
+      setMenuType('shop')
+  }, [])
+
+  const changeIdentification = (event: ChangeEvent<HTMLInputElement>) => {
+    setIdentification(event.target.value)
   }
-
-  const resetClient = () => {
-    if (clientValue.length >= 8) {
-      setClientValue("")
-      func()
-    } else {
-      setClientValue("")
-    }
-  }
-
-  const getType = () => {
-    const typeMap = {
-      ShopSnacks: "shop",
-      ShopMovies: "shop",
-      ShopQualification: "shop",
-      GenEmployee: "gen",
-      GenMovie: "gen",
-      Dashboard: "gen",
-      GenMultiplex: "gen",
-      MulSchedule: "mul",
-      MulPoints: "mul"
-    }
-
-    return typeMap[type] || null
-  }
-
-  const menuType = getType()
 
   const logOut = () => {
     Cookies.remove(KEY_USER_TOKEN)
@@ -108,14 +91,12 @@ export default function NavBar(
             menuType === "shop" ?
               <>
                 <div className="h-[40%] flex-center">
-                  <input className="text-input max-w-[90%]" type="number" value={clientValue} placeholder="Cédula de cliente" />
+                  <input onChange={() => changeIdentification} className="text-input max-w-[90%]" type="number" placeholder="Cédula de cliente" />
                 </div>
                 <div className="h-[40%] flex-center flex flex-col">
                   <div className="flex justify-center" >
                     <ClientButton/>
-                    <span onClick={resetClient}>
-                      <BlueButton content="terminar operación" leftRounded={true} rightRounded={true} />
-                    </span>
+                    <BlueButton content="Finalizar" leftRounded={true} rightRounded={true} />
                   </div>
                   <div className="flex justify-center mt-4">
                     <span onClick={() => logOut} className="h-[100%]">

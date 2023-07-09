@@ -1,8 +1,11 @@
 'use client'
 
+import { useClient } from "../modules/shop/hooks/useClient"
 import { backgroundProps } from "../types/Props"
 
-export default function Background({ viewProducts, children }: backgroundProps ) {
+export default function Background({ children }: backgroundProps ) {
+  const { hideContent } = useClient()
+
   return (
     <div className="w-full h-full shadow-big relative">
       <span className="w-full h-full absolute  top-0 left-0 overflow-hidden ">
@@ -16,7 +19,7 @@ export default function Background({ viewProducts, children }: backgroundProps )
         {children}
       </span>
       {
-        !viewProducts ? 
+        !hideContent ? 
         <span className=" w-full h-full absolute top-0 left-0 bg-black bg-opacity-80 "></span> : <></>
       }
     </div>

@@ -1,6 +1,6 @@
 'use client'
 
-import Silla from "./Chair"
+import Chair from "./Chair"
 
 const getList = (max: number) => {
   let list = []
@@ -41,14 +41,14 @@ export default function Cinema() {
             {
               preferencial.map(value => {
                 return (
-                  <Silla key={value} />
+                  <Chair key={value} />
                 )
               })
             }
             {
               general.map(value => {
                 return (
-                  <Silla key={value*50} />
+                  <Chair key={value*50} />
                 )
               })
             }

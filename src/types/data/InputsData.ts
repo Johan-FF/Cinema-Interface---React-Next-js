@@ -2,14 +2,15 @@ import { valuesInput } from "../Types"
 
 export const inputs: 
   {
-    login: {content: string, id: valuesInput, placeHolder: string}[],
-    record: {content: string, id: valuesInput, placeHolder: string}[],
+    user: {content: string, id: valuesInput, placeHolder: string}[],
+    employee: {content: string, id: valuesInput, placeHolder: string}[],
+    client: {content: string, id: valuesInput, placeHolder: string}[],
     schedule: {content: string, id: valuesInput, placeHolder: string}[],
     movie: {content: string, id: valuesInput, placeHolder: string}[],
     multiplex: {content: string, id: valuesInput, placeHolder: string}[]
     multiplexPoints: {content: string, id: valuesInput, placeHolder: string}[]
   } = {
-  login: [
+  user: [
     {
       content: "Cédula",
       id: "identification",
@@ -21,7 +22,7 @@ export const inputs:
       placeHolder: "Ingrese su contraseña",
     },
   ],
-  record: [
+  employee: [
     {
       content: "Cédula",
       id: "identification",
@@ -72,6 +73,33 @@ export const inputs:
       content: "Confirmar contraseña",
       id: "conPassword",
       placeHolder: "Ingrese su contraseña",
+    },
+  ],
+  client: [
+    {
+      content: "Cédula",
+      id: "identification",
+      placeHolder: "Ingrese la cédula",
+    },
+    {
+      content: "Nombre",
+      id: "name",
+      placeHolder: "Ingrese nombre",
+    },
+    {
+      content: "Fecha de Nacimiento",
+      id: "dateBirth",
+      placeHolder: "Ingrese fecha de nacimiento",
+    },
+    {
+      content: "Número de celular",
+      id: "phoneNumber",
+      placeHolder: "Ingrese el número de celular",
+    },
+    {
+      content: "Correo",
+      id: "email",
+      placeHolder: "Ingrese el correo electrónico",
     },
   ],
   schedule: [

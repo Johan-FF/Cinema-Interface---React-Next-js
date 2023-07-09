@@ -22,7 +22,7 @@ const Multiplex: NextPage = () => {
   return (
     <AdminLayout
       search={{ children:<></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange }}
-      navBar={{ func:()=>{}, type: currentPane, changeCurrentPane: changeCurrentPane }}
+      navBar={{ type: currentPane, changeCurrentPane: changeCurrentPane }}
     >
       {
         'MulSchedule' === currentPane ?

@@ -1,7 +1,7 @@
 import { API_URL } from "@/app/environment"
 import { generateAuthHeader, get, post } from "@/app/services/HttpService"
-import { Schedule } from "../types/Interfaces"
-import { getSchedulesAdapter, createScheduleAdapter } from "../adapters/ScheduleAdapter"
+import { Schedule, Theater } from "../types/Interfaces"
+import { getSchedulesAdapter, createScheduleAdapter, getSchedulesByMultiplexAdapter } from "../adapters/ScheduleAdapter"
 
 // Operación GET para obtener todos los horarios
 async function getAllSchedules(): Promise<any> {
@@ -39,4 +39,25 @@ export async function createScheduleProxy(scheduleData: Schedule): Promise<strin
       throw new Error(`Error request (createSchedules): ${error}`)
     })
   return message
+}
+
+// Operación GET para obtener todos los horarios
+async function getAllSchedulesByMultiplex(
+  idMovie: string, idMultiplex: string
+): Promise<any> {
+  const url = `${API_URL}/schedules/all/${idMovie}/${idMultiplex}`
+  return get(url,generateAuthHeader())
+}
+export async function getAllSchedulesByMultiplexProxy(
+  idMovie: string, idMultiplex: string
+): Promise<Theater[]> {
+  let list: Theater[] = []
+  await getAllSchedulesByMultiplex(idMovie, idMultiplex)
+    .then(response => {
+      list = getSchedulesByMultiplexAdapter(response)
+    })
+    .catch(error => {
+      throw new Error(`Error request (allSchedulesByMultiplex): ${error}`)
+    })
+  return list
 }

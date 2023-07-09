@@ -11,6 +11,8 @@ import { withAuth } from '@/app/middlewares/withAuth'
 import { Snack } from '@/app/modules/shop/types/Interfaces'
 import { Movie } from '@/app/types/Interfaces'
 import { getAllSnacksProxy } from '@/app/modules/shop/services/SnacksService'
+import ClientProvider from '@/app/modules/shop/hooks/useClient'
+import { getAllMoviesProxy } from '@/app/services/MoviesService'
 
 const Shopping: NextPage = () => {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>("ShopSnacks")
@@ -45,33 +47,39 @@ const Shopping: NextPage = () => {
       getAllSnacksProxy()
         .then(response => {
           setSnacks(response)
-      })
+        })
+      getAllMoviesProxy()
+        .then(response => {
+          setMovies(response)
+        })
     }
     fetchData()
-  },[])
+  }, [])
 
   return (
     <CartProvider>
-      <AdminLayout
-        search={{ children: <></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange }}
-        navBar={{ func: () => { }, type: currentPane, changeCurrentPane: changeTypeProduct }}
-      >
-        {
-          currentPane === 'ShopMovies' ?
-            <CardList typeProduct='Movies' filteredData={moviesData} />
-            : <></>
-        }
-        {
-          currentPane === 'ShopSnacks' ?
-            <CardList typeProduct='Snacks' filteredData={snacksData} />
-            : <></>
-        }
-        {
-          currentPane === 'ShopQualification' ?
-            <Qualification />
-            : <></>
-        }
-      </AdminLayout>
+      <ClientProvider>
+        <AdminLayout
+          search={{ children: <></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange }}
+          navBar={{ type: currentPane, changeCurrentPane: changeTypeProduct }}
+        >
+          {
+            currentPane === 'ShopMovies' ?
+              <CardList typeProduct='Movies' filteredData={moviesData} />
+              : <></>
+          }
+          {
+            currentPane === 'ShopSnacks' ?
+              <CardList typeProduct='Snacks' filteredData={snacksData} />
+              : <></>
+          }
+          {
+            currentPane === 'ShopQualification' ?
+              <Qualification />
+              : <></>
+          }
+        </AdminLayout>
+      </ClientProvider>
     </CartProvider>
   )
 }
