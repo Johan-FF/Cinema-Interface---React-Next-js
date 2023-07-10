@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react'
 import { Snack } from '../types/Interfaces'
 import { Movie } from '@/app/types/Interfaces'
 import { KEY_CART_CONTENT } from '@/app/environment'
+import Account from '@/app/services/Account'
 
 interface CartContextType {
   movie: Movie,
@@ -33,6 +34,7 @@ interface CartProviderProps {
 }
 
 export default function CartProvider({ children }: CartProviderProps) {
+  const account: Account = Account.getInstance()
   const [productList, setProductList] = useState<Snack[]>([])
   const [movie, setMovie] = useState<Movie>({
     type: '',
@@ -82,7 +84,8 @@ export default function CartProvider({ children }: CartProviderProps) {
 
   const getTotalPoints = (): number => {
     let count: number = 0
-    productList.map((snack: Snack) => { count += (5 * snack.count) })
+    const points: number = parseFloat(account.getPointsSnack())
+    productList.map((snack: Snack) => { count += (points * snack.count) })
     return count
   }
 

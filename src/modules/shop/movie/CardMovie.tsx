@@ -19,8 +19,8 @@ export default function CardMovie (
           id: id,
           isInHome: false,
           title: title,
-          url: url,
-          description: description,
+          imgUrl: url,
+          synopsis: description,
           age: age,
           duration: duration
         }

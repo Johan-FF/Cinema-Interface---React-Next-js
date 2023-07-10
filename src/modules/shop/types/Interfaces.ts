@@ -9,11 +9,13 @@ export interface Snack extends Dato {
 }
 
 export interface Invoice extends Dato{
-  id:string,
+  idMovie: string,
+  idTheater: string,
+  schedule: string,
   chairGeneral: string,
   chairPreferential: string,
-  idClient: string,
-  snacks:string[]
+  identification: string,
+  snacks:{idSnack:string,quantitySnack:string}[]
 }
 
 export interface Client extends Dato {

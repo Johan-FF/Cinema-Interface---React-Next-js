@@ -4,6 +4,8 @@ export default class Account {
   private name: string = ''
   private rol: string = ''
   private idMultiplex: string = ''
+  private pointsTicket: string = ''
+  private pointsSnack: string = ''
 
   private constructor() {}
 
@@ -44,5 +46,21 @@ export default class Account {
 
   public setIDMultiplex(newID: string): void {
     this.idMultiplex = newID
+  }
+
+  public getPointsTicket(): string {
+    return this.pointsTicket
+  }
+
+  public setPointsTicket(newPoints: string): void {
+    this.pointsTicket = newPoints
+  }
+
+  public getPointsSnack(): string {
+    return this.pointsSnack
+  }
+
+  public setPointsSnack(newPoints: string): void {
+    this.pointsTicket = newPoints
   }
 }

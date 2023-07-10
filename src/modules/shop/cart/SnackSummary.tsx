@@ -3,11 +3,13 @@
 import Card from "../snacks/Card"
 import { useCart } from "../hooks/useCart"
 import { Snack } from "../types/Interfaces"
+import Account from "@/app/services/Account"
 
 export default function SnackSummary() {
   const {
     productList, addProduct, decreaseProduct, removeProduct, getTotalPrice, getTotalPoints
   } = useCart()
+  const snackPoints: number = parseFloat(Account.getInstance().getPointsSnack())
 
   return (
     <>
@@ -17,11 +19,10 @@ export default function SnackSummary() {
             <section key={item.id} className='flex-center shadow-big p-2 mb-5 bg-secondary h-[30%]'>
               <Card
                 snack={item}
-                url={""}
               />
               <div className='w-[50%] flex-col-center'>
-                <p>Puntos por producto: {item.points}</p>
-                <p>Puntos por cantidad:{item.points * item.count}</p>
+                <p>Puntos por producto: {snackPoints}</p>
+                <p>Puntos por cantidad:{snackPoints * item.count}</p>
                 <p>Cantidad: {item.count}</p>
               </div>
               <div className='w-[5%] h-full grid'>

@@ -1,9 +1,9 @@
 import { get, put, post, generateAuthHeader } from "@/app/services/HttpService"
 import { Multiplex } from "../modules/director/types/Interfaces"
-import { createMultiplexAdapter } from "../modules/director/adapters/MultiplexAdapter"
+import { createMultiplexAdapter } from "../adapters/MultiplexAdapter"
 import { MultiplexPoints } from "../modules/multiplex/types/Interfaces"
-import { updateMultiplexPointsAdapter, getMultiplexPointsAdapter } from "../modules/multiplex/adapters/MultiPointsAdapter"
-import { getMultiplexAdapter } from "../modules/director/adapters/MultiplexAdapter"
+import { getMultiplexPointsAdapter, updateMultiplexPointsAdapter } from "../adapters/MultiplexAdapter"
+import { getMultiplexAdapter } from "../adapters/MultiplexAdapter"
 import { API_URL_MULTIPLEX } from "../environment"
 
 // Operación GET para obtener todos los multiplex
