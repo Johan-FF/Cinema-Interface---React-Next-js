@@ -32,6 +32,7 @@ export interface adminLayoutProps {
 
 export interface backgroundProps {
   children: ReactNode,
+  hideContent: boolean,
 }
 
 export interface buttonProps {

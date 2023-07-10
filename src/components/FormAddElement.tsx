@@ -8,7 +8,7 @@ export default function FormAddElement({
 }: formAddElementProps ) {
 
   return (
-    <article className="bg-secondary min-h-[100%] md:h-[100%] w-[100%] flex-center">
+    <article className="bg-secondary min-h-[100%] md:h-[100%] w-[100%] flex-col-center">
       <div className="min-h-[100%] xl:h-[90%] w-[100%] md:w-[80%] flex flex-col shadow-big py-[5%]">
           <section className="w-[100%] h-[10%]  flex-center">
             <h2 className="text-[25px] w-[70%] text-center">

@@ -29,6 +29,8 @@ export const userSchema = z.object({
 })
 
 export const scheduleSchema = z.object({
+  day: z.string().min(1, {message: 'El día es requerido'}).max(10),
+  idTheater: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La sala es requerida'}),
   movie: z.string().min(1, {message: 'La película es requerida'}).max(50),
   hour: z.string().refine((number) => {
     const isNumber: boolean = !isNaN(parseInt(number))
@@ -53,7 +55,7 @@ export const movieSchema = z.object({
   duration: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La duración es requerida'}),
   age: z.string().refine((number) => !isNaN(parseInt(number)), {message: 'La edad es requerida'}),
   synopsis: z.string().min(1, {message: 'La sinópsis es requerida'}).max(500),
-  imgUrl: z.string().min(1, {message: 'La url de la imágen es requerida'}).max(50),
+  imgUrl: z.string().min(1, {message: 'La url de la imágen es requerida'}),
 })
 
 export const multiplexSchema = z.object({

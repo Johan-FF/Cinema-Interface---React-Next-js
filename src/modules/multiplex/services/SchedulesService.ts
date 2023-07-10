@@ -1,11 +1,11 @@
-import { API_URL } from "@/app/environment"
+import { API_URL_MULTIPLEX } from "@/app/environment"
 import { generateAuthHeader, get, post } from "@/app/services/HttpService"
 import { Schedule, Theater } from "../types/Interfaces"
 import { getSchedulesAdapter, createScheduleAdapter, getSchedulesByMultiplexAdapter } from "../adapters/ScheduleAdapter"
 
 // Operación GET para obtener todos los horarios
 async function getAllSchedules(): Promise<any> {
-  const url = `${API_URL}/schedules/all`
+  const url = `${API_URL_MULTIPLEX}/show/schedules/all`
   return get(url,generateAuthHeader())
 }
 export async function getAllSchedulesProxy(): Promise<Schedule[]> {
@@ -22,7 +22,7 @@ export async function getAllSchedulesProxy(): Promise<Schedule[]> {
 
 // Operación POST para crear un nuevo horario
 async function createSchedule(scheduleData: Schedule): Promise<any> {
-  const url = `${API_URL}/schedules/new`
+  const url = `${API_URL_MULTIPLEX}/show/schedules/new`
   return post(
     url, 
     createScheduleAdapter(scheduleData), 
@@ -45,7 +45,8 @@ export async function createScheduleProxy(scheduleData: Schedule): Promise<strin
 async function getAllSchedulesByMultiplex(
   idMovie: string, idMultiplex: string
 ): Promise<any> {
-  const url = `${API_URL}/schedules/all/${idMovie}/${idMultiplex}`
+  const url = `${API_URL_MULTIPLEX}/show/schedules/all/${idMovie}/${idMultiplex}`
+  console.log(url)
   return get(url,generateAuthHeader())
 }
 export async function getAllSchedulesByMultiplexProxy(

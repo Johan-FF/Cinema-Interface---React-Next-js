@@ -1,14 +1,13 @@
 import { get, post, generateAuthHeader } from "@/app/services/HttpService"
 import { createAdminAdapter, getAdminsAdapter } from "../adapters/AdminAdapter"
 import { Employee } from "@/app/types/Interfaces"
-import { API_URL } from "@/app/environment"
+import { API_URL_USER } from "@/app/environment"
 
 // Operación GET para obtener todos los administradores
 async function getAllAdmins(): Promise<any[]> {
-  const url = `${API_URL}/users/all/admins`
+  const url = `${API_URL_USER}/users/all/admins`
   return get(url,generateAuthHeader())
 }
-
 export async function getAllAdminsProxy(): Promise<Employee[]> {
   let list: Employee[] = []
   await getAllAdmins()
@@ -23,14 +22,13 @@ export async function getAllAdminsProxy(): Promise<Employee[]> {
 
 // Operación POST para crear un nuevo administrador
  async function createAdmin(adminData: Employee): Promise<any> {
-  const url = `${API_URL}/users/admins/new`
+  const url = `${API_URL_USER}/users/admins/new`
   return post(
     url, 
-    createAdminAdapter(adminData), 
+    createAdminAdapter(adminData),
     generateAuthHeader()
   )
 }
-
 export async function createAdminProxy(adminData:Employee):Promise<string>{
   let message: string = ''
   await createAdmin(adminData)

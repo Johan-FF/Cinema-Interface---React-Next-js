@@ -28,7 +28,8 @@ async function makeHttpRequest<T>(
 export function generateAuthHeader() {
   const token = Cookies.get(KEY_USER_TOKEN)
   return {
-    Authorization: `Bearer ${token}`,
+    'Content-Type': 'application/json',
+    'Authorization': `Bearer ${token}`,
   }
 }
 

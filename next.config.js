@@ -4,8 +4,21 @@ const nextConfig = {
     domains: [
       'm.media-amazon.com',
       'es.web.img3.acsta.net',
+      'encrypted-tbn0.gstatic.com'
     ],
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn0.gstatic.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'encrypted-tbn2.gstatic.com',
+        port: '',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'm.media-amazon.com',

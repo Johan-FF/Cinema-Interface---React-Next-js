@@ -8,9 +8,10 @@ import { inputs } from "@/app/types/data/InputsData"
 import { createClientProxy, verifyClientProxy } from '../services/ClientService'
 import { Client } from '../types/Interfaces'
 import { useClient } from '../hooks/useClient'
+import { KEY_CLIENT } from '@/app/environment'
 
 export default function ClientButton() {
-  const { identification, setHideContent } = useClient()
+  const { identification, setHide } = useClient()
   const [noExistsIdentification, setNoExistsIdentification] = useState(true)
   const [showMovieModal, setShowMovieModal] = useState(false)
   const [controlMessage, setControlMessage] = useState('')
@@ -21,14 +22,14 @@ export default function ClientButton() {
       return
     verifyClientProxy(identification)
       .then(response => {
-        const haveError: boolean = (
-          response.toLowerCase().includes('inválido') ||
-          response.toLowerCase().includes('inválida')
-        )
-        setHideContent(haveError)
+        const haveError: boolean = (response==='0'? true : false)
+        if(!haveError && typeof window !== 'undefined'){
+          window.localStorage.setItem(KEY_CLIENT, identification)
+        }
         setNoExistsIdentification(haveError)
         setHasError(haveError)
         setControlMessage(response)
+        setHide(haveError)
       })
   }, [showMovieModal])
 
@@ -53,13 +54,14 @@ export default function ClientButton() {
         setControlMessage(response)
       })
     setShowMovieModal(!showMovieModal)
+    setNoExistsIdentification(!noExistsIdentification)
   }
 
   return (
     <ModalButton message='Iniciar' showModal={showMovieModal} setShowModal={setShowMovieModal} >
-      <article className='h-[90%] w-[90%] md:w-[60%] p-[5%] overflow-y-auto scrollbar-small bg-secondary shadow-big'>
+      <article className={`${noExistsIdentification ? 'h-[90%]':'h-[25%]'} w-[90%] md:w-[60%] p-[5%] overflow-y-auto scrollbar-small bg-secondary shadow-big`}>
         <div className='w-[100%] flex justify-between'>
-          <h2>{noExistsIdentification ? 'Nuevo cliente' : 'Cliente verificado'}</h2>
+          <h2 className='text-3xl md:text-3xl' >{noExistsIdentification ? 'Nuevo Cliente' : 'Cliente Verificado'}</h2>
           <button onClick={() => setShowMovieModal(!showMovieModal)} className='relative h-[5vh] w-[5wh] bg-tertiary-opacity rounded-full hover:bg-tertiary'>
             <span className='absolute top-0 left-0 h-[2vh] w-[2vh] rotate-45 bg-primary'></span>
           </button>

@@ -9,14 +9,14 @@ import { pages } from "../types/data/NavData"
 import Account from "../services/Account"
 import ClientButton from "../modules/shop/components/ClientButton"
 import Cookies from 'js-cookie'
-import { KEY_USER_TOKEN } from "../environment"
+import { KEY_CART_CONTENT, KEY_CLIENT, KEY_USER_TOKEN } from "../environment"
 import { useRouter } from "next/navigation"
 import { useClient } from "../modules/shop/hooks/useClient"
 
 export default function NavBar(
   { type, changeCurrentPane }: navBarProps
 ) {
-  const { setIdentification } = useClient()
+  const { setIdentification, setHide } = useClient()
   const [viewMenu, setViewMenu] = useState(false)
   const [menuType, setMenuType] = useState<'gen' | 'mul' | 'shop' | ''>('')
   const router = useRouter()
@@ -35,7 +35,20 @@ export default function NavBar(
     setIdentification(event.target.value)
   }
 
+  const finallySale = () => {
+    if(typeof window !== 'undefined'){
+      const idClient = window.localStorage.getItem(KEY_CLIENT)
+      if(idClient!==null)
+        window.localStorage.removeItem(KEY_CLIENT)
+      setHide(true)
+    }
+  }
+
   const logOut = () => {
+    if (typeof window !== 'undefined'){
+      window.localStorage.removeItem(KEY_CART_CONTENT)
+      window.localStorage.removeItem(KEY_CLIENT)
+    }
     Cookies.remove(KEY_USER_TOKEN)
     router.push('/')
   }
@@ -91,15 +104,17 @@ export default function NavBar(
             menuType === "shop" ?
               <>
                 <div className="h-[40%] flex-center">
-                  <input onChange={() => changeIdentification} className="text-input max-w-[90%]" type="number" placeholder="Cédula de cliente" />
+                  <input onChange={changeIdentification} className="text-input max-w-[90%]" type="number" placeholder="Cédula de cliente" />
                 </div>
                 <div className="h-[40%] flex-center flex flex-col">
                   <div className="flex justify-center" >
                     <ClientButton/>
-                    <BlueButton content="Finalizar" leftRounded={true} rightRounded={true} />
+                    <span onClick={() => finallySale()}>
+                      <BlueButton content="Finalizar" leftRounded={true} rightRounded={true} />
+                    </span>
                   </div>
                   <div className="flex justify-center mt-4">
-                    <span onClick={() => logOut} className="h-[100%]">
+                    <span onClick={() => logOut()} className="h-[100%]">
                       <RedButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
                     </span>
                   </div>
@@ -107,8 +122,10 @@ export default function NavBar(
               </>
               :
               <>
-                <span onClick={() => logOut} className="h-[30%] w-[100%] flex-center">
-                  <BlueButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
+                <span className="h-[30%] w-[100%] flex-center">
+                  <div onClick={() => logOut()}>
+                    <BlueButton content="Cerrar sesión" leftRounded={true} rightRounded={true} />
+                  </div>
                 </span>
               </>
           }

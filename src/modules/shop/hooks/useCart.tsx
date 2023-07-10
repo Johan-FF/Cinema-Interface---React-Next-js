@@ -1,6 +1,7 @@
-import React, { createContext, useContext, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import { Snack } from '../types/Interfaces'
 import { Movie } from '@/app/types/Interfaces'
+import { KEY_CART_CONTENT } from '@/app/environment'
 
 interface CartContextType {
   movie: Movie,
@@ -49,7 +50,7 @@ export default function CartProvider({ children }: CartProviderProps) {
     setProductList((prevProductList) => {
       const index: number = prevProductList.findIndex((product: Snack) => product.id === snack.id)
       if (index === -1)
-        return [{...snack, count: 1}, ...prevProductList ]
+        return [{ ...snack, count: 1 }, ...prevProductList]
       prevProductList[index].count += 1
       return [...prevProductList]
     })
@@ -81,9 +82,37 @@ export default function CartProvider({ children }: CartProviderProps) {
 
   const getTotalPoints = (): number => {
     let count: number = 0
-    productList.map((snack: Snack) => { count += (snack.points * snack.count) })
+    productList.map((snack: Snack) => { count += (5 * snack.count) })
     return count
   }
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const cartValue = window.localStorage.getItem(KEY_CART_CONTENT)
+      if (cartValue !== null) {
+        const objectCart = JSON.parse(cartValue)
+        setChairGeneral(objectCart.cartChairGeneral)
+        setChairPreferential(objectCart.cartChairPreferential)
+        setMovie(objectCart.cartMovie)
+        setProductList(objectCart.cartProductList)
+      }
+    }
+  }, [])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const cartValue = window.localStorage.getItem(KEY_CART_CONTENT)
+      window.localStorage.setItem(
+        KEY_CART_CONTENT,
+        JSON.stringify({
+          cartMovie: movie,
+          cartChairGeneral: chairGeneral,
+          cartChairPreferential: chairPreferential,
+          cartProductList: productList,
+        })
+      )
+    }
+  }, [movie, chairGeneral, chairPreferential, productList])
 
   const cartContextValue: CartContextType = {
     movie,

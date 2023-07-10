@@ -36,7 +36,6 @@ export default function MultiplexAdmin({ searchTerm }: employeeProps ) {
     fetchData()
   },[action])
 
-
   const multiplex: Multiplex = {
     type: 'multiplex',
     id:'',
@@ -46,8 +45,8 @@ export default function MultiplexAdmin({ searchTerm }: employeeProps ) {
     pointTicket: ''
   }
 
-  const sendMultiplex = (multiplex: Multiplex) => {
-    createMultiplexProxy(multiplex)
+  const sendMultiplex = async (multiplex: Multiplex) => {
+    await createMultiplexProxy(multiplex)
       .then(response => {
         setHasError(
           response.toLowerCase().includes('inválido') ||

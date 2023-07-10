@@ -20,7 +20,7 @@ export default function AdminLayout({ children, search, navBar }: adminLayoutPro
           }
         </Search>
         <section className="h-[95%] w-full">
-          <Background >
+          <Background hideContent={search.title === "ShopMovies" || search.title === "ShopSnacks" || search.title === "ShopQualification" ? true : false}>
             {children}
           </Background>
         </section>

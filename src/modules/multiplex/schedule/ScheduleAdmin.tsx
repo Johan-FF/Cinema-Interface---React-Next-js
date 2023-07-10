@@ -47,8 +47,8 @@ export default function ScheduleAdmin({ searchTerm }: employeeProps ) {
     idTheater:''
   }
 
-  const sendSchedule = (schedule: typeSchedule) => {
-    createScheduleProxy(schedule)
+  const sendSchedule = async (schedule: typeSchedule) => {
+    await createScheduleProxy(schedule)
       .then(response => {
         setHasError(
           response.toLowerCase().includes('inválido') ||

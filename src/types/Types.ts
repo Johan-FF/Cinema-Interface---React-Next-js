@@ -23,7 +23,7 @@ export type typeModel = typeUser | typeSchedule | typeMovie | typeMultiplex
  */
 export type valuesLoginInput =  "identification" | "password"
 
-export type valuesScheduleInput = "movie" | "hour" | "minute"
+export type valuesScheduleInput = "movie" | "hour" | "minute" | "idTheater" | "day"
 
 export type valuesMovieInput = "title" | "duration" | "age" | "synopsis" | "imgUrl"
 

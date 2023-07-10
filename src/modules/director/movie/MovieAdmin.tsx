@@ -48,8 +48,8 @@ export default function MovieAdmin({ searchTerm }: employeeProps ) {
     synopsis: '',
     imgUrl: '',
   }
-  const sendMovie = (movie: typeMovie) => {
-    createMovieProxy(movie)
+  const sendMovie = async (movie: typeMovie) => {
+    await createMovieProxy(movie)
       .then(response => {
         setHasError(
           response.toLowerCase().includes('inválido') ||

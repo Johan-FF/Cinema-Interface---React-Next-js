@@ -1,11 +1,11 @@
 import { get, post, generateAuthHeader } from "@/app/services/HttpService"
 import { Movie } from "../types/Interfaces"
 import { createMovieAdapter, getMoviesAdapter } from "../adapters/MovieAdapter"
-import { API_URL } from "../environment"
+import { API_URL_MULTIPLEX } from "../environment"
 
 // Operación GET para obtener todas las peliculas
 async function getAllMovies(): Promise<any[]> {
-  const url = `${API_URL}/movies/all`
+  const url = `${API_URL_MULTIPLEX}/movies/all`
   return get(url,generateAuthHeader())
 }
 export async function getAllMoviesProxy():Promise<Movie[]>{
@@ -22,7 +22,7 @@ export async function getAllMoviesProxy():Promise<Movie[]>{
 
 // Operación POST para crear una nueva pelicula
 async function createMovie(movieData: Movie): Promise<any> {
-  const url = `${API_URL}/movies/new`
+  const url = `${API_URL_MULTIPLEX}/movies/new`
   return post(
     url, 
     createMovieAdapter(movieData), 

@@ -1,10 +1,24 @@
 'use client'
 
+import { useEffect, useState } from "react"
 import { useClient } from "../modules/shop/hooks/useClient"
 import { backgroundProps } from "../types/Props"
+import { KEY_CLIENT } from "../environment"
 
-export default function Background({ children }: backgroundProps ) {
-  const { hideContent } = useClient()
+export default function Background({ children, hideContent }: backgroundProps ) {
+  const [view, setView] = useState(false)
+  const { hide } = useClient()
+
+  useEffect(() => {
+    if (hideContent && typeof window !== 'undefined') {
+      const clientValue = window.localStorage.getItem(KEY_CLIENT)
+      if(clientValue===null){
+        setView(true)
+      } else if(clientValue!==''){
+        setView(false)
+      }
+    }
+  }, [hide])
 
   return (
     <div className="w-full h-full shadow-big relative">
@@ -19,7 +33,7 @@ export default function Background({ children }: backgroundProps ) {
         {children}
       </span>
       {
-        !hideContent ? 
+        view ? 
         <span className=" w-full h-full absolute top-0 left-0 bg-black bg-opacity-80 "></span> : <></>
       }
     </div>

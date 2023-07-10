@@ -1,12 +1,11 @@
 import { post } from "./HttpService"
 import Account from "./Account"
-import { API_URL, KEY_USER_TOKEN } from "../environment"
+import { API_URL_USER, KEY_USER_TOKEN } from "../environment"
 import Cookies from "js-cookie"
 
 export async function login(userData: any): Promise<any> {
-  const url = `${API_URL}/auth/login`
-  const response: Promise<any> = await post(url, userData)
-  response
+  const url = `${API_URL_USER}/auth/login`
+  await post(url, userData)
     .then(responseFetch => {
       Cookies.set(KEY_USER_TOKEN, responseFetch.token, { expires: 1 })
       setAccountValues(responseFetch)

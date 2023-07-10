@@ -118,6 +118,16 @@ export const inputs:
       id: "minute",
       placeHolder: "Ingrese los minutos",
     },
+    {
+      content: "Día",
+      id: "day",
+      placeHolder: "Ingrese el día",
+    },
+    {
+      content: "Sala",
+      id: "idTheater",
+      placeHolder: "Ingrese la sala",
+    },
   ],
   movie: [
     {

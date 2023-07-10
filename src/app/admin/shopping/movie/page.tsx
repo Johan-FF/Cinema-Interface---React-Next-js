@@ -1,8 +1,8 @@
 'use client'
 
-import ChairDescription from "../../../../../modules/shop/movie/ChairDescription"
-import MovieLayout from "../../../../../modules/shop/movie/MovieLayout"
-import Cinema from "../../../../../modules/shop/movie/Cinema"
+import ChairDescription from "../../../../modules/shop/movie/ChairDescription"
+import MovieLayout from "../../../../modules/shop/movie/MovieLayout"
+import Cinema from "../../../../modules/shop/movie/Cinema"
 import RedButton from "@/app/components/RedButton"
 import BlueButton from "@/app/components/BlueButton"
 import Link from "next/link"
@@ -19,7 +19,7 @@ const Movie: NextPage = () => {
   return (
     <CartProvider>
       <MovieLayout>
-        <Background>
+        <Background hideContent={false}>
           <div className="size-all">
             <section className="h-[80%] w-[100%] p-5 shadow-big">
               <span className="shadow-big flex flex-col md:flex-row rounded-md p-3 h-[100%] w-[100%]">

@@ -3,11 +3,8 @@
 import {useEffect, useState } from "react"
 import Table from "@/app/components/Table"
 import FormAddElement from "@/app/components/FormAddElement"
-import { NewUser } from "../types/Interfaces"
-import { typeUser } from "@/app/types/Types"
 import { newEmployeeSchema } from "@/app/helpers/ValidateInputs"
 import { inputs } from "@/app/types/data/InputsData"
-import { tables } from "@/app/types/data/TableData"
 import { employeeProps } from "@/app/types/Props"
 import { getAllAdminsProxy, createAdminProxy } from "../services/AdminService"
 import TableLayout from "../../../components/TableLayout"
@@ -16,11 +13,8 @@ import { adminsHeaders } from "../../multiplex/types/TableHeaders"
 
 export default function EmployeeAdmin({ searchTerm }: employeeProps) {
   const [action, setAction] = useState("Add") // Add | View
-
   const [hasError, setHasError] = useState(false)
-
   const [controlMessage, setControlMessage] = useState('')
-
   const [employees, setEmployees] = useState<Employee[]>([])
   
   const filteredData = employees.filter((item) => {
@@ -62,8 +56,8 @@ export default function EmployeeAdmin({ searchTerm }: employeeProps) {
     startDate:''
   }
 
-  const showUser = (user: Employee) => {
-    createAdminProxy(user)
+  const sendEmployee = async (user: Employee) => {
+    await createAdminProxy(user)
     .then(response => {
       setHasError(
         response.toLowerCase().includes('inválido') ||
@@ -79,13 +73,13 @@ export default function EmployeeAdmin({ searchTerm }: employeeProps) {
       {
         action === "Add" ?
           <FormAddElement
-            typeElement="Empleado"
+            typeElement="Administrador"
             required={{
-              execute: showUser,
+              execute: sendEmployee,
               model: newEmployee,
               schema: newEmployeeSchema,
             }}
-            inputs={inputs.record}
+            inputs={inputs.employee}
             aditionalCondition={{
               have: true,
               first: "password",

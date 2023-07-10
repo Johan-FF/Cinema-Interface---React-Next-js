@@ -3,14 +3,14 @@ import React, { createContext, useContext, useState } from 'react'
 interface ClientContextType {
   identification: string,
   setIdentification: (id: string) => void,
-  hideContent: boolean,
-  setHideContent: (show: boolean) => void,
+  hide: boolean,
+  setHide: (show: boolean) => void,
 }
 const initialClientState: ClientContextType = {
   identification: '',
   setIdentification: (id: string) => {},
-  hideContent: false,
-  setHideContent: (show: boolean) => {},
+  hide: true,
+  setHide: (show: boolean) => {},
 }
 
 export const ClientContext = createContext<ClientContextType>(initialClientState)
@@ -29,13 +29,13 @@ interface ClientProviderProps {
 
 export default function ClientProvider({ children }: ClientProviderProps) {
   const [identification, setIdentification] = useState('')
-  const [hideContent, setHideContent] = useState(true)
+  const [hide, setHide] = useState(true)
 
   const clientContextValue: ClientContextType = {
     identification,
     setIdentification,
-    hideContent,
-    setHideContent
+    hide,
+    setHide
   }
 
   return (

@@ -4,19 +4,20 @@ export const createMovieAdapter = (movie: Movie): any => {
   return {
     title: movie.title,
     duration: movie.duration,
-    year_allowed: movie.age,
+    yearAllowed: movie.age,
     synopsis: movie.synopsis,
-    url: movie.imgUrl,  }
+    url: movie.imgUrl,
+  }
 }
 
 export const getMoviesAdapter = (response: any[]): Movie[] => {
   return response.map((item) => {
     return {
-      type: 'movie',
+      type: 'Película',
       id: item.id,
       title: item.title,
       duration: item.duration,
-      age: item.year_allowed,
+      age: item.yearAllowed,
       synopsis: item.synopsis,
       imgUrl: item.url
     }

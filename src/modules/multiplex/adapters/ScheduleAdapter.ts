@@ -2,8 +2,8 @@ import { Schedule, Theater } from "../types/Interfaces"
 import { divideHourFormater, completeHourFormater, splitByComma } from "@/app/helpers/DateFormater"
 
 export const createScheduleAdapter = (schedule: Schedule): any => {return {
-    movie_name: schedule.movie,
-    id_theater: schedule.idTheater,
+    movieName: schedule.movie,
+    idTheater: schedule.idTheater,
     day: schedule.day,
     schedule: completeHourFormater(schedule.hour,schedule.minute)
   }
@@ -14,13 +14,13 @@ export const getSchedulesAdapter = (response: any[]): Schedule[] => {
   return response.map((item) => {
     scheduleFormated = divideHourFormater(item.schedule)
     return {
-      type: 'schedule',
+      type: 'Horario',
       id: item.id,
-      movie: item.movie_name,
+      movie: item.movieName,
       hour: scheduleFormated[0],
       minute: scheduleFormated[1],
       day: item.day,
-      idTheater: item.id_theater,
+      idTheater: item.idTheater,
     }
   })
 }
@@ -32,8 +32,8 @@ export const getSchedulesByMultiplexAdapter = (response: any[]): Theater[] => {
     scheduleFormated = splitByComma(item.hours)
     return {
       type: 'Sala',
-      id: (id++).toString(),
-      idTheater: item.id_theater,
+      id: (++id).toString(),
+      idTheater: item.idTheater,
       hours: scheduleFormated,
     }
   })

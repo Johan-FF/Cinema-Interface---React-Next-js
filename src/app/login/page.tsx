@@ -9,9 +9,10 @@ import Background from "@/app/components/Background"
 import { login } from "@/app/services/Auth"
 import { useRouter } from "next/navigation"
 import Account from "@/app/services/Account"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 export default function Login() {
+  const account = Account.getInstance()
   const router = useRouter()
   const user: User = {
     type: 'user',
@@ -31,7 +32,6 @@ export default function Login() {
   }
 
   const redirect = () => {
-    const account = Account.getInstance()
     if (account.getRol() === "DIRECTOR")
       router.push("/admin/general")
     else if (account.getRol() === "ADMINISTRADOR")
@@ -42,7 +42,7 @@ export default function Login() {
 
   return (
     <main className="bg-primary h-[100vh] min-h-[100vh] xl:h-[100vh] w-[100%] flex-center">
-      <Background viewProducts={true}>
+      <Background>
         <section className="min-h-[80%] xl:h-[80%] w-[100%] md:w-[60%] flex flex-col xl:flex-row shadow-big">
 
           <div className="bg-tertiary bg-opacity-75 py-[5%] xl:py-0 h-[80%] xl:h-[100%] w-[100%] xl:w-[40%] md:rounded-l-md">
@@ -63,16 +63,14 @@ export default function Login() {
             </section>
             <section className="w-[100%] max-h-[80%] pr-[5%] flex-col-center">
               <Form
-                required={
-                  {
-                    execute: fetchLogin,
-                    model: user,
-                    schema: userSchema
-                  }
-                }
-                inputs={inputs.login}
+                required={{
+                  execute: fetchLogin,
+                  model: user,
+                  schema: userSchema
+                }}
+                inputs={inputs.user}
                 messages={{
-                  send:"ingresar",
+                  send:"Ingresar",
                   control: controlMessage,
                   error: hasError,
                   changeError: setHasError,
