@@ -16,3 +16,13 @@ export interface Multiplex extends Dato {
   pointTicket: string,
   pointSnack: string
 }
+
+export interface StatisticsMovie extends Dato {
+  movie: string,
+  qualification: string
+}
+
+export interface StatisticsSales extends Dato {
+  multiplex: string,
+  sales: string
+}

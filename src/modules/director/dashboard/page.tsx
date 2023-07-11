@@ -1,10 +1,9 @@
-import React from "react";
-import { Barchart } from "./barchart";
-import { Doughnutchart } from "./dounutchart";
-import { Polarchart } from "./polarchart";
+import React from "react"
+import { Barchart } from "./barchart"
+import { Doughnutchart } from "./dounutchart"
 
 const Dashboard = () => {
-  const data = [32, 19, 25, 8];
+  const data = [32, 19, 25, 8]
 
   return (
 <section className="size-all flex-col p-[5%]">
@@ -15,24 +14,12 @@ const Dashboard = () => {
 
   <div className="w-[50%] h-[60vh] flex-center shadow-big bg-gray-300 mb-[5%] p-4">
     <Barchart />
-    <p className=" mt-2 text-gray-900">
-      Leyenda del gráfico de barras
-    </p>
   </div>
   <div className="w-[50%] h-[60vh] flex-center shadow-big bg-gray-300 mb-[5%] p-4">
     <Doughnutchart></Doughnutchart>
-    <p className=" mt-2 text-gray-900">
-      Leyenda del gráfico circular
-    </p>
-  </div>
-  <div className="w-[50%] h-[60vh] flex-center shadow-big bg-gray-300 mb-[5%] p-4">
-    <Polarchart valores={data}></Polarchart>
-    <p className=" mt-2 text-gray-900">
-      Leyenda del gráfico circular
-    </p>
   </div>
 </section>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

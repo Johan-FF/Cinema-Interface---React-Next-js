@@ -1,11 +1,29 @@
 "use client"
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
+import { getStatisticsSalesProxy } from "../services/StatisticsService";
+import { StatisticsSales } from "../types/Interfaces";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 export function Doughnutchart(props:any) {
+  const [sales, setSales] = useState<StatisticsSales[]>([])
+  const [salesMultiplexes, setSalesMultiplexes] = useState<number[]>([])
+  const [multiplexes, setMultiplexes] = useState<string[]>([])
+  
+  useEffect(() => {
+    async function fetch() {
+      getStatisticsSalesProxy()
+        .then(response => {
+          setSales(response)
+          setMultiplexes(response.map(item => item.multiplex))
+          setSalesMultiplexes(response.map(item => parseFloat(item.sales)))
+        })
+    }
+    fetch()
+  }, [])
+
   const options = {
     animation: true,
     responsive: true,
@@ -54,22 +72,26 @@ export function Doughnutchart(props:any) {
   };
 
   const data = {
-    labels: ["Titan", "Unicentro", "Plaza central", "Gran estación"],
+    labels: multiplexes,
     datasets: [
       {
-        label: "# of Votes",
-        data: [55, 33, 44,20],
+        label: "Ventas",
+        data: salesMultiplexes,
         backgroundColor: [
-          "rgba(255, 99, 132, 0.2)",
-          "rgba(54, 162, 235, 0.2)",
-          "rgba(255, 206, 86, 0.2)",
-          "rgba(55, 200, 86, 0.2)"
+          "rgba(255, 0, 0)",
+          "rgba(0, 0, 255)",
+          "rgba(255, 255, 0)",
+          "rgba(0, 255, 0)",
+          "rgba(255, 0, 255)",
+          "rgba(255, 165, 0)",
         ],
         borderColor: [
-          "rgba(255, 99, 132, 1)",
-          "rgba(54, 162, 235, 1)",
-          "rgba(255, 206, 86, 1)",
-          "rgba(55, 200, 86, 0.2)"
+          "rgba(255, 0, 0)",
+          "rgba(0, 0, 255)",
+          "rgba(255, 255, 0)",
+          "rgba(0, 255, 0)",
+          "rgba(255, 0, 255)",
+          "rgba(255, 165, 0)",
         ],
         borderWidth: 3,
       },
