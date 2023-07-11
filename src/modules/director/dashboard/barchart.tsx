@@ -23,21 +23,6 @@ ChartJS.register(
 );
 
 export function Barchart(props:any) {
-  const [sales, setSales] = useState<StatisticsSales[]>([])
-  const [salesMultiplexes, setSalesMultiplexes] = useState<number[]>([])
-  const [multiplexes, setMultiplexes] = useState<string[]>([])
-  
-  useEffect(() => {
-    async function fetch() {
-      getStatisticsSalesProxy()
-        .then(response => {
-          setSales(response)
-          setMultiplexes(response.map(item => item.multiplex))
-          setSalesMultiplexes(response.map(item => parseFloat(item.sales)))
-        })
-    }
-    fetch()
-  }, [])
   
   const infoMovie1 = [0, 40, 39, 38, 40, 50, 60, 60, 65, 63, 58];
   const infoMovie2 = [50, 50, 30, 20, 40, 50, 50, 50, 60, 68, 72];
