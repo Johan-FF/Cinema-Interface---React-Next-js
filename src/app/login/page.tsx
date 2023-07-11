@@ -52,7 +52,7 @@ export default function Login() {
               <p className="text-primary text-[20px] w-[80%] text-center">Escapa a un mundo de emociones en la gran pantalla del cine.</p>
             </section>
             <section className="w-[100%] h-[50%] flex-center">
-              <img src="public/iconoCine.webp" alt="Icono Cine" width={500} height={500} />
+              <img src="public/iconoCine.webp" alt="Icono Cine" />
             </section>
           </div>
 
