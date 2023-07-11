@@ -7,7 +7,7 @@ import RedButton from "@/app/components/RedButton"
 import { useClient } from "../hooks/useClient"
 import { createInvoiceProxy } from "../services/InvoicesService"
 import { useCart } from "../hooks/useCart"
-import { productFormater } from "@/app/helpers/DateFormater"
+import { initChairsFormater, productFormater } from "@/app/helpers/DateFormater"
 import { useState } from "react"
 
 export default function CartSummary({typeMenu, setShowCartModal}: cartSummaryProps ) {
@@ -24,8 +24,8 @@ export default function CartSummary({typeMenu, setShowCartModal}: cartSummaryPro
       identification: identification,
       idTheater: idTheater,
       schedule: schedule,
-      chairGeneral: chairGeneral,
-      chairPreferential: chairPreferential,
+      chairGeneral: initChairsFormater(chairGeneral),
+      chairPreferential: initChairsFormater(chairPreferential),
       snacks: productFormater(productList)
     }).then(response => {
       setHasError(

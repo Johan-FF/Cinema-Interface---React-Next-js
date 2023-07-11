@@ -14,10 +14,11 @@ module.exports = {
         'quaternary': '#F2BE22',
         'secondary-opacity': '#1e3d5e',
         'tertiary-opacity': '#DA5B54',
-        'chair-occupied': '',
-        'chair-preferential': '',
-        'chair-general': '',
-        'chair-free': '',
+
+        'chair-occupied': '#B70404',
+        'chair-preferential': '#DB005B',
+        'chair-general': '#F79327',
+        'chair-free': '#FFE569',
       },
       scrollbar: {
         track: 'secondary',

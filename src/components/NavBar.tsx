@@ -16,7 +16,7 @@ import { useClient } from "../modules/shop/hooks/useClient"
 export default function NavBar(
   { type, changeCurrentPane }: navBarProps
 ) {
-  const { setIdentification, setHide } = useClient()
+  const { setIdentification, setHide, hide } = useClient()
   const [viewMenu, setViewMenu] = useState(false)
   const [menuType, setMenuType] = useState<'gen' | 'mul' | 'shop' | ''>('')
   const router = useRouter()
@@ -37,8 +37,8 @@ export default function NavBar(
 
   const finallySale = () => {
     if(typeof window !== 'undefined'){
-      const idClient = window.localStorage.getItem(KEY_CLIENT)
-      if(idClient!==null)
+      const customersClient = window.localStorage.getItem(KEY_CLIENT)
+      if(customersClient!==null)
         window.localStorage.removeItem(KEY_CLIENT)
       setHide(true)
     }

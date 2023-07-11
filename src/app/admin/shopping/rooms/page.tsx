@@ -6,34 +6,33 @@ import MovieLayout from "../../../../modules/shop/movie/MovieLayout"
 import Background from "@/app/components/Background"
 import RedButton from "@/app/components/RedButton"
 import BlueButton from "@/app/components/BlueButton"
-import TheaterList from "../../../../modules/shop/rooms/MultiplexList"
+import TheaterList from "@/app/modules/shop/rooms/TheaterList"
 import SchedulesList from "../../../../modules/shop/rooms/SchedulesList"
 import { Theater } from "@/app/modules/multiplex/types/Interfaces"
 import { withAuth } from "@/app/middlewares/withAuth"
 import { NextPage } from "next"
 import { getAllSchedulesByMultiplexProxy } from "@/app/modules/multiplex/services/SchedulesService"
 import Account from "@/app/services/Account"
-import CartProvider from "@/app/modules/shop/hooks/useCart"
 import { KEY_CART_CONTENT } from "@/app/environment"
 
 const Rooms: NextPage = () => {
   const [selectedTheater, setSelectedTheater] = useState('')
   const [theaters, setTheaters] = useState<Theater[]>([])
+  const account: Account = Account.getInstance()
 
   useEffect(() => {
-    const account: Account = Account.getInstance()
     let idMovie: string = ''
-    if (typeof window !== 'undefined') {
-      const cartValue = window.localStorage.getItem(KEY_CART_CONTENT)
-      if (cartValue !== null) {
-        const objectCart = JSON.parse(cartValue)
-        const newID = objectCart.cartMovie.id
-        idMovie = newID
-      }
-    }
     const idMultiplex: string = account.getIDMultiplex()
     async function fetch() {
-      getAllSchedulesByMultiplexProxy(idMovie,idMultiplex)
+      if (typeof window !== 'undefined') {
+        const cartValue = window.localStorage.getItem(KEY_CART_CONTENT)
+        if (cartValue !== null) {
+          const objectCart = JSON.parse(cartValue)
+          const newID = objectCart.cartMovie.id
+          idMovie = newID
+        }
+      }
+      await getAllSchedulesByMultiplexProxy(idMovie,idMultiplex)
       .then(response => {
         setTheaters(response)
       })
@@ -42,7 +41,6 @@ const Rooms: NextPage = () => {
   }, [])
 
   return (
-    <CartProvider>
       <MovieLayout>
         <Background hideContent={false}>
             <section className="w-[100%] h-[80%] p-[2%] shadow-big">
@@ -63,8 +61,8 @@ const Rooms: NextPage = () => {
             </section>
         </Background>
       </MovieLayout>
-    </CartProvider>
   )
 }
 
+Rooms.displayName = 'Rooms'
 export default withAuth(Rooms)

@@ -7,10 +7,10 @@ import Account from '@/app/services/Account'
 interface CartContextType {
   movie: Movie,
   setMovie: (movie: Movie) => void,
-  chairGeneral: string,
-  setChairGeneral: (chair: string) => void,
-  chairPreferential: string,
-  setChairPreferential: (chair: string) => void,
+  chairGeneral: string[],
+  setChairGeneral: (chair: string[]) => void,
+  chairPreferential: string[],
+  setChairPreferential: (chair: string[]) => void,
   productList: Snack[],
   addProduct: (snack: Snack) => void,
   decreaseProduct: (id: string) => void,
@@ -45,8 +45,8 @@ export default function CartProvider({ children }: CartProviderProps) {
     duration: '',
     imgUrl: ''
   })
-  const [chairGeneral, setChairGeneral] = useState('')
-  const [chairPreferential, setChairPreferential] = useState('')
+  const [chairGeneral, setChairGeneral] = useState<string[]>([])
+  const [chairPreferential, setChairPreferential] = useState<string[]>([])
 
   const addProduct = (snack: Snack) => {
     setProductList((prevProductList) => {

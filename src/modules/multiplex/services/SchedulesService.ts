@@ -46,7 +46,6 @@ async function getAllSchedulesByMultiplex(
   idMovie: string, idMultiplex: string
 ): Promise<any> {
   const url = `${API_URL_MULTIPLEX}/show/schedules/all/${idMovie}/${idMultiplex}`
-  console.log(url)
   return get(url,generateAuthHeader())
 }
 export async function getAllSchedulesByMultiplexProxy(

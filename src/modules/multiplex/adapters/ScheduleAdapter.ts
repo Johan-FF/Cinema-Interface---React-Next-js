@@ -33,6 +33,7 @@ export const getSchedulesByMultiplexAdapter = (response: any[]): Theater[] => {
     return {
       type: 'Sala',
       id: (++id).toString(),
+      day: item.day,
       idTheater: item.idTheater,
       hours: scheduleFormated,
     }

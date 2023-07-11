@@ -40,3 +40,24 @@ export async function createMovieProxy(movieData: Movie):Promise<string>{
     })
   return message
 }
+
+// Operación GET para obtener todas las sillas ocupadas de una película
+async function getChairsOccupied(
+  idMovie: string, idMultiplex: string, day: string, schedule: string 
+): Promise<any> {
+  const url = `${API_URL_MULTIPLEX}/show/chairs/${idMovie}/${idMultiplex}/${day}/${schedule}`
+  return get(url,generateAuthHeader())
+}
+export async function getChairsOccupiedProxy(
+  idMovie: string, idMultiplex: string, day: string, schedule: string 
+):Promise<any>{
+  let res: {} = {}
+  await getChairsOccupied(idMovie, idMultiplex, day, schedule)
+    .then(response => {
+      res = response
+    })
+    .catch(error => {
+      throw new Error(`Error request (chairsOccupied): ${error}`)
+    })
+  return res
+}

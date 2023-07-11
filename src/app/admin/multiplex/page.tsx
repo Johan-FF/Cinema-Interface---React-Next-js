@@ -39,4 +39,5 @@ const Multiplex: NextPage = () => {
   )
 }
 
+Multiplex.displayName = 'Multiplex'
 export default withAuth(Multiplex)

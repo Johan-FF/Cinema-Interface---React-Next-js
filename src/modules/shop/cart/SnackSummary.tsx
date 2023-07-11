@@ -4,12 +4,13 @@ import Card from "../snacks/Card"
 import { useCart } from "../hooks/useCart"
 import { Snack } from "../types/Interfaces"
 import Account from "@/app/services/Account"
+import { useEffect, useState } from "react"
 
 export default function SnackSummary() {
   const {
     productList, addProduct, decreaseProduct, removeProduct, getTotalPrice, getTotalPoints
   } = useCart()
-  const snackPoints: number = parseFloat(Account.getInstance().getPointsSnack())
+  const snackPoints = Account.getInstance().getPointsSnack()
 
   return (
     <>
@@ -22,7 +23,7 @@ export default function SnackSummary() {
               />
               <div className='w-[50%] flex-col-center'>
                 <p>Puntos por producto: {snackPoints}</p>
-                <p>Puntos por cantidad:{snackPoints * item.count}</p>
+                <p>Puntos por cantidad:{parseFloat(snackPoints) * item.count}</p>
                 <p>Cantidad: {item.count}</p>
               </div>
               <div className='w-[5%] h-full grid'>

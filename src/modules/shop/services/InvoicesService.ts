@@ -11,11 +11,11 @@ async function createInvoice(invoiceData: any): Promise<any> {
     createInvoiceAdapter(invoiceData),
     generateAuthHeader())
 }
-export async function createInvoiceProxy(invoice: Invoice): Promise<string> {
-  let message: string = ''
+export async function createInvoiceProxy(invoice: Invoice): Promise<any> {
+  let message: any = {}
   await createInvoice(invoice)
     .then(response => {
-      message = response.message
+      message = response
     })
     .catch(error => {
       throw new Error(`Error request (createInvoice): ${error}`)

@@ -8,6 +8,8 @@ interface ClientContextType {
   setHide: (show: boolean) => void,
   idTheater: string,
   setIdTheater: (id: string) => void,
+  day: string,
+  setDay: (day: string) => void,
   schedule: string,
   setSchedule: (schedule: string) => void,
 }
@@ -16,6 +18,8 @@ const initialClientState: ClientContextType = {
   setIdentification: (id: string) => {},
   hide: true,
   setHide: (show: boolean) => {},
+  day: '',
+  setDay: (day: string) => {},
   idTheater: '',
   setIdTheater: (id: string) => {},
   schedule: '',
@@ -41,12 +45,15 @@ export default function ClientProvider({ children }: ClientProviderProps) {
   const [hide, setHide] = useState(true)
   const [idTheater, setIdTheater] = useState('')
   const [schedule, setSchedule] = useState('')
+  const [day, setDay] = useState('')
 
   const clientContextValue: ClientContextType = {
     identification,
     setIdentification,
     hide,
     setHide,
+    day,
+    setDay,
     idTheater,
     setIdTheater,
     schedule,
@@ -61,6 +68,7 @@ export default function ClientProvider({ children }: ClientProviderProps) {
         setIdentification(objectClient.clientIdentification)
         setIdTheater(objectClient.clientIdTheater)
         setSchedule(objectClient.clientSchedule)
+        setDay(objectClient.clientDay)
       }
     }
   }, [])
@@ -74,10 +82,11 @@ export default function ClientProvider({ children }: ClientProviderProps) {
           clientIdentification: identification,
           clientIdTheater: idTheater,
           clientSchedule: schedule,
+          clientDay: day,
         })
       )
     }
-  }, [identification, idTheater, schedule])
+  }, [identification, idTheater, schedule, day])
 
   return (
     <ClientContext.Provider value={clientContextValue}>{children}</ClientContext.Provider>

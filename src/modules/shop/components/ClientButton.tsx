@@ -8,7 +8,6 @@ import { inputs } from "@/app/types/data/InputsData"
 import { createClientProxy, verifyClientProxy } from '../services/ClientService'
 import { Client } from '../types/Interfaces'
 import { useClient } from '../hooks/useClient'
-import { KEY_CLIENT } from '@/app/environment'
 
 export default function ClientButton() {
   const { identification, setHide } = useClient()
@@ -23,9 +22,6 @@ export default function ClientButton() {
     verifyClientProxy(identification)
       .then(response => {
         const haveError: boolean = (response==='0'? true : false)
-        if(!haveError && typeof window !== 'undefined'){
-          window.localStorage.setItem(KEY_CLIENT, identification)
-        }
         setNoExistsIdentification(haveError)
         setHasError(haveError)
         setControlMessage(response)

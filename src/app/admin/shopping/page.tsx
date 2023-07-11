@@ -13,6 +13,8 @@ import { Movie } from '@/app/types/Interfaces'
 import { getAllSnacksProxy } from '@/app/modules/shop/services/SnacksService'
 import ClientProvider from '@/app/modules/shop/hooks/useClient'
 import { getAllMoviesProxy } from '@/app/services/MoviesService'
+import { getMultiplexPointsProxy } from '@/app/services/MultiplexService'
+import Account from '@/app/services/Account'
 
 const Shopping: NextPage = () => {
   const [currentPane, setCurrentPane] = useState<valuesNavBar>("ShopSnacks")
@@ -44,21 +46,25 @@ const Shopping: NextPage = () => {
 
   useEffect(() => {
     async function fetchData() {
-      getAllSnacksProxy()
+      const account: Account = Account.getInstance()
+      await getAllSnacksProxy()
         .then(response => {
           setSnacks(response)
         })
-      getAllMoviesProxy()
+      await getAllMoviesProxy()
         .then(response => {
           setMovies(response)
+        })
+      await getMultiplexPointsProxy(account.getIDMultiplex())
+        .then(response => {
+          account.setPointsSnack(response.pointsSnack)
+          account.setPointsTicket(response.pointsTicket)
         })
     }
     fetchData()
   }, [])
 
   return (
-    <CartProvider>
-      <ClientProvider>
         <AdminLayout
           search={{ children: <></>, title: currentPane, searchTerm: searchTerm, handleSearchChange: handleSearchChange }}
           navBar={{ type: currentPane, changeCurrentPane: changeTypeProduct }}
@@ -79,9 +85,8 @@ const Shopping: NextPage = () => {
               : <></>
           }
         </AdminLayout>
-      </ClientProvider>
-    </CartProvider>
   )
 }
 
+Shopping.displayName = 'Shopping'
 export default withAuth(Shopping)

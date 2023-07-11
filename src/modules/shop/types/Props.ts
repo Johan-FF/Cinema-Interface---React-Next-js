@@ -1,6 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
 import { Snack } from "./Interfaces"
-import { Multiplex } from "../../director/types/Interfaces"
 import { Movie } from "@/app/types/Interfaces"
 import { Theater } from "../../multiplex/types/Interfaces"
 
@@ -38,6 +37,12 @@ export interface starProps {
 
 export interface starMeterProps {
   type: string
+}
+
+export interface chairProps {
+  isGeneral: boolean,
+  id: string,
+  chairs: string[]
 }
 
 export interface theaterListProps {

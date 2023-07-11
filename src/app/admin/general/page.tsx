@@ -50,4 +50,5 @@ const AdminGeneral: NextPage = () => {
   )
 }
 
+AdminGeneral.displayName = 'Director'
 export default withAuth(AdminGeneral)

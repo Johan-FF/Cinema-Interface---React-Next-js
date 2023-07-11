@@ -18,8 +18,8 @@ export default function MovieSummary() {
     title: '',
     synopsis: ''
   })
-  const [general, setGeneral] = useState('')
-  const [preferential, setPreferential] = useState('')
+  const [general, setGeneral] = useState<string[]>([])
+  const [preferential, setPreferential] = useState<string[]>([])
   const pointsMovie = Account.getInstance().getPointsTicket()
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export default function MovieSummary() {
       <div className="p-6 shadow-big border-b-2 border-b-primary bg-secondary-opacity">
         <strong className='mb-3 pl-5 text-2xl w-full rounded-lg border-b-2 block border-primary'>Asientos</strong>
         {
-          divideChairFormater(preferential).map((item, index) => (
+          preferential.map((item, index) => (
             <div key={index} className="p-3 m-3 border-b-2 border-b-primary shadow-big bg-secondary grid grid-cols-2">
               <p>Codigo asiento:</p> <span className='text-primary text-opacity-90 pl-3'>{item} </span>
               <p>Tipo asiento:</p> <span className='text-primary text-opacity-90 pl-3'>Preferencial</span>
@@ -55,7 +55,7 @@ export default function MovieSummary() {
           ))
         }
         {
-          divideChairFormater(general).map((item, index) => (
+          general.map((item, index) => (
             <div key={index} className="p-3 m-3 border-b-2 border-b-primary shadow-big bg-secondary grid grid-cols-2">
               <p>Codigo asiento:</p> <span className='text-primary text-opacity-90 pl-3'>{item} </span>
               <p>Tipo asiento:</p> <span className='text-primary text-opacity-90 pl-3'>General</span>
