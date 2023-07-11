@@ -98,5 +98,5 @@ export function Doughnutchart(props:any) {
     ],
   };
 
-  return <Doughnut data={data} options={options} />;
+  return <Doughnut data={data}  />;
 }

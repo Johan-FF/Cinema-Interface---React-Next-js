@@ -61,5 +61,5 @@ export function Barchart(props:any) {
     ],
   };
 
-  return <Bar options={options} data={data} />;
+  return <Bar data={data} />;
 }
