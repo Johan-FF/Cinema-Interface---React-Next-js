@@ -1,6 +1,5 @@
 'use client'
 
-import Image from "next/image"
 import { movieProps } from "../types/Props"
 import { useRouter } from "next/navigation"
 import { KEY_CART_CONTENT } from "@/app/environment"
@@ -43,7 +42,7 @@ export default function CardMovie (
         </div>
       </section>
       <section className="w-[100%] flex-center">
-        <Image src={url} alt={title} width={300} height={500}/>
+        <img src={url} alt={title} width={300} height={500}/>
       </section>
       {
         !isInHome ? 
