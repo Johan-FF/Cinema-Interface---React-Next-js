@@ -1,5 +1,7 @@
 'use client'
 
+import iconoCine from "../../../public/iconoCine.webp"
+import iconoCinema from "../../../public/iconoCinema.webp"
 import Form from "@/app/components/Form"
 import { inputs } from "@/app/types/data/InputsData"
 import { userSchema } from "@/app/helpers/ValidateInputs"
@@ -8,7 +10,7 @@ import Background from "@/app/components/Background"
 import { login } from "@/app/services/Auth"
 import { useRouter } from "next/navigation"
 import Account from "@/app/services/Account"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 
 export default function Login() {
   const account = Account.getInstance()
@@ -46,13 +48,13 @@ export default function Login() {
 
           <div className="bg-tertiary bg-opacity-75 py-[5%] xl:py-0 h-[80%] xl:h-[100%] w-[100%] xl:w-[40%] md:rounded-l-md">
             <section className="w-[100%] h-[15%] flex-center pt-5">
-              <img src="public/iconoCinema.webp" alt="Icono Cinema" width={100} height={100} />
+              <img src={iconoCinema.src} alt="Icono Cinema" className="h-[100%] w-[50%]" />
             </section>
             <section className="w-[100%] h-[30%] flex-center">
               <p className="text-primary text-[20px] w-[80%] text-center">Escapa a un mundo de emociones en la gran pantalla del cine.</p>
             </section>
             <section className="w-[100%] h-[50%] flex-center">
-              <img src="public/iconoCine.webp" alt="Icono Cine" />
+              <img src={iconoCine.src} alt="Icono Cine" className="h-[100%] w-[100%]" />
             </section>
           </div>
 

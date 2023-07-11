@@ -1,5 +1,6 @@
 'use client'
 
+import iconoPanelControl from "../../public/iconoPanelControl.webp"
 import BlueButton from "./BlueButton"
 import RedButton from "./RedButton"
 import { navBarProps } from "../types/Props"
@@ -64,7 +65,7 @@ export default function NavBar(
 
       <nav className={`z-40 transition-all duration-500 h-[100%] ${viewMenu ? "visible fixed top-0 left-0 w-[100%]" : " w-0 invisible md:visible md:w-[20%]"} bg-tertiary`}>
         <section className="w-[100%] h-[40%] flex-col-center">
-          <img className="shadow-big" src="/iconoPanelControl.webp" alt="Icono Cinema" width={500} height={500} />
+          <img className="shadow-big h-[100%] w-[100%]" src={iconoPanelControl.src} alt="Icono Cinema" />
           <h2 className="text-[20px] w-full text-center py-0 my-0 border-t-2 border-primary pt-2 rounded-lg">
             {account.getName()}
           </h2>
