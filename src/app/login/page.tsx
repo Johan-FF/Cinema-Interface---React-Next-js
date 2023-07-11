@@ -46,13 +46,13 @@ export default function Login() {
 
           <div className="bg-tertiary bg-opacity-75 py-[5%] xl:py-0 h-[80%] xl:h-[100%] w-[100%] xl:w-[40%] md:rounded-l-md">
             <section className="w-[100%] h-[15%] flex-center pt-5">
-              <img src="/iconoCinema.webp" alt="Icono Cinema" width={100} height={100} />
+              <img src="public/iconoCinema.webp" alt="Icono Cinema" width={100} height={100} />
             </section>
             <section className="w-[100%] h-[30%] flex-center">
               <p className="text-primary text-[20px] w-[80%] text-center">Escapa a un mundo de emociones en la gran pantalla del cine.</p>
             </section>
             <section className="w-[100%] h-[50%] flex-center">
-              <img src="/iconoCine.webp" alt="Icono Cine" width={500} height={500} />
+              <img src="public/iconoCine.webp" alt="Icono Cine" width={500} height={500} />
             </section>
           </div>
 
