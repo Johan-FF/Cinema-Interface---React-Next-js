@@ -26,14 +26,19 @@ This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-opti
 
 You can also log on to the website: [Cinema-Interface---React-Next-js](https://johan-ff.github.io/Cinema-Interface---React-Next-js/). If you have problems in the operation explore the repositories of the backend used in this project: [CinePacho-microservice-Multiple](https://github.com/AndresSArias/CinePacho-microservice-Multiple.git) y [CinePacho-microservice-Users](https://github.com/AndresSArias/CinePacho-microservice-Users.git).
 
-## Learn More
+## Profiles
 
-To learn more about Next.js, take a look at the following resources:
+To explore the operation log in with:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- Director:
+    User: 9999999999
+    Password: 1234
+- Administrator:
+    User: 222
+    Password: 1234
+- Employee:
+    User: 333
+    Password: 1234
 
 ## Configuration
 
@@ -44,6 +49,15 @@ export const API_URL_USER = '...'
 export const API_URL_MULTIPLEX = '...'
 ...
 ~~~
+
+## Learn More
+
+To learn more about Next.js, take a look at the following resources:
+
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
 ## Deploy on Vercel
 
