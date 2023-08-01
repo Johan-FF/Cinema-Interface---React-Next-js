@@ -1,5 +1,9 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
+This project develops the user interface of a cinema, which has three types of roles: director, administrator and worker. The first one manages the creation of points (multiplex), movies, administrators and statistics of the cinema in general. The second one manages the update of the points that a customer gets for the purchase of a ticket or snack and the creation of schedules for each movie. The third manages the sale of snacks, movies and the customer's rating for the services and the movie.
+
+![ezgif com-video-to-gif](https://github.com/Johan-FF/Cinema-Interface---React-Next-js/assets/94552691/e2ac3672-1850-42eb-8b53-fe0d1ad83e36)
+
 ## Getting Started
 
 First, run the development server:
@@ -18,6 +22,10 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
 
+## Website
+
+You can also log on to the website: [Cinema-Interface---React-Next-js](https://johan-ff.github.io/Cinema-Interface---React-Next-js/). If you have problems in the operation explore the repositories of the backend used in this project: [CinePacho-microservice-Multiple](https://github.com/AndresSArias/CinePacho-microservice-Multiple.git) y [CinePacho-microservice-Users](https://github.com/AndresSArias/CinePacho-microservice-Users.git).
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -26,6 +34,16 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Configuration
+
+If you want to customize the backend url access src/environment/index.ts and modify:
+
+~~~
+export const API_URL_USER = '...'
+export const API_URL_MULTIPLEX = '...'
+...
+~~~
 
 ## Deploy on Vercel
 
